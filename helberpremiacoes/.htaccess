@@ -1,0 +1,35 @@
+# Desabilita cache do servidor LiteSpeed (Hostinger)
+<IfModule LiteSpeed>
+  CacheLookup off
+</IfModule>
+
+# Desabilita cache do servidor Apache
+<IfModule mod_cache.c>
+  CacheDisable /
+</IfModule>
+
+<IfModule mod_headers.c>
+
+  # HTML, JS e CSS — sempre revalida com o servidor
+  <FilesMatch "\.(html|htm|js|css)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header set Pragma "no-cache"
+  </FilesMatch>
+
+  # Imagens — revalida também (para atualizar banner sem cache)
+  <FilesMatch "\.(png|jpg|jpeg|gif|svg|ico|webp|avif)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header set Pragma "no-cache"
+  </FilesMatch>
+
+  # Fontes — cache de 1 ano (nunca mudam)
+  <FilesMatch "\.(woff|woff2|ttf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+</IfModule>
+
+# Compressão gzip
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/plain
+</IfModule>
