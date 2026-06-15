@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+<!-- SEO -->
+<title>CRISSAM TIPS | Conteúdo direto no Telegram</title>
+<meta name="description" content="Acesse a comunidade da CRISSAM TIPS no Telegram e acompanhe conteúdos, análises e atualizações." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#071108" />
+
+<!-- Open Graph -->
+<meta property="og:type"        content="website" />
+<meta property="og:site_name"   content="CRISSAM TIPS" />
+<meta property="og:title"       content="CRISSAM TIPS | Conteúdo direto no Telegram" />
+<meta property="og:description" content="Acesse a comunidade da CRISSAM TIPS no Telegram e acompanhe conteúdos, análises e atualizações." />
+<meta property="og:locale"      content="pt_BR" />
+
+<!-- PWA / Mobile -->
+<meta name="apple-mobile-web-app-capable"          content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title"            content="CRISSAM TIPS" />
+
+<!-- Fonts: Exo 2 (display) + Outfit (body) — distinctive, tech-forward -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800;900&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+/* ================================================================
+   DESIGN TOKENS
+   ================================================================ */
+:root {
+  --primary:         #A6FF3D;
+  --primary-hover:   #93EB2E;
+  --primary-dark:    #62A815;
+  --primary-glow:    rgba(166,255,61,0.28);
+  --primary-glow-sm: rgba(166,255,61,0.14);
+  --bg:              #071108;
+  --bg-2:            #0C1B0E;
+  --surface:         #102414;
+  --surface-2:       rgba(16,36,20,0.7);
+  --text:            #FFFFFF;
+  --text-2:          #B7C4B9;
+  --text-3:          rgba(183,196,185,0.55);
+  --border:          rgba(166,255,61,0.20);
+  --border-sm:       rgba(166,255,61,0.10);
+  --font-display:    'Exo 2', system-ui, sans-serif;
+  --font-body:       'Outfit', system-ui, sans-serif;
+  --radius-card:     18px;
+  --radius-btn:      14px;
+  --radius-pill:     999px;
+  --transition:      .22s cubic-bezier(.2,.8,.3,1);
+}
+
+/* ================================================================
+   RESET & BASE
+   ================================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+/* ================================================================
+   SCROLLBAR
+   ================================================================ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--primary-dark); border-radius: 3px; }
+
+/* ================================================================
+   FOCUS
+   ================================================================ */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ================================================================
+   PAGE WRAPPER
+   ================================================================ */
+.page {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: max(env(safe-area-inset-top, 20px), 20px) 20px
+           calc(20px + env(safe-area-inset-bottom, 0px));
+}
+
+/* ================================================================
+   BACKGROUND EFFECTS
+   ================================================================ */
+.bg-effects {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Radial glow behind content */
+.bg-radial {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  width: min(900px, 130vw);
+  height: min(900px, 130vw);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(166,255,61,0.09) 0%,
+    rgba(166,255,61,0.04) 35%,
+    transparent 70%
+  );
+  animation: bgPulse 10s ease-in-out infinite alternate;
+}
+
+/* Bottom CTA glow */
+.bg-cta-glow {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(500px, 90vw);
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center bottom,
+    rgba(166,255,61,0.12) 0%,
+    transparent 65%
+  );
+}
+
+/* Tech grid overlay */
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(166,255,61,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(166,255,61,0.025) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+/* Floating orbs */
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+}
+.bg-orb-1 {
+  width: 300px; height: 300px;
+  top: -60px; left: -80px;
+  background: rgba(166,255,61,0.06);
+  animation: orbDrift1 18s ease-in-out infinite alternate;
+}
+.bg-orb-2 {
+  width: 260px; height: 260px;
+  bottom: 10%; right: -70px;
+  background: rgba(98,168,21,0.07);
+  animation: orbDrift2 22s ease-in-out infinite alternate;
+}
+
+/* Diagonal scan lines */
+.bg-lines {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(166,255,61,0.022) 0,
+    rgba(166,255,61,0.022) 1px,
+    transparent 1px,
+    transparent 48px
+  );
+}
+
+/* Scattered dots */
+.bg-dots {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(166,255,61,0.35) 1px, transparent 1px);
+  background-size: 38px 38px;
+  background-position: 0 0;
+  opacity: 0.18;
+}
+
+/* Noise grain */
+.bg-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  animation: grainScroll 16s linear infinite;
+}
+
+/* Abstract chart lines (decorative) */
+.bg-chart {
+  position: absolute;
+  bottom: 15%;
+  right: -20px;
+  width: 180px;
+  height: 100px;
+  opacity: 0.07;
+}
+
+@keyframes bgPulse   { 0%{opacity:.7} 100%{opacity:1} }
+@keyframes orbDrift1 { 0%{transform:translate(0,0)} 100%{transform:translate(40px,30px)} }
+@keyframes orbDrift2 { 0%{transform:translate(0,0)} 100%{transform:translate(-30px,-20px)} }
+@keyframes grainScroll { from{background-position:0 0} to{background-position:0 200px} }
+
+/* ================================================================
+   CONTENT CARD
+   ================================================================ */
+.content-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ================================================================
+   BRAND LOGO
+   ================================================================ */
+.brand-logo {
+  width: auto;
+  max-width: min(200px, 55vw);
+  height: auto;
+  max-height: 80px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  animation: fadeSlideDown .6s cubic-bezier(.2,.8,.3,1) both;
+}
+
+.brand-logo-fallback {
+  display: none;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 6vw, 32px);
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  filter: drop-shadow(0 0 18px var(--primary-glow));
+  animation: fadeSlideDown .6s cubic-bezier(.2,.8,.3,1) both;
+}
+
+/* ================================================================
+   BADGE / SELO
+   ================================================================ */
+.page-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px 6px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(166,255,61,0.09);
+  border: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  animation: fadeSlideDown .65s .1s cubic-bezier(.2,.8,.3,1) both;
+}
+
+.badge-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  fill: var(--primary);
+}
+
+/* ================================================================
+   HEADLINE
+   ================================================================ */
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 7.5vw, 42px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  color: var(--text);
+  animation: fadeSlideUp .7s .18s cubic-bezier(.2,.8,.3,1) both;
+}
+
+.headline-highlight {
+  color: var(--primary);
+  filter: drop-shadow(0 0 14px rgba(166,255,61,0.4));
+  display: block;
+}
+
+/* ================================================================
+   DESCRIPTION
+   ================================================================ */
+.description {
+  font-size: clamp(14px, 3.5vw, 16px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text-2);
+  max-width: 380px;
+  animation: fadeSlideUp .7s .26s cubic-bezier(.2,.8,.3,1) both;
+}
+
+/* ================================================================
+   BENEFITS LIST
+   ================================================================ */
+.benefits-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  animation: fadeSlideUp .7s .34s cubic-bezier(.2,.8,.3,1) both;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
+.benefit-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  stroke: var(--primary);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.benefit-sep {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ================================================================
+   TELEGRAM CTA
+   ================================================================ */
+.cta-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: fadeSlideUp .7s .42s cubic-bezier(.2,.8,.3,1) both;
+}
+
+.cta-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  width: 100%;
+  max-width: 360px;
+  padding: 18px 28px;
+  border-radius: var(--radius-btn);
+  background: var(--primary);
+  color: #071108;
+  font-family: var(--font-display);
+  font-size: clamp(15px, 3.8vw, 17px);
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow:
+    0 6px 28px rgba(166,255,61,0.35),
+    0 2px 8px rgba(0,0,0,0.4);
+  transition:
+    background var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Shimmer sweep */
+.cta-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255,255,255,0.28) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  animation: shimmer 3.5s ease-in-out 1.5s infinite;
+}
+
+/* Subtle glow border */
+.cta-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  pointer-events: none;
+}
+
+.cta-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 36px rgba(166,255,61,0.45),
+    0 4px 12px rgba(0,0,0,0.5);
+}
+
+.cta-btn:hover .cta-icon {
+  transform: translateX(3px);
+}
+
+.cta-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow:
+    0 3px 14px rgba(166,255,61,0.3),
+    0 1px 4px rgba(0,0,0,0.4);
+}
+
+.cta-btn:focus-visible {
+  outline: 3px solid rgba(166,255,61,0.7);
+  outline-offset: 4px;
+}
+
+.cta-icon {
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.cta-support {
+  font-size: 12px;
+  color: var(--text-3);
+  letter-spacing: .02em;
+}
+
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  35%  { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ================================================================
+   ACTIVITY NOTIFICATIONS
+   ================================================================ */
+.notif-stack {
+  position: fixed;
+  left: 16px;
+  bottom: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+  max-width: 300px;
+}
+
+.notif {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 13px 10px 10px;
+  border-radius: 14px;
+  background: rgba(10,22,12,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(166,255,61,0.15);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.55);
+  opacity: 0;
+  transform: translateY(10px);
+  animation:
+    notifIn  .38s cubic-bezier(.2,.8,.2,1) forwards,
+    notifOut .38s cubic-bezier(.4,.0,.6,1) forwards var(--notif-out-delay, 4.6s);
+}
+
+.notif-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  color: #071108;
+  box-shadow: 0 2px 8px rgba(166,255,61,0.25);
+}
+
+.notif-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.notif-label {
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(166,255,61,0.6);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notif-label span {
+  color: var(--text-3);
+  font-family: var(--font-body);
+  font-size: 9px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.notif-text {
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: rgba(255,255,255,0.88);
+}
+
+.notif-text strong {
+  font-weight: 600;
+  color: #fff;
+}
+
+.notif-illustrative {
+  font-size: 9px;
+  color: var(--text-3);
+  margin-top: 2px;
+  font-style: italic;
+}
+
+@keyframes notifIn {
+  0%   { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0);    }
+}
+@keyframes notifOut {
+  0%   { opacity: 1; transform: translateY(0);   }
+  100% { opacity: 0; transform: translateY(-5px); }
+}
+
+/* ================================================================
+   DISCLAIMER
+   ================================================================ */
+.disclaimer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--text-3);
+  padding: 0 8px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  animation: fadeSlideUp .7s .5s cubic-bezier(.2,.8,.3,1) both;
+}
+
+/* ================================================================
+   ENTRANCE ANIMATIONS
+   ================================================================ */
+@keyframes fadeSlideDown {
+  0%   { opacity: 0; transform: translateY(-14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeSlideUp {
+  0%   { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (min-width: 640px) {
+  .content-card { gap: 24px; }
+  .cta-btn { max-width: 380px; }
+
+  .notif-stack {
+    max-width: 300px;
+    bottom: 32px;
+  }
+}
+
+@media (max-width: 360px) {
+  .page { padding-left: 14px; padding-right: 14px; }
+  .headline { font-size: 24px; }
+  .benefits-list { gap: 8px 14px; }
+  .cta-btn { padding: 16px 20px; font-size: 14px; }
+}
+
+/* Mobile: notifications above safe area, never over CTA */
+@media (max-width: 639px) {
+  .notif-stack {
+    left: 12px;
+    right: 12px;
+    bottom: auto;
+    top: auto;
+    max-width: none;
+    /* rendered above page bottom, won't overlap CTA because CTA is centered */
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ================================================================
+   REDUCED MOTION
+   ================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ BACKGROUND EFFECTS ============ -->
+<div class="bg-effects" aria-hidden="true">
+  <div class="bg-radial"></div>
+  <div class="bg-cta-glow"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-lines"></div>
+  <div class="bg-dots"></div>
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-grain"></div>
+
+  <!-- Abstract chart decoration -->
+  <svg class="bg-chart" viewBox="0 0 180 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polyline points="0,80 30,60 60,70 90,35 120,50 150,20 180,30"
+      fill="none" stroke="#A6FF3D" stroke-width="1.5"
+      stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="0,90 30,75 60,80 90,55 120,65 150,40 180,50"
+      fill="none" stroke="#A6FF3D" stroke-width="1" opacity=".5"
+      stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="90"  cy="35" r="3" fill="#A6FF3D" opacity=".8"/>
+    <circle cx="150" cy="20" r="3" fill="#A6FF3D" opacity=".8"/>
+  </svg>
+</div>
+
+<!-- ============ PAGE ============ -->
+<main class="page">
+
+  <!-- ─── CONTENT CARD ─── -->
+  <article class="content-card" role="main">
+
+    <!-- BrandLogo -->
+    <img
+      class="brand-logo"
+      id="brandLogo"
+      src="images/logo.png"
+      alt="Logo da CRISSAM TIPS"
+      width="200"
+      height="80"
+      fetchpriority="high"
+      draggable="false"
+    />
+    <!-- Fallback text if logo fails to load -->
+    <span class="brand-logo-fallback" id="brandLogoFallback" aria-hidden="true">CRISSAM TIPS</span>
+
+    <!-- PageBadge -->
+    <div class="page-badge" aria-label="Conteúdo direto no Telegram">
+      <!-- Telegram icon inline SVG -->
+      <svg class="badge-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M21.93 3.24a1.5 1.5 0 0 0-1.52-.22L2.44 10.14a1.5 1.5 0 0 0 .09 2.79l4.14 1.38 1.59 5.04a1 1 0 0 0 1.73.37l2.3-2.6 4.54 3.37a1.5 1.5 0 0 0 2.34-1l2.84-15.3a1.5 1.5 0 0 0-.08-.95ZM10 17.24l-1-3.2 6.6-5.94L10 17.24Zm8.36.2-4.8-3.56 5.5-7.9-1.76 11.5-.94-.04Z"/>
+      </svg>
+      CONTEÚDO DIRETO NO TELEGRAM
+    </div>
+
+    <!-- TipsHero / Headline -->
+    <h1 class="headline">
+      ANÁLISES E TIPS
+      <span class="headline-highlight">DIRETO NO SEU TELEGRAM</span>
+    </h1>
+
+    <!-- Description -->
+    <p class="description">
+      Entre para a comunidade da CRISSAM TIPS e acompanhe conteúdos,
+      análises e atualizações em um só lugar.
+    </p>
+
+    <!-- BenefitsList -->
+    <div class="benefits-list" role="list" aria-label="Benefícios">
+      <div class="benefit-item" role="listitem">
+        <!-- Zap icon -->
+        <svg class="benefit-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        </svg>
+        Conteúdo direto
+      </div>
+      <div class="benefit-sep" aria-hidden="true"></div>
+      <div class="benefit-item" role="listitem">
+        <!-- Refresh icon -->
+        <svg class="benefit-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="23 4 23 10 17 10"/>
+          <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+        </svg>
+        Atualizações frequentes
+      </div>
+      <div class="benefit-sep" aria-hidden="true"></div>
+      <div class="benefit-item" role="listitem">
+        <!-- Telegram mini icon -->
+        <svg class="benefit-icon" viewBox="0 0 24 24" aria-hidden="true" style="fill:var(--primary);stroke:none">
+          <path d="M21.93 3.24a1.5 1.5 0 0 0-1.52-.22L2.44 10.14a1.5 1.5 0 0 0 .09 2.79l4.14 1.38 1.59 5.04a1 1 0 0 0 1.73.37l2.3-2.6 4.54 3.37a1.5 1.5 0 0 0 2.34-1l2.84-15.3a1.5 1.5 0 0 0-.08-.95Z"/>
+        </svg>
+        Acesso pelo Telegram
+      </div>
+    </div>
+
+    <!-- TelegramCTA -->
+    <div class="cta-wrapper">
+      <a
+        id="ctaBtn"
+        class="cta-btn"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Entrar no canal da CRISSAM TIPS no Telegram"
+        role="button"
+      >
+        <!-- Telegram icon -->
+        <svg class="cta-icon" width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="#071108" d="M21.93 3.24a1.5 1.5 0 0 0-1.52-.22L2.44 10.14a1.5 1.5 0 0 0 .09 2.79l4.14 1.38 1.59 5.04a1 1 0 0 0 1.73.37l2.3-2.6 4.54 3.37a1.5 1.5 0 0 0 2.34-1l2.84-15.3a1.5 1.5 0 0 0-.08-.95Z"/>
+        </svg>
+        ENTRAR NO TELEGRAM
+      </a>
+      <p class="cta-support">Clique para acessar o canal oficial da CRISSAM TIPS.</p>
+    </div>
+
+  </article>
+
+  <!-- DisclaimerText -->
+  <p class="disclaimer" id="disclaimer"></p>
+
+</main>
+
+<!-- ============ ACTIVITY NOTIFICATIONS ============ -->
+<div class="notif-stack" id="notifStack" aria-live="polite" aria-atomic="true" role="status"></div>
+
+<!-- ============ CONFIG + SCRIPTS ============ -->
+<script src="config.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ── 1. Apply config values to DOM ── */
+  function applyConfig() {
+    var cfg = pageConfig;
+
+    // Meta / title
+    document.title = cfg.meta.title;
+    var desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute('content', cfg.meta.description);
+
+    // CTA button href — validate placeholder before linking
+    var ctaBtn = document.getElementById('ctaBtn');
+    var url = cfg.cta.url;
+    var isPlaceholder = !url || url.indexOf('[') === 0;
+    if (!isPlaceholder && ctaBtn) {
+      ctaBtn.setAttribute('href', url);
+      ctaBtn.addEventListener('click', handleTelegramClick);
+    } else if (ctaBtn) {
+      // Link not yet configured — prevent navigation
+      ctaBtn.setAttribute('href', '#');
+      ctaBtn.setAttribute('aria-disabled', 'true');
+      ctaBtn.style.cursor = 'default';
+      ctaBtn.addEventListener('click', function (e) { e.preventDefault(); });
+    }
+
+    // Disclaimer
+    var disc = document.getElementById('disclaimer');
+    if (disc && cfg.disclaimer.enabled && cfg.disclaimer.text) {
+      disc.textContent = cfg.disclaimer.text;
+    }
+
+    // Logo fallback
+    var logo = document.getElementById('brandLogo');
+    var fallback = document.getElementById('brandLogoFallback');
+    if (logo) {
+      logo.setAttribute('src', cfg.brand.logo);
+      logo.setAttribute('alt', cfg.brand.logoAlt);
+      logo.addEventListener('error', function () {
+        logo.style.display = 'none';
+        if (fallback) {
+          fallback.style.display = 'block';
+          fallback.removeAttribute('aria-hidden');
+          fallback.textContent = cfg.brand.name;
+        }
+      }, { once: true });
+    }
+  }
+
+  /* ── 2. CTA click handler (analytics hook point) ── */
+  function handleTelegramClick() {
+    console.log('Telegram CTA clicked');
+    // ─── Integração de rastreamento ────────────────────────────────
+    // Meta Pixel:          fbq('track', 'Lead');
+    // Google Analytics:    gtag('event', 'click', { event_category: 'CTA', event_label: 'Telegram' });
+    // TikTok Pixel:        ttq.track('ClickButton');
+    // GTM dataLayer:       dataLayer.push({ event: 'telegram_cta_click' });
+    // ───────────────────────────────────────────────────────────────
+  }
+
+  /* ── 3. Activity Notifications ── */
+  function initNotifications() {
+    var cfg = pageConfig.notifications;
+    if (!cfg.enabled || !cfg.items || cfg.items.length === 0) return;
+
+    var stack   = document.getElementById('notifStack');
+    if (!stack) return;
+
+    var items   = cfg.items;
+    var idx     = 0;
+    var timer   = null;
+    var visible = !document.hidden;
+
+    function getInitials(name) {
+      return name.split(' ').slice(0, 2).map(function (n) { return n[0]; }).join('').toUpperCase();
+    }
+
+    function randInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function fire() {
+      if (!visible) return;
+      if (stack.children.length >= 2) {
+        stack.removeChild(stack.firstElementChild);
+      }
+
+      var item      = items[idx % items.length];
+      idx           = (idx + 1) % items.length;
+      var totalMs   = cfg.visibleDuration + 380; // animation out delay
+      var el        = document.createElement('div');
+      el.className  = 'notif';
+      el.style.setProperty('--notif-out-delay', (cfg.visibleDuration / 1000) + 's');
+
+      var initials = getInitials(item.name);
+      var label    = cfg.showIllustrativeLabel
+        ? '<div class="notif-illustrative">' + cfg.illustrativeLabel + '</div>'
+        : '';
+
+      el.innerHTML =
+        '<div class="notif-avatar">' + initials + '</div>' +
+        '<div class="notif-body">' +
+          '<div class="notif-label">CRISSAM TIPS <span>agora</span></div>' +
+          '<div class="notif-text"><strong>' + item.name + '</strong> ' + item.message + '</div>' +
+          label +
+        '</div>';
+
+      stack.appendChild(el);
+
+      // Remove after animation completes
+      setTimeout(function () {
+        if (el.parentNode) el.parentNode.removeChild(el);
+      }, totalMs + 100);
+    }
+
+    function scheduleNext() {
+      var delay = randInt(cfg.minInterval, cfg.maxInterval);
+      timer = setTimeout(function () {
+        fire();
+        scheduleNext();
+      }, delay);
+    }
+
+    // Pause/resume on visibility change
+    document.addEventListener('visibilitychange', function () {
+      visible = !document.hidden;
+      if (!visible && timer) {
+        clearTimeout(timer);
+        timer = null;
+      } else if (visible && !timer) {
+        scheduleNext();
+      }
+    });
+
+    // Initial delay before first notification
+    setTimeout(function () {
+      fire();
+      scheduleNext();
+    }, cfg.initialDelay);
+  }
+
+  /* ── 4. Cleanup on page unload ── */
+  window.addEventListener('beforeunload', function () {
+    // Timers are auto-cleared; explicit cleanup guard
+  });
+
+  /* ── Boot ── */
+  document.addEventListener('DOMContentLoaded', function () {
+    applyConfig();
+    initNotifications();
+  });
+
+})();
+</script>
+
+</body>
+</html>
