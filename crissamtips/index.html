@@ -716,6 +716,15 @@ html, body {
 }
 
 /* ================================================================
+   FACEBOOK DISCLAIMER
+================================================================ */
+.fb-disclaimer {
+  margin-top: 4px;
+  border-top: 1px solid var(--border-sm);
+  padding-top: 10px;
+}
+
+/* ================================================================
    REDUCED MOTION
 ================================================================ */
 @media (prefers-reduced-motion: reduce) {
@@ -867,6 +876,11 @@ html, body {
 
   <!-- Disclaimer -->
   <p class="disclaimer" id="disclaimer"></p>
+
+  <!-- Facebook disclaimer -->
+  <p class="disclaimer fb-disclaimer">
+    Este site não faz parte do Facebook™ ou da Meta Platforms, Inc. Além disso, este site não é endossado pelo Facebook™ de nenhuma maneira. Facebook™ é uma marca registrada da Meta Platforms, Inc.
+  </p>
 </main>
 
 <!-- NOTIFICATIONS -->
@@ -949,7 +963,24 @@ html, body {
     // GTM:              dataLayer.push({ event: 'telegram_cta_click' });
   }
 
-  /* ── 3. Notifications ── */
+  /* ── 3. Notifications + spots decrement ── */
+  var currentSpots = pageConfig.urgency ? pageConfig.urgency.spotsLeft : 0;
+
+  function decrementSpots() {
+    if (!pageConfig.urgency || !pageConfig.urgency.enabled) return;
+    if (currentSpots <= 1) return;
+    currentSpots--;
+    var total    = pageConfig.urgency.spotsTotal;
+    var taken    = total - currentSpots;
+    var pct      = Math.round((taken / total) * 100);
+    var spotsEl  = document.getElementById('spotsCount');
+    var spotsNum = document.getElementById('spotsNum');
+    var fillEl   = document.getElementById('spotsBarFill');
+    if (spotsEl)  spotsEl.textContent = currentSpots;
+    if (spotsNum) spotsNum.textContent = currentSpots;
+    if (fillEl)   fillEl.style.width  = pct + '%';
+  }
+
   function initNotifications() {
     var cfg = pageConfig.notifications;
     if (!cfg || !cfg.enabled || !cfg.items || !cfg.items.length) return;
@@ -957,22 +988,26 @@ html, body {
     var stack   = document.getElementById('notifStack');
     if (!stack) return;
 
-    var items   = cfg.items;
-    var idx     = Math.floor(Math.random() * items.length);
-    var timer   = null;
-    var visible = !document.hidden;
+    var items    = cfg.items;
+    var idx      = Math.floor(Math.random() * items.length);
+    var intIdx   = Math.floor(Math.random() * cfg.intervals.length);
+    var timer    = null;
+    var visible  = !document.hidden;
 
     function initials(name) {
       return name.split(' ').slice(0, 2).map(function (n) { return n[0]; }).join('').toUpperCase();
     }
 
-    function rand(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
+    function nextInterval() {
+      var val = cfg.intervals[intIdx % cfg.intervals.length];
+      intIdx = (intIdx + 1) % cfg.intervals.length;
+      return val;
     }
 
     function fire() {
       if (!visible) return;
-      if (stack.children.length >= 2) stack.removeChild(stack.firstElementChild);
+      /* Permite empilhar até 3; remove a mais antiga se ultrapassar */
+      if (stack.children.length >= 3) stack.removeChild(stack.firstElementChild);
 
       var item = items[idx % items.length];
       idx = (idx + 1) % items.length;
@@ -989,6 +1024,7 @@ html, body {
         '</div>';
 
       stack.appendChild(el);
+      decrementSpots();
 
       setTimeout(function () {
         if (el.parentNode) el.parentNode.removeChild(el);
@@ -996,7 +1032,7 @@ html, body {
     }
 
     function schedule() {
-      timer = setTimeout(function () { fire(); schedule(); }, rand(cfg.minInterval, cfg.maxInterval));
+      timer = setTimeout(function () { fire(); schedule(); }, nextInterval());
     }
 
     document.addEventListener('visibilitychange', function () {
@@ -1008,37 +1044,10 @@ html, body {
     setTimeout(function () { fire(); schedule(); }, cfg.initialDelay);
   }
 
-  /* ── 4. Spots countdown (decrements slowly to simulate scarcity) ── */
-  function initSpotsCountdown() {
-    if (!pageConfig.urgency || !pageConfig.urgency.enabled) return;
-    var current = pageConfig.urgency.spotsLeft;
-    var min = Math.max(1, current - 12);
-
-    function decrement() {
-      if (current <= min) return;
-      var delay = (Math.random() * 90000) + 45000; // 45–135 seconds
-      setTimeout(function () {
-        current--;
-        var spotsEl  = document.getElementById('spotsCount');
-        var spotsNum = document.getElementById('spotsNum');
-        var fillEl   = document.getElementById('spotsBarFill');
-        var taken    = pageConfig.urgency.spotsTotal - current;
-        var pct      = Math.round((taken / pageConfig.urgency.spotsTotal) * 100);
-        if (spotsEl)  spotsEl.textContent  = current;
-        if (spotsNum) spotsNum.textContent  = current;
-        if (fillEl)   fillEl.style.width    = pct + '%';
-        decrement();
-      }, delay);
-    }
-
-    decrement();
-  }
-
   /* ── Boot ── */
   document.addEventListener('DOMContentLoaded', function () {
     applyConfig();
     initNotifications();
-    initSpotsCountdown();
   });
 
 })();

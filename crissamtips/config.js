@@ -40,26 +40,27 @@ const pageConfig = {
     showIllustrativeLabel: false,
     illustrativeLabel:    "",
     initialDelay:         1800,
-    minInterval:          3500,
-    maxInterval:          6500,
-    visibleDuration:      4000,
+    visibleDuration:      4200,
+    /* Intervalos em ms — lista de pesos para simular padrão humano real:
+       disparos rápidos seguidos, pausas longas, picos de movimento */
+    intervals: [1200, 1800, 2400, 1500, 6000, 9000, 2100, 3200, 800, 11000, 1400, 4500, 700, 7500, 2800],
     items: [
-      { name: "Lucas S.",    message: "acabou de entrar no canal ✅"                   },
-      { name: "Mariana R.",  message: "garantiu o acesso agora mesmo 🔥"               },
-      { name: "Rafael M.",   message: "entrou antes que as vagas acabem"               },
-      { name: "Ana P.",      message: "está recebendo as tips no Telegram agora"       },
-      { name: "Pedro H.",    message: "acabou de se juntar à comunidade ⚡"            },
-      { name: "Camila F.",   message: "não perdeu mais nenhuma tip desde que entrou"   },
-      { name: "Thiago L.",   message: "entrou agora — restam poucas vagas 🚨"         },
-      { name: "Juliana C.",  message: "garantiu a vaga antes que fechasse"             },
-      { name: "Bruno K.",    message: "acabou de acessar o canal exclusivo"            },
-      { name: "Fernanda O.", message: "entrou e já está recebendo conteúdo 🎯"        }
+      { name: "Lucas S.",    message: "Entrou para o Grupo!" },
+      { name: "Mariana R.",  message: "Entrou para o Grupo!" },
+      { name: "Rafael M.",   message: "Entrou para o Grupo!" },
+      { name: "Ana P.",      message: "Entrou para o Grupo!" },
+      { name: "Pedro H.",    message: "Entrou para o Grupo!" },
+      { name: "Camila F.",   message: "Entrou para o Grupo!" },
+      { name: "Thiago L.",   message: "Entrou para o Grupo!" },
+      { name: "Juliana C.",  message: "Entrou para o Grupo!" },
+      { name: "Bruno K.",    message: "Entrou para o Grupo!" },
+      { name: "Fernanda O.", message: "Entrou para o Grupo!" }
     ]
   },
 
   urgency: {
     enabled: true,
-    spotsLeft: 47,
+    spotsLeft: 286,
     spotsTotal: 500,
     label: "vagas restantes"
   },
