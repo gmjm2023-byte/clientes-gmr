@@ -1,3 +1,13 @@
+# Desabilita cache do servidor LiteSpeed (Hostinger)
+<IfModule LiteSpeed>
+  CacheLookup off
+</IfModule>
+
+# Desabilita cache do servidor Apache
+<IfModule mod_cache.c>
+  CacheDisable /
+</IfModule>
+
 <IfModule mod_headers.c>
 
   # HTML, JS e CSS — sempre revalida com o servidor
