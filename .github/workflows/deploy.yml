@@ -15,11 +15,12 @@ jobs:
       - name: Deploy via SFTP para Hostinger
         uses: appleboy/scp-action@v0.1.7
         with:
-          host:        ${{ secrets.FTP_SERVER }}
-          username:    ${{ secrets.FTP_USERNAME }}
-          password:    ${{ secrets.FTP_PASSWORD }}
-          port:        ${{ secrets.SSH_PORT }}
-          source:      "crissamtips/,index.html,.gitignore"
-          target:      "public_html/pages"
-          strip_components: 0
-          rm:          false
+          host:            ${{ secrets.FTP_SERVER }}
+          username:        ${{ secrets.FTP_USERNAME }}
+          password:        ${{ secrets.FTP_PASSWORD }}
+          port:            ${{ secrets.SSH_PORT }}
+          source:          "."
+          target:          "public_html/pages"
+          rm:              false
+          overwrite:       true
+          tar_dereference: true
