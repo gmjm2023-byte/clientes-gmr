@@ -10,17 +10,11 @@
 
 <IfModule mod_headers.c>
 
-  # HTML, JS e CSS — sempre revalida com o servidor
-  # Se o arquivo mudou: baixa o novo. Se não mudou: usa cache (304, rápido).
-  # Resultado: toda publicação aparece imediatamente para todos os visitantes.
-  <FilesMatch "\.(html|htm|js|css)$">
-    Header set Cache-Control "no-cache, must-revalidate"
+  # HTML, JS, CSS e imagens — Safari no iPhone respeita esses headers
+  <FilesMatch "\.(html|htm|js|css|webp|png|jpg|jpeg|gif|svg|ico|avif)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
     Header set Pragma "no-cache"
-  </FilesMatch>
-
-  # Imagens — cache de 7 dias (mudam raramente)
-  <FilesMatch "\.(png|jpg|jpeg|gif|svg|ico|webp|avif)$">
-    Header set Cache-Control "public, max-age=604800"
+    Header set Expires "Thu, 01 Jan 1970 00:00:00 GMT"
   </FilesMatch>
 
   # Fontes — cache de 1 ano (nunca mudam)
