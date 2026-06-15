@@ -5,7 +5,7 @@
 const pageConfig = {
   brand: {
     name:               "CRISSAM TIPS",
-    logo:               "images/logo.png",   // ← coloque a logo aqui
+    logo:               "images/logo.png",
     logoAlt:            "Logo da CRISSAM TIPS",
     primaryColor:       "#A6FF3D",
     primaryHoverColor:  "#93EB2E",
@@ -17,44 +17,51 @@ const pageConfig = {
   },
 
   content: {
-    badge:           "CONTEÚDO DIRETO NO TELEGRAM",
-    headline:        "ANÁLISES E TIPS DIRETO NO SEU TELEGRAM",
-    highlightedText: "DIRETO NO SEU TELEGRAM",
-    description:     "Entre para a comunidade da CRISSAM TIPS e acompanhe conteúdos, análises e atualizações em um só lugar.",
+    badge:           "⚡ CANAL EXCLUSIVO — VAGAS LIMITADAS",
+    headline:        "QUEM ESTÁ DENTRO JÁ SABE.",
+    highlightedText: "VOCÊ AINDA NÃO ENTROU?",
+    description:     "As melhores análises e tips chegam primeiro para quem está no canal. Cada minuto fora é uma oportunidade perdida.",
     benefits: [
-      { icon: "zap",       label: "Conteúdo direto"       },
-      { icon: "refresh",   label: "Atualizações frequentes" },
-      { icon: "telegram",  label: "Acesso pelo Telegram"   }
+      { icon: "zap",      label: "Tips em tempo real"        },
+      { icon: "lock",     label: "Acesso exclusivo"          },
+      { icon: "telegram", label: "Direto no seu Telegram"    }
     ]
   },
 
   cta: {
-    text:           "ENTRAR NO TELEGRAM",
-    // ─────────────────────────────────────────────────────────────────
-    // ↓  SUBSTITUA AQUI o link do Telegram antes de publicar  ↓
+    text:           "QUERO ENTRAR AGORA",
     url:            "https://t.me/+431aQO7lN58xNmJh",
-    // ─────────────────────────────────────────────────────────────────
     openInNewTab:   true,
-    supportingText: "Clique para acessar o canal oficial da CRISSAM TIPS."
+    supportingText: "Acesso gratuito — mas as vagas são limitadas."
   },
 
   notifications: {
     enabled:              true,
-    showIllustrativeLabel: true,
-    illustrativeLabel:    "Atividade ilustrativa",
-    initialDelay:         2500,   // ms antes da primeira notificação
-    minInterval:          4500,   // ms mínimo entre notificações
-    maxInterval:          8000,   // ms máximo entre notificações
-    visibleDuration:      4000,   // ms que a notificação fica visível
+    showIllustrativeLabel: false,
+    illustrativeLabel:    "",
+    initialDelay:         1800,
+    minInterval:          3500,
+    maxInterval:          6500,
+    visibleDuration:      4000,
     items: [
-      { name: "Lucas",    message: "acabou de acessar a página"          },
-      { name: "Mariana",  message: "conferiu o canal da CRISSAM TIPS"    },
-      { name: "Rafael",   message: "está conhecendo a comunidade"         },
-      { name: "Ana",      message: "acessou as informações do Telegram"   },
-      { name: "Pedro",    message: "mais uma pessoa visitou a página"     },
-      { name: "Camila",   message: "descobriu a CRISSAM TIPS hoje"        },
-      { name: "Thiago",   message: "acessou o canal da CRISSAM TIPS"     }
+      { name: "Lucas S.",    message: "acabou de entrar no canal ✅"                   },
+      { name: "Mariana R.",  message: "garantiu o acesso agora mesmo 🔥"               },
+      { name: "Rafael M.",   message: "entrou antes que as vagas acabem"               },
+      { name: "Ana P.",      message: "está recebendo as tips no Telegram agora"       },
+      { name: "Pedro H.",    message: "acabou de se juntar à comunidade ⚡"            },
+      { name: "Camila F.",   message: "não perdeu mais nenhuma tip desde que entrou"   },
+      { name: "Thiago L.",   message: "entrou agora — restam poucas vagas 🚨"         },
+      { name: "Juliana C.",  message: "garantiu a vaga antes que fechasse"             },
+      { name: "Bruno K.",    message: "acabou de acessar o canal exclusivo"            },
+      { name: "Fernanda O.", message: "entrou e já está recebendo conteúdo 🎯"        }
     ]
+  },
+
+  urgency: {
+    enabled: true,
+    spotsLeft: 47,
+    spotsTotal: 500,
+    label: "vagas restantes"
   },
 
   disclaimer: {
@@ -63,8 +70,8 @@ const pageConfig = {
   },
 
   meta: {
-    title:       "CRISSAM TIPS | Conteúdo direto no Telegram",
-    description: "Acesse a comunidade da CRISSAM TIPS no Telegram e acompanhe conteúdos, análises e atualizações.",
+    title:       "CRISSAM TIPS | Canal exclusivo no Telegram",
+    description: "Tips e análises direto no seu Telegram. Canal exclusivo com vagas limitadas. Entre agora.",
     themeColor:  "#071108"
   }
 };
