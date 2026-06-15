@@ -21,6 +21,7 @@ jobs:
           SFTP_USER: ${{ secrets.FTP_USERNAME }}
           SFTP_PASS: ${{ secrets.FTP_PASSWORD }}
           SFTP_PORT: ${{ secrets.SSH_PORT }}
+          SFTP_TARGET: ${{ secrets.SFTP_TARGET }}
         run: |
           lftp -c "
             set sftp:auto-confirm yes;
@@ -32,6 +33,6 @@ jobs:
               --exclude='^\.github/' \
               --exclude='^node_modules/' \
               --verbose \
-              . public_html/pages/;
+              . $SFTP_TARGET/;
             quit
           "
