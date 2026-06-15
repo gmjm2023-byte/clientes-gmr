@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<title>Helber Premiações | Rifas de Perfumes de Nicho</title>
+<meta name="description" content="Entre no grupo exclusivo e participe de rifas e ações de perfumes de nicho importados. Vagas limitadas."/>
+<meta name="robots" content="index,follow"/>
+<meta name="theme-color" content="#050303"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Helber Premiações | Rifas de Perfumes de Nicho"/>
+<meta property="og:description" content="Entre no grupo exclusivo e participe de rifas e ações de perfumes de nicho importados."/>
+<meta property="og:locale" content="pt_BR"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Bebas+Neue&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ── TOKENS ── */
+:root{
+  --gold:       #E8B84B;
+  --gold-bright:#FFD166;
+  --gold-dim:   #8A6020;
+  --gold-glow:  rgba(232,184,75,0.25);
+  --gold-glow2: rgba(232,184,75,0.10);
+  --amber:      #FF9500;
+  --bg:         #050303;
+  --bg2:        #0C0806;
+  --surface:    rgba(232,184,75,0.06);
+  --text:       #F5EDDA;
+  --text2:      #B8A882;
+  --text3:      rgba(184,168,130,0.45);
+  --green:      #25D366;
+  --green-h:    #1DAA55;
+  --border:     rgba(232,184,75,0.18);
+  --border-s:   rgba(232,184,75,0.08);
+  --serif:      'Playfair Display',Georgia,serif;
+  --display:    'Bebas Neue',sans-serif;
+  --sans:       'Jost',system-ui,sans-serif;
+  --ease:       cubic-bezier(.2,.8,.3,1);
+  --ease-out:   cubic-bezier(.0,.0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:3px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+/* ── PAGE ── */
+.page{
+  position:relative;
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:max(env(safe-area-inset-top,20px),20px) 20px calc(28px + env(safe-area-inset-bottom,0px));
+  overflow:hidden;
+}
+
+/* ── CANVAS LAYER ── */
+#particleCanvas{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.7;
+}
+
+/* ── BACKGROUND ── */
+.bg-layer{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+
+.bg-orb-center{
+  position:absolute;
+  top:42%;left:50%;
+  transform:translate(-50%,-50%);
+  width:min(700px,110vw);height:min(700px,110vw);
+  border-radius:50%;
+  background:radial-gradient(ellipse at center,
+    rgba(232,184,75,0.12) 0%,
+    rgba(232,184,75,0.04) 38%,
+    transparent 65%);
+  animation:orbBreath 8s ease-in-out infinite alternate;
+}
+.bg-orb-tl{
+  position:absolute;top:-120px;left:-120px;
+  width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(232,184,75,0.08),transparent 65%);
+  filter:blur(60px);
+  animation:driftA 20s ease-in-out infinite alternate;
+}
+.bg-orb-br{
+  position:absolute;bottom:-100px;right:-100px;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(255,149,0,0.07),transparent 65%);
+  filter:blur(70px);
+  animation:driftB 25s ease-in-out infinite alternate;
+}
+
+/* grid */
+.bg-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(232,184,75,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(232,184,75,0.025) 1px,transparent 1px);
+  background-size:55px 55px;
+}
+
+/* diagonal lines */
+.bg-diag{
+  position:absolute;inset:0;
+  background-image:repeating-linear-gradient(
+    -45deg,
+    rgba(232,184,75,0.018) 0,rgba(232,184,75,0.018) 1px,
+    transparent 1px,transparent 55px);
+}
+
+/* grain */
+.bg-grain{
+  position:absolute;inset:0;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+  animation:grainMove 18s linear infinite;
+}
+
+/* scan line */
+.bg-scan{
+  position:absolute;left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(232,184,75,0.25),transparent);
+  animation:scanLine 7s ease-in-out infinite;
+  pointer-events:none;
+}
+
+/* Decorative bottles */
+.deco-bottle{
+  position:absolute;
+  opacity:.055;
+  pointer-events:none;
+}
+.deco-bottle-l{left:-30px;top:15%;transform:rotate(-12deg);animation:floatDeco 9s ease-in-out infinite alternate}
+.deco-bottle-r{right:-20px;bottom:20%;transform:rotate(10deg);animation:floatDeco 11s 2s ease-in-out infinite alternate}
+
+/* bottom cta glow */
+.bg-cta-glow{
+  position:absolute;bottom:-100px;left:50%;transform:translateX(-50%);
+  width:min(500px,90vw);height:360px;border-radius:50%;
+  background:radial-gradient(ellipse at center bottom,rgba(37,211,102,0.10),transparent 60%);
+}
+
+@keyframes orbBreath{0%{opacity:.7;transform:translate(-50%,-50%) scale(.95)} 100%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}}
+@keyframes driftA{0%{transform:translate(0,0)} 100%{transform:translate(40px,40px)}}
+@keyframes driftB{0%{transform:translate(0,0)} 100%{transform:translate(-30px,-30px)}}
+@keyframes grainMove{from{background-position:0 0} to{background-position:0 200px}}
+@keyframes scanLine{
+  0%{top:-2px;opacity:0} 5%{opacity:1}
+  45%{top:100%;opacity:.6} 50%{top:100%;opacity:0}
+  100%{top:-2px;opacity:0}
+}
+@keyframes floatDeco{0%{transform:rotate(-12deg) translateY(0)} 100%{transform:rotate(-12deg) translateY(-20px)}}
+
+/* ── CARD ── */
+.card{
+  position:relative;z-index:10;
+  width:100%;max-width:480px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:18px;
+}
+
+/* ── HERO IMAGE ── */
+.hero-wrap{
+  position:relative;
+  width:100%;
+  border-radius:16px;
+  overflow:hidden;
+  animation:revealDown .7s var(--ease) both;
+  box-shadow:0 0 0 1px var(--border),0 20px 60px rgba(232,184,75,0.18);
+}
+.hero-img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:16px;
+}
+.hero-glow{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 55%,rgba(5,3,3,0.85) 100%);
+  border-radius:16px;
+  pointer-events:none;
+}
+
+/* ── BRAND NAME ── */
+.brand-wrap{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  animation:revealDown .7s var(--ease) both;
+}
+.brand-name{
+  font-family:var(--display);
+  font-size:clamp(36px,11vw,60px);
+  letter-spacing:.12em;
+  line-height:1;
+  background:linear-gradient(135deg,var(--gold-dim) 0%,var(--gold) 40%,var(--gold-bright) 60%,var(--gold) 80%,var(--gold-dim) 100%);
+  background-size:300% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:revealDown .7s var(--ease) both, goldShimmer 4s ease-in-out 1s infinite;
+  filter:drop-shadow(0 0 30px rgba(232,184,75,0.4));
+  text-transform:uppercase;
+}
+.brand-tagline{
+  font-family:var(--sans);
+  font-size:10px;font-weight:500;
+  letter-spacing:.30em;
+  text-transform:uppercase;
+  color:var(--text2);
+  animation:revealDown .7s .06s var(--ease) both;
+}
+
+/* diamond separator */
+.sep{
+  display:flex;align-items:center;gap:12px;width:100%;max-width:260px;
+  animation:revealDown .6s .10s var(--ease) both;
+}
+.sep-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dim),transparent)}
+.sep-diamond{
+  width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;
+  box-shadow:0 0 10px var(--gold-glow),0 0 20px var(--gold-glow2);
+  animation:diamondPulse 2s ease-in-out infinite;
+}
+@keyframes diamondPulse{0%,100%{box-shadow:0 0 10px var(--gold-glow)} 50%{box-shadow:0 0 20px rgba(232,184,75,0.5),0 0 40px rgba(232,184,75,0.2)}}
+
+/* ── URGENCY BAR ── */
+.urgency{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 18px;border-radius:999px;
+  background:rgba(255,149,0,0.10);
+  border:1px solid rgba(255,149,0,0.30);
+  font-family:var(--display);font-size:14px;letter-spacing:.08em;
+  color:#FFAA33;
+  animation:revealDown .6s .14s var(--ease) both;
+}
+.urgency-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--amber);
+  box-shadow:0 0 10px rgba(255,149,0,0.9);
+  flex-shrink:0;
+  animation:dotPulse 1.4s ease-in-out infinite;
+}
+@keyframes dotPulse{0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.7);opacity:.5}}
+
+/* ── EYEBROW ── */
+.eyebrow{
+  font-family:var(--sans);font-size:10px;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);opacity:.7;
+  animation:revealDown .6s .18s var(--ease) both;
+}
+
+/* ── HEADLINE ── */
+.headline{
+  font-family:var(--serif);
+  font-size:clamp(26px,7.5vw,44px);
+  font-weight:900;line-height:1.08;
+  color:var(--text);
+  animation:revealUp .75s .22s var(--ease) both;
+}
+.headline em{
+  font-style:italic;color:var(--gold);display:block;margin-top:2px;
+  filter:drop-shadow(0 0 20px rgba(232,184,75,0.4));
+  animation:revealUp .75s .30s var(--ease) both, goldShimmer 5s 1.5s ease-in-out infinite;
+  background:linear-gradient(135deg,var(--gold-dim),var(--gold-bright),var(--gold));
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* ── DESCRIPTION ── */
+.description{
+  font-size:clamp(14px,3.6vw,15.5px);font-weight:300;line-height:1.72;
+  color:var(--text2);max-width:360px;
+  animation:revealUp .7s .32s var(--ease) both;
+}
+.description strong{color:var(--text);font-weight:500}
+
+/* ── STATS ── */
+.stats{
+  display:flex;align-items:center;justify-content:center;gap:0;
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:var(--surface);
+  backdrop-filter:blur(12px);
+  overflow:hidden;
+  animation:revealUp .7s .36s var(--ease) both;
+}
+.stat{
+  flex:1;padding:14px 10px;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  position:relative;
+}
+.stat+.stat::before{
+  content:'';position:absolute;left:0;top:20%;bottom:20%;
+  width:1px;background:var(--border);
+}
+.stat-value{
+  font-family:var(--display);
+  font-size:clamp(22px,6vw,30px);letter-spacing:.06em;
+  color:var(--gold);
+  filter:drop-shadow(0 0 10px rgba(232,184,75,0.35));
+}
+.stat-label{
+  font-size:10px;font-weight:400;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--text2);
+}
+
+/* ── SPOTS ── */
+.spots{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  width:100%;max-width:340px;
+  animation:revealUp .7s .40s var(--ease) both;
+}
+.spots-label{font-size:11px;font-weight:400;letter-spacing:.05em;color:var(--text2)}
+.spots-label strong{color:var(--gold);font-weight:600;font-size:13px}
+.spots-track{
+  width:100%;height:5px;
+  background:rgba(255,255,255,0.06);border-radius:99px;overflow:hidden;
+}
+.spots-fill{
+  height:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--gold-dim),var(--gold),var(--gold-bright));
+  box-shadow:0 0 12px rgba(232,184,75,0.6);
+  transition:width 1.2s var(--ease-out);
+}
+
+/* ── BENEFITS ── */
+.benefits{
+  display:flex;flex-direction:column;gap:8px;
+  width:100%;
+  animation:revealUp .7s .44s var(--ease) both;
+}
+.benefit{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 16px;
+  border-radius:10px;
+  background:var(--surface);
+  border:1px solid var(--border-s);
+  font-size:13px;font-weight:400;color:var(--text2);
+  text-align:left;
+  transition:background .2s,border-color .2s;
+}
+.benefit:hover{background:rgba(232,184,75,0.09);border-color:var(--border)}
+.benefit-check{
+  width:18px;height:18px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold-dim),var(--gold));
+  border-radius:50%;display:grid;place-items:center;
+  box-shadow:0 0 8px var(--gold-glow2);
+}
+.benefit-check svg{width:10px;height:10px;stroke:#050303;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── CTA ── */
+.cta-wrap{
+  width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;
+  animation:revealUp .7s .50s var(--ease) both;
+}
+
+.cta-primary{
+  position:relative;
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  width:100%;max-width:400px;
+  padding:20px 28px;border-radius:12px;
+  background:var(--green);
+  color:#fff;
+  font-family:var(--display);
+  font-size:clamp(17px,4.5vw,20px);letter-spacing:.10em;
+  text-decoration:none;border:none;cursor:pointer;
+  overflow:hidden;
+  box-shadow:
+    0 0 0 1px rgba(37,211,102,0.35),
+    0 10px 40px rgba(37,211,102,0.40),
+    0 2px 8px rgba(0,0,0,0.5);
+  transition:background .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease);
+  -webkit-tap-highlight-color:transparent;
+  animation:waPulse 2.5s 2s ease-in-out infinite;
+}
+.cta-primary::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 25%,rgba(255,255,255,0.28) 50%,transparent 75%);
+  transform:translateX(-100%);
+  animation:shimmer 3s ease-in-out 1.2s infinite;
+}
+.cta-primary::after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,0.25);pointer-events:none}
+.cta-primary:hover{
+  background:var(--green-h);
+  transform:translateY(-3px) scale(1.01);
+  box-shadow:0 0 0 1px rgba(37,211,102,0.5),0 14px 50px rgba(37,211,102,0.55),0 4px 14px rgba(0,0,0,0.6);
+  animation:none;
+}
+.cta-primary:active{transform:translateY(1px) scale(.98);animation:none}
+
+.cta-secondary{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  width:100%;max-width:400px;
+  padding:14px 24px;border-radius:10px;
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--gold);
+  font-family:var(--display);font-size:clamp(14px,3.8vw,17px);letter-spacing:.10em;
+  text-decoration:none;cursor:pointer;
+  transition:background .18s,border-color .18s,transform .18s;
+  -webkit-tap-highlight-color:transparent;
+}
+.cta-secondary:hover{background:rgba(232,184,75,0.08);border-color:rgba(232,184,75,0.45);transform:translateY(-2px)}
+.cta-secondary:active{transform:translateY(1px)}
+
+.btn-icon{flex-shrink:0;transition:transform .18s var(--ease)}
+.cta-primary:hover .btn-icon-arrow,
+.cta-secondary:hover .btn-icon-arrow{transform:translateX(4px)}
+
+.cta-support{font-size:11px;color:var(--text3);letter-spacing:.03em}
+
+@keyframes shimmer{0%{transform:translateX(-100%)} 35%{transform:translateX(100%)} 100%{transform:translateX(100%)}}
+@keyframes waPulse{
+  0%,100%{box-shadow:0 0 0 1px rgba(37,211,102,0.35),0 10px 40px rgba(37,211,102,0.40),0 2px 8px rgba(0,0,0,0.5)}
+  50%    {box-shadow:0 0 0 1px rgba(37,211,102,0.5),0 10px 55px rgba(37,211,102,0.60),0 2px 8px rgba(0,0,0,0.5)}
+}
+@keyframes goldShimmer{
+  0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}
+}
+
+/* ── SOCIAL PROOF ── */
+.social{
+  display:flex;align-items:center;gap:8px;font-size:12px;
+  animation:revealUp .7s .54s var(--ease) both;
+}
+.avatars{display:flex}
+.av{
+  width:24px;height:24px;border-radius:50%;
+  border:1.5px solid var(--bg);
+  background:linear-gradient(135deg,var(--gold-dim),var(--gold));
+  display:grid;place-items:center;
+  font-family:var(--sans);font-size:8px;font-weight:600;color:var(--bg);
+  margin-left:-7px;flex-shrink:0;
+}
+.av:first-child{margin-left:0}
+.social-text{color:var(--text2)}
+.social-text strong{color:var(--gold);font-weight:600}
+
+/* ── NOTIFICATIONS ── */
+.notif-stack{
+  position:fixed;left:14px;bottom:26px;z-index:9999;
+  display:flex;flex-direction:column;gap:7px;
+  pointer-events:none;max-width:295px;
+}
+.notif{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px 10px 10px;border-radius:13px;
+  background:rgba(8,5,2,0.96);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(232,184,75,0.16);
+  box-shadow:0 8px 28px rgba(0,0,0,0.7),0 0 0 1px rgba(232,184,75,0.05);
+  opacity:0;transform:translateX(-14px);
+  animation:notifIn .36s var(--ease) forwards, notifOut .34s ease-in forwards var(--out-delay,4.5s);
+}
+.notif-av{
+  width:33px;height:33px;border-radius:9px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold-dim),var(--gold));
+  display:grid;place-items:center;
+  font-family:var(--sans);font-size:10px;font-weight:600;color:var(--bg);
+  box-shadow:0 2px 8px rgba(232,184,75,0.3);
+}
+.notif-body{display:flex;flex-direction:column;gap:1px;min-width:0}
+.notif-src{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);opacity:.65;line-height:1}
+.notif-txt{font-size:12px;line-height:1.35;color:rgba(245,237,218,0.88);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.notif-txt strong{font-weight:600;color:var(--text)}
+@keyframes notifIn {0%{opacity:0;transform:translateX(-14px)} 100%{opacity:1;transform:translateX(0)}}
+@keyframes notifOut{0%{opacity:1;transform:translateX(0)} 100%{opacity:0;transform:translateX(-8px)}}
+
+/* ── DISCLAIMERS ── */
+.disclaimer{
+  position:relative;z-index:10;
+  width:100%;max-width:480px;text-align:center;
+  font-size:10px;line-height:1.6;color:var(--text3);
+  padding:0 8px;margin-top:6px;
+  animation:revealUp .7s .58s var(--ease) both;
+}
+.fb-disc{margin-top:6px;border-top:1px solid var(--border-s);padding-top:10px}
+
+/* ── ANIMATIONS ── */
+@keyframes revealDown{0%{opacity:0;transform:translateY(-18px)} 100%{opacity:1;transform:translateY(0)}}
+@keyframes revealUp  {0%{opacity:0;transform:translateY(18px)}  100%{opacity:1;transform:translateY(0)}}
+
+/* ── RESPONSIVE ── */
+@media(min-width:640px){
+  .card{gap:20px}
+  .cta-primary,.cta-secondary{max-width:420px}
+  .notif-stack{max-width:305px;bottom:36px}
+}
+@media(max-width:380px){
+  .page{padding-left:14px;padding-right:14px}
+  .headline{font-size:24px}
+  .stats{border-radius:10px}
+  .stat-value{font-size:22px}
+}
+@media(max-width:639px){
+  .notif-stack{left:10px;right:10px;max-width:none;bottom:calc(68px + env(safe-area-inset-bottom,0px))}
+  .benefits{gap:6px}
+  .benefit{padding:9px 14px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+</style>
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+<!-- BACKGROUND -->
+<div class="bg-layer" aria-hidden="true">
+  <div class="bg-orb-center"></div>
+  <div class="bg-orb-tl"></div>
+  <div class="bg-orb-br"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-diag"></div>
+  <div class="bg-grain"></div>
+  <div class="bg-scan"></div>
+  <div class="bg-cta-glow"></div>
+
+  <!-- Decorative bottle LEFT -->
+  <svg class="deco-bottle deco-bottle-l" width="80" height="200" viewBox="0 0 80 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="30" y="0" width="20" height="16" rx="4" fill="#E8B84B"/>
+    <rect x="26" y="16" width="28" height="7" rx="2" fill="#E8B84B"/>
+    <path d="M14 42 Q14 30 40 30 Q66 30 66 42 L70 175 Q70 188 40 188 Q10 188 10 175 Z" fill="#E8B84B"/>
+    <rect x="18" y="75" width="44" height="1.5" fill="rgba(255,255,255,0.4)"/>
+    <rect x="20" y="105" width="40" height="1" fill="rgba(255,255,255,0.2)"/>
+    <ellipse cx="40" cy="155" rx="14" ry="4" fill="rgba(255,255,255,0.1)"/>
+  </svg>
+
+  <!-- Decorative bottle RIGHT -->
+  <svg class="deco-bottle deco-bottle-r" width="60" height="160" viewBox="0 0 60 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="22" y="0" width="16" height="12" rx="3" fill="#E8B84B"/>
+    <rect x="18" y="12" width="24" height="6" rx="2" fill="#E8B84B"/>
+    <path d="M8 30 Q8 22 30 22 Q52 22 52 30 L56 142 Q56 152 30 152 Q4 152 4 142 Z" fill="#E8B84B"/>
+    <rect x="12" y="58" width="36" height="1" fill="rgba(255,255,255,0.35)"/>
+    <rect x="14" y="82" width="32" height="1" fill="rgba(255,255,255,0.18)"/>
+  </svg>
+</div>
+
+<!-- PAGE -->
+<main class="page">
+<article class="card" role="main">
+
+  <!-- Hero image -->
+  <div class="hero-wrap">
+    <img
+      class="hero-img"
+      src="images/banner.webp"
+      alt="Helber Premiações — Rifas de Perfumes de Nicho"
+      width="1920" height="1080"
+      fetchpriority="high"
+      draggable="false"
+    />
+    <div class="hero-glow" aria-hidden="true"></div>
+  </div>
+
+  <!-- Separator -->
+  <div class="sep" aria-hidden="true">
+    <div class="sep-line"></div><div class="sep-diamond"></div><div class="sep-line"></div>
+  </div>
+
+  <!-- Urgency -->
+  <div class="urgency" role="status" aria-live="polite">
+    <span class="urgency-dot" aria-hidden="true"></span>
+    🚨 APENAS <strong id="spotsCount">&nbsp;38&nbsp;</strong> VAGAS NO GRUPO
+  </div>
+
+  <!-- Eyebrow -->
+  <p class="eyebrow">Grupo exclusivo no WhatsApp</p>
+
+  <!-- Headline -->
+  <h1 class="headline">
+    AS MELHORES RIFAS DE PERFUMES DE NICHO ESTÃO AQUI.
+    <em id="headlineEm">VOCÊ AINDA ESTÁ DE FORA?</em>
+  </h1>
+
+  <!-- Description -->
+  <p class="description">
+    Ações exclusivas, perfumes raros e preços que <strong>só os membros do grupo conhecem.</strong>
+    Cada ação dura pouco — quem está dentro sabe na hora.
+  </p>
+
+  <!-- Spots bar -->
+  <div class="spots" id="spotsCounter">
+    <div class="spots-label"><strong id="spotsNum">38</strong> vagas restantes de 200</div>
+    <div class="spots-track"><div class="spots-fill" id="spotsFill" style="width:81%"></div></div>
+  </div>
+
+  <!-- Benefits -->
+  <div class="benefits" role="list" aria-label="O que você encontra no grupo">
+    <div class="benefit" role="listitem">
+      <div class="benefit-check" aria-hidden="true">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      Rifas de perfumes importados e de nicho
+    </div>
+    <div class="benefit" role="listitem">
+      <div class="benefit-check" aria-hidden="true">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      Ações relâmpago exclusivas para membros
+    </div>
+    <div class="benefit" role="listitem">
+      <div class="benefit-check" aria-hidden="true">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      Preços que não existem fora do grupo
+    </div>
+  </div>
+
+  <!-- CTAs -->
+  <div class="cta-wrap">
+    <a id="ctaPrimary" class="cta-primary" href="#" target="_blank" rel="noopener noreferrer"
+      aria-label="Entrar no grupo exclusivo da Helber Premiações no WhatsApp">
+      <svg class="btn-icon" width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+      </svg>
+      QUERO ENTRAR NO GRUPO
+      <svg class="btn-icon btn-icon-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </a>
+
+    <p class="cta-support">Gratuito — mas as vagas são contadas.</p>
+
+    <a id="ctaSecondary" class="cta-secondary" href="#" target="_blank" rel="noopener noreferrer"
+      aria-label="Ver Helber Premiações no Instagram">
+      <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+      VER NO INSTAGRAM
+      <svg class="btn-icon btn-icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Social proof -->
+  <div class="social" aria-label="Membros recentes">
+    <div class="avatars" aria-hidden="true">
+      <div class="av">JM</div><div class="av">CS</div>
+      <div class="av">BF</div><div class="av">LR</div><div class="av">+</div>
+    </div>
+    <span class="social-text"><strong>+162 pessoas</strong> já estão no grupo</span>
+  </div>
+
+</article>
+
+<p class="disclaimer" id="disclaimer"></p>
+<p class="disclaimer fb-disc">
+  Este site não faz parte do Facebook™ ou da Meta Platforms, Inc. Além disso, este site não é endossado pelo Facebook™ de nenhuma maneira. Facebook™ é uma marca registrada da Meta Platforms, Inc.
+</p>
+</main>
+
+<!-- NOTIFICATIONS -->
+<div class="notif-stack" id="notifStack" aria-live="polite" aria-atomic="true" role="status"></div>
+
+<script src="config.js"></script>
+<script>
+(function(){
+'use strict';
+
+/* ── PARTICLES ── */
+(function(){
+  var canvas = document.getElementById('particleCanvas');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var W,H;
+
+  function resize(){
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function rand(a,b){return Math.random()*(b-a)+a}
+
+  for(var i=0;i<55;i++){
+    particles.push({
+      x: rand(0,1),
+      y: rand(0,1),
+      r: rand(.6,2.2),
+      speed: rand(.00008,.00022),
+      opacity: rand(.12,.55),
+      drift: rand(-.0001,.0001),
+      pulse: rand(0, Math.PI*2),
+      pulseSpeed: rand(.008,.025)
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    var now = Date.now()*0.001;
+    for(var i=0;i<particles.length;i++){
+      var p = particles[i];
+      p.y -= p.speed;
+      p.x += p.drift;
+      p.pulse += p.pulseSpeed;
+      if(p.y < -0.02) p.y = 1.02;
+      if(p.x < -0.02) p.x = 1.02;
+      if(p.x > 1.02)  p.x = -0.02;
+      var op = p.opacity * (0.7 + 0.3*Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x*W, p.y*H, p.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(232,184,75,'+op+')';
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── SPOTS ── */
+var currentSpots = 0;
+
+function updateSpotsUI(){
+  var total = pageConfig.urgency.spotsTotal;
+  var pct   = Math.round(((total - currentSpots) / total)*100);
+  var e1 = document.getElementById('spotsCount');
+  var e2 = document.getElementById('spotsNum');
+  var bar= document.getElementById('spotsFill');
+  if(e1) e1.textContent = currentSpots;
+  if(e2) e2.textContent = currentSpots;
+  if(bar) bar.style.width = pct+'%';
+}
+
+function decrementSpots(){
+  if(!pageConfig.urgency||!pageConfig.urgency.enabled) return;
+  if(currentSpots<=1) return;
+  currentSpots--;
+  updateSpotsUI();
+}
+
+/* ── APPLY CONFIG ── */
+function applyConfig(){
+  var cfg = pageConfig;
+  document.title = cfg.meta.title;
+  var md = document.querySelector('meta[name="description"]');
+  if(md) md.setAttribute('content', cfg.meta.description);
+
+  // Brand
+  var bn = document.getElementById('brandName');
+  var bt = document.getElementById('brandTagline');
+  if(bn) bn.textContent = cfg.brand.name;
+  if(bt) bt.textContent = cfg.brand.tagline;
+
+  // Headline em
+  var em = document.getElementById('headlineEm');
+  if(em && cfg.content.highlighted) em.textContent = cfg.content.highlighted;
+
+  // Primary CTA
+  var p = document.getElementById('ctaPrimary');
+  var pu = cfg.cta.primary.url;
+  if(p && pu && pu.indexOf('[')<0){
+    p.setAttribute('href', pu);
+    p.addEventListener('click', function(){
+      // fbq('track','Lead');
+      // gtag('event','click',{event_category:'CTA_WhatsApp'});
+    });
+  }
+
+  // Secondary CTA
+  var s = document.getElementById('ctaSecondary');
+  var su = cfg.cta.secondary.url;
+  if(s && su && su.indexOf('[')<0) s.setAttribute('href', su);
+
+  // Urgency & spots
+  if(cfg.urgency && cfg.urgency.enabled){
+    currentSpots = cfg.urgency.spotsLeft;
+    updateSpotsUI();
+  }
+
+  // Disclaimer
+  var disc = document.getElementById('disclaimer');
+  if(disc && cfg.disclaimer && cfg.disclaimer.enabled) disc.textContent = cfg.disclaimer.text;
+}
+
+/* ── NOTIFICATIONS ── */
+function initNotifications(){
+  var cfg = pageConfig.notifications;
+  if(!cfg||!cfg.enabled||!cfg.items||!cfg.items.length) return;
+  var stack = document.getElementById('notifStack');
+  if(!stack) return;
+
+  var items  = cfg.items;
+  var idx    = Math.floor(Math.random()*items.length);
+  var intIdx = Math.floor(Math.random()*cfg.intervals.length);
+  var timer  = null;
+  var active = !document.hidden;
+
+  function initials(n){return n.split(' ').slice(0,2).map(function(x){return x[0]}).join('').toUpperCase()}
+  function nextDelay(){var v=cfg.intervals[intIdx%cfg.intervals.length];intIdx=(intIdx+1)%cfg.intervals.length;return v}
+
+  function fire(){
+    if(!active) return;
+    if(stack.children.length>=3) stack.removeChild(stack.firstElementChild);
+    var item = items[idx%items.length];
+    idx=(idx+1)%items.length;
+    var el=document.createElement('div');
+    el.className='notif';
+    el.style.setProperty('--out-delay',(cfg.visibleDuration/1000)+'s');
+    el.innerHTML=
+      '<div class="notif-av">'+initials(item.name)+'</div>'+
+      '<div class="notif-body">'+
+        '<div class="notif-src">HELBER PREMIAÇÕES</div>'+
+        '<div class="notif-txt"><strong>'+item.name+'</strong> '+item.message+'</div>'+
+      '</div>';
+    stack.appendChild(el);
+    decrementSpots();
+    setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},cfg.visibleDuration+500);
+  }
+
+  function schedule(){timer=setTimeout(function(){fire();schedule()},nextDelay())}
+
+  document.addEventListener('visibilitychange',function(){
+    active=!document.hidden;
+    if(!active&&timer){clearTimeout(timer);timer=null}
+    else if(active&&!timer) schedule();
+  });
+
+  setTimeout(function(){fire();schedule()},cfg.initialDelay);
+}
+
+/* ── BOOT ── */
+document.addEventListener('DOMContentLoaded',function(){
+  applyConfig();
+  initNotifications();
+});
+
+})();
+</script>
+</body>
+</html>
