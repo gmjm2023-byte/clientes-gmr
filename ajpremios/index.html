@@ -355,6 +355,14 @@ html,body{
 (function(){
 'use strict';
 
+/* ── PIXEL CTA ── */
+var ctaBtn = document.querySelector('.cta-primary');
+if (ctaBtn) {
+  ctaBtn.addEventListener('click', function() {
+    try { if (typeof fbq === 'function') fbq('track', 'Lead'); } catch(e) {}
+  });
+}
+
 /* ── PARTICLES ── */
 var canvas = document.getElementById('particleCanvas');
 var ctx = canvas.getContext('2d');

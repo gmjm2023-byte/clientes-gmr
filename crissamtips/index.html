@@ -974,10 +974,7 @@ html, body {
 
   /* ── 2. CTA click handler ── */
   function handleTelegramClick() {
-    // Meta Pixel:       fbq('track', 'Lead');
-    // Google Analytics: gtag('event', 'click', { event_category: 'CTA' });
-    // TikTok Pixel:     ttq.track('ClickButton');
-    // GTM:              dataLayer.push({ event: 'telegram_cta_click' });
+    try { if (typeof fbq === 'function') fbq('track', 'Lead'); } catch(e) {}
   }
 
   /* ── 3. Notifications + spots decrement ── */

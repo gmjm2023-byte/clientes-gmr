@@ -786,8 +786,7 @@ function applyConfig(){
   if(p && pu && pu.indexOf('[')<0){
     p.setAttribute('href', pu);
     p.addEventListener('click', function(){
-      // fbq('track','Lead');
-      // gtag('event','click',{event_category:'CTA_WhatsApp'});
+      try { if (typeof fbq === 'function') fbq('track', 'Lead'); } catch(e) {}
     });
   }
 

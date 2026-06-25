@@ -1055,7 +1055,7 @@
   function setText(id, val) { if (!val) return; var el = document.getElementById(id); if (el) el.textContent = val; }
   function hide(id) { var el = document.getElementById(id); if (el) el.style.display = 'none'; }
   function esc(s) { return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-  function trackEvent(name) { if (!name) return; try { if (typeof fbq==='function') fbq('trackCustom',name); if (typeof gtag==='function') gtag('event',name); } catch(e){} }
+  function trackEvent(name) { if (!name) return; try { if (typeof fbq==='function') { fbq('trackCustom',name); fbq('track','Lead'); } if (typeof gtag==='function') gtag('event',name); } catch(e){} }
   function mountLogo(mountId, src, cls, size) {
     var mount = document.getElementById(mountId);
     if (!mount) return;
