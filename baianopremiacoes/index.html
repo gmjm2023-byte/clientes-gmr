@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','781785286644602');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=781785286644602&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<title>Baiano da Sorte | Todo dia tem ganhador</title>
+<meta name="description" content="Rifas com prêmios reais. Cada ação finalizada, um ganhador. Entre no grupo do Baiano da Sorte."/>
+<meta name="theme-color" content="#020C04"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Syne:wght@600;700;800&family=Crimson+Pro:ital,wght@0,400;1,400;1,600&display=swap" rel="stylesheet"/>
+
+<style>
+/* ─── TOKENS ─────────────────────────────────────────────────── */
+:root {
+  --bg:          #020C04;
+  --forest:      #061408;
+  --canopy:      #0A2010;
+  --green:       #1C8C3A;
+  --green-lt:    #34D962;
+  --green-pale:  rgba(52,217,98,0.15);
+  --gold:        #F0C040;
+  --gold-lt:     #FFE070;
+  --gold-dim:    #8C6818;
+  --gold-glow:   rgba(240,192,64,0.28);
+  --wa:          #25D366;
+  --wa-h:        #1DAA55;
+  --text:        #F0F7F1;
+  --text2:       #7DB890;
+  --text3:       rgba(125,184,144,0.38);
+  --border-g:    rgba(52,217,98,0.18);
+  --border-go:   rgba(240,192,64,0.14);
+  --r:           cubic-bezier(.22,1,.36,1);
+  --safe-t:      env(safe-area-inset-top,  0px);
+  --safe-b:      env(safe-area-inset-bottom, 0px);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* ─── ATMOSPHERIC BACKGROUND ────────────────────────────────── */
+.atmo {
+  position: fixed; inset: 0; z-index: 0; overflow: hidden;
+  pointer-events: none;
+}
+
+/* Spotlight principal — cone dourado-esverdeado vindo de cima */
+.atmo-spot {
+  position: absolute;
+  top: -30%; left: 50%;
+  transform: translateX(-50%);
+  width: 200%; height: 140%;
+  background: conic-gradient(
+    from 90deg at 50% 0%,
+    transparent          68deg,
+    rgba(240,192,64,.06) 76deg,
+    rgba(200,230,60,.16) 90deg,
+    rgba(240,192,64,.06) 104deg,
+    transparent          112deg
+  );
+  animation: spotWaver 14s ease-in-out infinite alternate;
+}
+@keyframes spotWaver {
+  0%   { opacity: .8; transform: translateX(-50%) rotate(-2deg) scaleX(.95); }
+  100% { opacity: 1;  transform: translateX(-50%) rotate(2deg)  scaleX(1.05); }
+}
+
+/* Raio de luz extra — estreito e brilhante no centro */
+.atmo-ray {
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 2px; height: 65%;
+  background: linear-gradient(to bottom, rgba(240,220,80,.22), transparent);
+  filter: blur(6px);
+  animation: rayPulse 6s ease-in-out infinite alternate;
+}
+@keyframes rayPulse { 0%{opacity:.4} 100%{opacity:1} }
+
+/* Deep forest orbs */
+.atmo-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+}
+.orb-top {
+  top: -8%; left: 50%; transform: translateX(-50%);
+  width: min(680px,140vw); height: 380px;
+  background: radial-gradient(ellipse, rgba(28,140,58,.26) 0%, rgba(28,100,40,.08) 50%, transparent 70%);
+  animation: orbTop 10s ease-in-out infinite alternate;
+}
+.orb-bl {
+  bottom: -60px; left: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(ellipse, rgba(20,110,48,.16) 0%, transparent 70%);
+  animation: orbBL 18s ease-in-out infinite alternate;
+}
+.orb-tr {
+  top: 8%; right: -50px;
+  width: 300px; height: 300px;
+  background: radial-gradient(ellipse, rgba(240,192,64,.11) 0%, transparent 70%);
+  animation: orbTR 22s ease-in-out infinite alternate;
+}
+/* Orb atrás do conteúdo — ilumina o centro */
+.orb-mid {
+  top: 30%; left: 50%; transform: translate(-50%,-50%);
+  width: min(500px,100vw); height: 500px;
+  background: radial-gradient(ellipse, rgba(52,217,98,.07) 0%, rgba(28,80,40,.04) 45%, transparent 70%);
+  filter: blur(90px);
+  animation: orbMid 8s ease-in-out infinite alternate;
+}
+@keyframes orbTop { 0%{opacity:.7;transform:translateX(-50%) scale(.88)} 100%{opacity:1;transform:translateX(-50%) scale(1.10)} }
+@keyframes orbBL  { 0%{transform:translate(0,0)}   100%{transform:translate(28px,-28px)}  }
+@keyframes orbTR  { 0%{transform:translate(0,0)}   100%{transform:translate(-22px,22px)}  }
+@keyframes orbMid { 0%{opacity:.6;transform:translate(-50%,-50%) scale(.92)} 100%{opacity:1;transform:translate(-50%,-50%) scale(1.08)} }
+
+/* Grain noise */
+.atmo-grain {
+  position: absolute; inset: 0; opacity: .045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+  animation: grainDrift 22s linear infinite;
+}
+@keyframes grainDrift { from{background-position:0 0} to{background-position:0 240px} }
+
+/* ─── PARTICLE CANVAS ─────────────────────────────────────── */
+#px {
+  position: fixed; inset: 0; z-index: 1;
+  pointer-events: none; opacity: .75;
+}
+
+/* ─── PAGE LAYOUT ────────────────────────────────────────── */
+.page {
+  position: relative; z-index: 10;
+  height: 100dvh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: calc(var(--safe-t) + 20px) 24px calc(var(--safe-b) + 20px);
+  gap: 0;
+}
+
+/* ─── HERO PHOTO ─────────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: clamp(188px, 55vw, 264px);
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  margin-bottom: 18px;
+  animation: heroIn .9s var(--r) both .05s;
+}
+@keyframes heroIn {
+  from { opacity: 0; transform: scale(.88) translateY(-12px); }
+  to   { opacity: 1; transform: scale(1)   translateY(0);     }
+}
+
+/* Anéis pulsantes — dois, assimétricos */
+.hero-ring {
+  position: absolute;
+  border-radius: 20px;
+  pointer-events: none;
+}
+.ring-1 {
+  inset: -9px;
+  border: 1.2px solid rgba(52,217,98,.45);
+  border-radius: 22px;
+  animation: ringBreath 3.4s ease-in-out infinite;
+}
+.ring-2 {
+  inset: -20px;
+  border: .8px solid rgba(52,217,98,.18);
+  border-radius: 28px;
+  animation: ringBreath 4.6s ease-in-out infinite .7s;
+}
+@keyframes ringBreath {
+  0%,100% { opacity: .4; transform: scale(.975); }
+  50%     { opacity: 1;  transform: scale(1.010); }
+}
+
+/* Gold glow behind photo */
+.hero-glow {
+  position: absolute;
+  inset: -30px;
+  border-radius: 30px;
+  background: radial-gradient(ellipse at 50% 60%,
+    rgba(240,192,64,.18) 0%,
+    rgba(28,140,58,.12) 40%,
+    transparent 72%);
+  animation: glowPulse 5s ease-in-out infinite alternate;
+  z-index: 0;
+}
+@keyframes glowPulse {
+  from { opacity: .6; transform: scale(.95); }
+  to   { opacity: 1;  transform: scale(1.05); }
+}
+
+/* Photo frame */
+.hero-frame {
+  position: relative; z-index: 2;
+  width: 100%; height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(52,217,98,.25),
+    0 0 0 2px rgba(240,192,64,.10),
+    0 24px 60px rgba(0,0,0,.65),
+    0  4px 20px rgba(28,140,58,.25);
+}
+.hero-img {
+  display: block; width: 100%; height: 100%;
+  object-fit: cover;
+}
+/* Subtle inner glow overlay */
+.hero-frame::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(52,217,98,.06) 0%,
+    transparent 45%,
+    rgba(0,0,0,.22) 100%
+  );
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* ─── EYEBROW BADGE ──────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 16px; border-radius: 999px;
+  background: rgba(52,217,98,.10);
+  border: 1px solid rgba(52,217,98,.28);
+  font-family: 'Syne', sans-serif;
+  font-size: 10.5px; font-weight: 700; letter-spacing: .20em;
+  text-transform: uppercase; color: var(--green-lt);
+  margin-bottom: 12px;
+  animation: fadeUp .6s var(--r) both .20s;
+}
+.badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--green-lt);
+  box-shadow: 0 0 7px rgba(52,217,98,.9);
+  animation: dotBlink 1.8s ease-in-out infinite;
+}
+@keyframes dotBlink {
+  0%,100% { transform: scale(1);   opacity: 1; }
+  50%     { transform: scale(1.7); opacity: .5; }
+}
+
+/* ─── BRAND NAME ─────────────────────────────────────────── */
+.brand {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: clamp(26px, 8.5vw, 48px);
+  letter-spacing: .02em;
+  line-height: 1;
+  text-transform: uppercase;
+  background: linear-gradient(
+    135deg,
+    var(--gold-dim)    0%,
+    var(--gold)       30%,
+    var(--gold-lt)    52%,
+    var(--gold)       72%,
+    var(--gold-dim)  100%
+  );
+  background-size: 280% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 22px rgba(240,192,64,.30));
+  animation: fadeUp .7s var(--r) both .28s, goldFlow 5s ease-in-out 1.2s infinite;
+  margin-bottom: 14px;
+}
+@keyframes goldFlow {
+  0%  { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
+}
+
+/* ─── SEPARATOR — trevo SVG inline ──────────────────────── */
+.sep {
+  display: flex; align-items: center; gap: 12px;
+  width: 100%; max-width: 230px;
+  margin-bottom: 13px;
+  animation: fadeUp .6s var(--r) both .34s;
+}
+.sep-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+  opacity: .5;
+}
+.sep-icon { flex-shrink: 0; color: var(--green-lt); opacity: .9; }
+
+/* ─── TAGLINE ────────────────────────────────────────────── */
+.tagline {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(20px, 5.6vw, 30px);
+  line-height: 1.18;
+  letter-spacing: -.01em;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 12px;
+  animation: fadeUp .7s var(--r) both .40s;
+}
+.tagline em {
+  font-style: normal;
+  color: var(--green-lt);
+  display: inline;
+  filter: drop-shadow(0 0 14px rgba(52,217,98,.35));
+}
+
+/* ─── COPY ───────────────────────────────────────────────── */
+.copy {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(16px, 4.2vw, 19px);
+  font-weight: 400;
+  line-height: 1.58;
+  color: rgba(224,244,228,.70);
+  text-align: center;
+  max-width: 270px;
+  margin-bottom: 22px;
+  animation: fadeUp .7s var(--r) both .46s;
+}
+.copy strong {
+  font-style: normal;
+  color: var(--gold-lt);
+  font-weight: 600;
+  filter: drop-shadow(0 0 10px rgba(240,192,64,.30));
+}
+
+/* ─── CTA BUTTON ─────────────────────────────────────────── */
+.cta-wrap {
+  width: 100%; max-width: 360px;
+  display: flex; flex-direction: column; align-items: center; gap: 9px;
+  animation: fadeUp .7s var(--r) both .52s;
+}
+
+.btn-wa {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: 11px;
+  width: 100%; padding: 17px 24px;
+  border-radius: 14px;
+  background: var(--wa);
+  color: #fff;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: clamp(14px, 3.8vw, 16px);
+  letter-spacing: .06em;
+  text-decoration: none;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow:
+    0 0 0 1px rgba(37,211,102,.35),
+    0 10px 36px rgba(37,211,102,.42),
+    0  2px  8px rgba(0,0,0,.50);
+  transition: background .16s var(--r), transform .16s var(--r), box-shadow .16s var(--r);
+  animation: waPulse 2.8s 2s ease-in-out infinite;
+}
+/* Shimmer sweep */
+.btn-wa::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(108deg, transparent 28%, rgba(255,255,255,.28) 50%, transparent 72%);
+  transform: translateX(-100%);
+  animation: sweep 3.2s ease-in-out 1.4s infinite;
+}
+/* Inner bevel */
+.btn-wa::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22);
+  pointer-events: none;
+}
+.btn-wa:hover {
+  background: var(--wa-h);
+  transform: translateY(-3px) scale(1.012);
+  box-shadow:
+    0 0 0 1px rgba(37,211,102,.50),
+    0 16px 48px rgba(37,211,102,.55),
+    0  4px 12px rgba(0,0,0,.60);
+  animation: none;
+}
+.btn-wa:active { transform: translateY(1px) scale(.98); animation: none; }
+
+.cta-note {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text3);
+  letter-spacing: .04em;
+}
+
+/* ─── KEYFRAMES ──────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes sweep {
+  0%  { transform: translateX(-100%); }
+  35% { transform: translateX(110%);  }
+  100%{ transform: translateX(110%);  }
+}
+@keyframes waPulse {
+  0%,100% { box-shadow: 0 0 0 1px rgba(37,211,102,.35), 0 10px 36px rgba(37,211,102,.42), 0 2px 8px rgba(0,0,0,.50); }
+  50%     { box-shadow: 0 0 0 1px rgba(37,211,102,.50), 0 10px 52px rgba(37,211,102,.62), 0 2px 8px rgba(0,0,0,.50); }
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-height: 660px) {
+  .hero { width: clamp(140px, 40vw, 180px); margin-bottom: 12px; }
+  .badge { margin-bottom: 8px; }
+  .brand { font-size: clamp(22px, 7vw, 36px); margin-bottom: 10px; }
+  .sep { margin-bottom: 8px; }
+  .copy { margin-bottom: 14px; }
+  .ring-1, .ring-2 { display: none; }
+}
+@media (max-width: 360px) {
+  .page { padding-inline: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── ATMOSPHERE ─────────────────────────────────────── -->
+<div class="atmo" aria-hidden="true">
+  <div class="atmo-spot"></div>
+  <div class="atmo-ray"></div>
+  <div class="atmo-orb orb-top"></div>
+  <div class="atmo-orb orb-mid"></div>
+  <div class="atmo-orb orb-bl"></div>
+  <div class="atmo-orb orb-tr"></div>
+  <div class="atmo-grain"></div>
+</div>
+
+<canvas id="px"></canvas>
+
+<!-- ─── CONTENT ───────────────────────────────────────── -->
+<main class="page">
+
+  <!-- HERO PHOTO -->
+  <div class="hero" role="img" aria-label="Baiano da Sorte">
+    <div class="hero-glow"></div>
+    <div class="ring-2 hero-ring"></div>
+    <div class="ring-1 hero-ring"></div>
+    <div class="hero-frame">
+      <img
+        class="hero-img"
+        src="images/logo.jpg?v=1"
+        alt="Baiano da Sorte"
+        fetchpriority="high"
+        draggable="false"
+      />
+    </div>
+  </div>
+
+  <!-- BADGE -->
+  <div class="badge">
+    <span class="badge-dot" aria-hidden="true"></span>
+    Grupo ativo
+  </div>
+
+  <!-- BRAND -->
+  <h1 class="brand">Baiano da Sorte</h1>
+
+  <!-- SEPARATOR com trevo SVG -->
+  <div class="sep" aria-hidden="true">
+    <div class="sep-line"></div>
+    <svg class="sep-icon" width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+      <path d="M10 9.5C10 9.5 9.5 6 6.5 5C3.5 4 1 6 1 8.5C1 10.5 2.5 12 5 12C6.5 12 7.8 11.3 8.7 10.3C8.2 11.3 8 12.8 8.5 14.2C9 15.7 10 16.5 10 16.5C10 16.5 11 15.7 11.5 14.2C12 12.8 11.8 11.3 11.3 10.3C12.2 11.3 13.5 12 15 12C17.5 12 19 10.5 19 8.5C19 6 16.5 4 13.5 5C10.5 6 10 9.5 10 9.5Z"/>
+      <circle cx="10" cy="17.5" r="1.5"/>
+    </svg>
+    <div class="sep-line"></div>
+  </div>
+
+  <!-- TAGLINE -->
+  <p class="tagline">Todo dia tem rifa.<br><em>Todo dia tem ganhador.</em></p>
+
+  <!-- COPY -->
+  <p class="copy">
+    Cada ação finalizada,<br>
+    <strong>um prêmio entregue de verdade.</strong>
+  </p>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a
+      class="btn-wa"
+      href="#"
+      id="ctaWa"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Entrar no grupo do Baiano da Sorte no WhatsApp"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+      </svg>
+      QUERO PARTICIPAR
+    </a>
+    <p class="cta-note">Grupo gratuito — vagas limitadas.</p>
+  </div>
+
+</main>
+
+<script>
+(function () {
+'use strict';
+
+/* ── PIXEL: Lead no clique do CTA ── */
+var cta = document.getElementById('ctaWa');
+if (cta) cta.addEventListener('click', function () {
+  try { if (typeof fbq === 'function') fbq('track', 'Lead'); } catch(e) {}
+});
+
+/* ── PARTICLES — ouro + verde, movimento orgânico ── */
+var cv = document.getElementById('px');
+var cx = cv.getContext('2d');
+var W, H, pts = [];
+
+function resize() { W = cv.width = innerWidth; H = cv.height = innerHeight; }
+resize();
+addEventListener('resize', resize);
+
+function rnd(a, b) { return Math.random() * (b - a) + a; }
+
+/* 65 partículas: 60% verde, 40% dourada */
+for (var i = 0; i < 65; i++) {
+  pts.push({
+    x:    rnd(0,1), y:  rnd(0,1),
+    r:    rnd(.5, 2.1),
+    vy:   rnd(.00006, .00019),
+    vx:   rnd(-.00010, .00010),
+    o:    rnd(.08, .48),
+    ph:   rnd(0, Math.PI * 2),
+    spd:  rnd(.006, .022),
+    gold: i >= 39
+  });
+}
+
+function frame() {
+  cx.clearRect(0, 0, W, H);
+  for (var i = 0; i < pts.length; i++) {
+    var p = pts[i];
+    p.y  -= p.vy;
+    p.x  += p.vx;
+    p.ph += p.spd;
+    if (p.y < -.02) p.y = 1.02;
+    if (p.x < -.02) p.x = 1.02;
+    if (p.x > 1.02) p.x = -.02;
+    var alpha = p.o * (.68 + .32 * Math.sin(p.ph));
+    cx.beginPath();
+    cx.arc(p.x * W, p.y * H, p.r, 0, Math.PI * 2);
+    cx.fillStyle = p.gold
+      ? 'rgba(240,192,64,' + alpha + ')'
+      : 'rgba(52,217,98,'  + alpha + ')';
+    cx.fill();
+  }
+  requestAnimationFrame(frame);
+}
+frame();
+
+})();
+</script>
+
+</body>
+</html>
