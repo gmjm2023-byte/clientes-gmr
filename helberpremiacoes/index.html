@@ -781,12 +781,18 @@ function applyConfig(){
   if(em && cfg.content.highlighted) em.textContent = cfg.content.highlighted;
 
   // Primary CTA
+  function sendCapi(eId){
+    function gc(n){var v=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return v?v.pop():'';}
+    fetch('capi.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event_id:eId,url:location.href,fbc:gc('_fbc'),fbp:gc('_fbp')})}).catch(function(){});
+  }
   var p = document.getElementById('ctaPrimary');
   var pu = cfg.cta.primary.url;
   if(p && pu && pu.indexOf('[')<0){
     p.setAttribute('href', pu);
     p.addEventListener('click', function(){
-      try { if (typeof fbq === 'function') fbq('track', 'Lead'); } catch(e) {}
+      var eId = 'ld_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
+      try { if (typeof fbq === 'function') fbq('track', 'Lead', {}, {eventID: eId}); } catch(e) {}
+      sendCapi(eId);
     });
   }
 

@@ -13,11 +13,11 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window,document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1392515439591839');
+fbq('init','1020730140676312');
 fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1392515439591839&ev=PageView&noscript=1"/></noscript>
+src="https://www.facebook.com/tr?id=1020730140676312&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
@@ -355,11 +355,17 @@ html,body{
 (function(){
 'use strict';
 
-/* ── PIXEL CTA ── */
+/* ── PIXEL + CAPI ── */
+function sendCapi(eId){
+  function gc(n){var v=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return v?v.pop():'';}
+  fetch('capi.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event_id:eId,url:location.href,fbc:gc('_fbc'),fbp:gc('_fbp')})}).catch(function(){});
+}
 var ctaBtn = document.querySelector('.cta-primary');
 if (ctaBtn) {
   ctaBtn.addEventListener('click', function() {
-    try { if (typeof fbq === 'function') fbq('track', 'Lead'); } catch(e) {}
+    var eId = 'ld_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
+    try { if (typeof fbq === 'function') fbq('track', 'Lead', {}, {eventID: eId}); } catch(e) {}
+    sendCapi(eId);
   });
 }
 

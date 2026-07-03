@@ -973,8 +973,14 @@ html, body {
   }
 
   /* ── 2. CTA click handler ── */
+  function sendCapi(eId){
+    function gc(n){var v=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return v?v.pop():'';}
+    fetch('capi.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event_id:eId,url:location.href,fbc:gc('_fbc'),fbp:gc('_fbp')})}).catch(function(){});
+  }
   function handleTelegramClick() {
-    try { if (typeof fbq === 'function') fbq('track', 'Lead'); } catch(e) {}
+    var eId = 'ld_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
+    try { if (typeof fbq === 'function') fbq('track', 'Lead', {}, {eventID: eId}); } catch(e) {}
+    sendCapi(eId);
   }
 
   /* ── 3. Notifications + spots decrement ── */

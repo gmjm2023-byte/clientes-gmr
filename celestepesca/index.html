@@ -859,7 +859,11 @@
   if (heroCtaWa) {
     heroCtaWa.href = (campaign.cta && campaign.cta.url) || links.whatsapp || '#';
     setText('hero-cta-label', campaign.cta && campaign.cta.text || 'Entrar no Grupo Gratuito');
-    heroCtaWa.addEventListener('click', function () { trackEvent(tracking.heroCtaClick); });
+    heroCtaWa.addEventListener('click', function () {
+      var eId = 'ld_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
+      trackEvent(tracking.heroCtaClick, eId);
+      sendCapi(eId);
+    });
   }
   var heroCtaIg = document.getElementById('hero-cta-ig');
   if (heroCtaIg) {
@@ -988,7 +992,7 @@
   mountLogo('cta-final-logo-mount', brand.logo, 'cta-final-logo', 72);
   var ctaFinalWa = document.getElementById('cta-final-wa');
   var ctaFinalIg = document.getElementById('cta-final-ig');
-  if (ctaFinalWa) { ctaFinalWa.href = links.whatsapp || '#'; ctaFinalWa.addEventListener('click', function () { trackEvent(tracking.finalCtaClick); }); }
+  if (ctaFinalWa) { ctaFinalWa.href = links.whatsapp || '#'; ctaFinalWa.addEventListener('click', function () { var eId='ld_'+Date.now()+'_'+Math.random().toString(36).substr(2,6); trackEvent(tracking.finalCtaClick,eId); sendCapi(eId); }); }
   if (ctaFinalIg) { ctaFinalIg.href = links.instagram || '#'; ctaFinalIg.addEventListener('click', function () { trackEvent(tracking.igClick); }); }
 
   /* FOOTER */
@@ -999,7 +1003,7 @@
   /* FLOATING CTA */
   setText('float-cta-label', floatCta.label);
   var floatBtn = document.getElementById('float-cta');
-  if (floatBtn) { floatBtn.href = floatCta.url || links.whatsapp || '#'; floatBtn.addEventListener('click', function () { trackEvent(tracking.floatCtaClick); }); }
+  if (floatBtn) { floatBtn.href = floatCta.url || links.whatsapp || '#'; floatBtn.addEventListener('click', function () { var eId='ld_'+Date.now()+'_'+Math.random().toString(36).substr(2,6); trackEvent(tracking.floatCtaClick,eId); sendCapi(eId); }); }
   if (floatCta.enabled === false) hide('float-wrap');
 
   /* Float CTA — show after hero WA button scrolls out */
@@ -1055,7 +1059,8 @@
   function setText(id, val) { if (!val) return; var el = document.getElementById(id); if (el) el.textContent = val; }
   function hide(id) { var el = document.getElementById(id); if (el) el.style.display = 'none'; }
   function esc(s) { return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-  function trackEvent(name) { if (!name) return; try { if (typeof fbq==='function') { fbq('trackCustom',name); fbq('track','Lead'); } if (typeof gtag==='function') gtag('event',name); } catch(e){} }
+  function sendCapi(eId){function gc(n){var v=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return v?v.pop():'';}fetch('capi.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event_id:eId,url:location.href,fbc:gc('_fbc'),fbp:gc('_fbp')})}).catch(function(){});}
+  function trackEvent(name, eId) { if (!name) return; try { if (typeof fbq==='function') { fbq('trackCustom',name); if(eId){fbq('track','Lead',{},{eventID:eId});}else{fbq('track','Lead');} } if (typeof gtag==='function') gtag('event',name); } catch(e){} }
   function mountLogo(mountId, src, cls, size) {
     var mount = document.getElementById(mountId);
     if (!mount) return;
