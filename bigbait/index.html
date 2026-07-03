@@ -410,29 +410,43 @@ a{color:inherit;text-decoration:none}
 .section-title-line:last-child{
   background:linear-gradient(90deg,var(--red),transparent);
 }
+/* carousel wrapper */
+.products-carousel-wrap{
+  position:relative;overflow:hidden;
+}
+.products-carousel-wrap::before,
+.products-carousel-wrap::after{
+  content:'';position:absolute;top:0;bottom:8px;width:64px;z-index:2;pointer-events:none;
+}
+.products-carousel-wrap::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.products-carousel-wrap::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
+
 .products-strip{
   display:flex;gap:10px;
-  padding:0 18px 8px;
-  overflow-x:auto;-webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
+  padding:0 8px 8px;
+  width:max-content;
 }
-.products-strip::-webkit-scrollbar{display:none}
+.products-strip.carousel-running{
+  animation:carouselLoop 24s linear infinite;
+}
+.products-strip.carousel-running:hover{animation-play-state:paused}
+@keyframes carouselLoop{
+  0%{transform:translateX(0)}
+  100%{transform:var(--loop-x,translateX(-50%))}
+}
 .product-card{
   flex:0 0 clamp(148px,42vw,200px);
   border-radius:6px;overflow:hidden;
   border:1px solid var(--border);
   background:var(--surf);
   position:relative;
-  opacity:0;transform:translateY(28px);
-  transition:opacity .65s var(--ease),transform .65s var(--ease),border-color .22s,box-shadow .22s;
+  transition:border-color .22s,box-shadow .22s,transform .22s var(--ease);
 }
-.product-card.visible{opacity:1;transform:none}
 .product-card:hover{
   border-color:var(--border-r);
   transform:translateY(-4px);
   box-shadow:0 12px 32px rgba(204,10,18,0.2);
 }
-.product-card.visible:hover{transform:translateY(-4px)}
 .product-card-img{
   width:100%;aspect-ratio:1/1;
   object-fit:cover;background:#111;
@@ -457,85 +471,62 @@ a{color:inherit;text-decoration:none}
   position:absolute;inset:0 0 auto;height:30%;
   background:linear-gradient(to bottom,rgba(6,0,0,0.28),transparent);pointer-events:none;
 }
-.products-all{
-  display:flex;justify-content:center;
-  margin-top:18px;padding:0 18px;
-}
-.products-all-btn{
-  display:inline-flex;align-items:center;gap:7px;
-  padding:12px 22px;
-  border:1px solid var(--border-r);border-radius:4px;
-  font-family:var(--display);
-  font-size:12px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--text2);
-  transition:color .18s,border-color .18s,background .18s;
-}
-.products-all-btn:hover{
-  color:var(--text);border-color:var(--red-b);
-  background:rgba(204,10,18,0.08);
-}
 
 /* ── FOOTER ── */
-.site-footer{border-top:1px solid var(--border)}
-.footer-cta-row{
-  display:grid;grid-template-columns:1fr;
-  max-width:1024px;margin:0 auto;
-}
-@media(min-width:600px){
-  .footer-cta-row{grid-template-columns:1fr auto 1fr;align-items:center}
-}
-.footer-col{padding:26px 22px}
-.footer-col+.footer-col{border-top:1px solid var(--border)}
-@media(min-width:600px){
-  .footer-col+.footer-col{border-top:none;border-left:1px solid var(--border)}
-}
-.footer-badge-row{display:flex;align-items:center;gap:16px}
-.footer-badge-row svg{color:var(--red-b);flex-shrink:0}
-.footer-badge-text{
-  font-family:var(--display);
-  font-size:clamp(13px,3.8vw,17px);
-  letter-spacing:.03em;text-transform:uppercase;
-  color:var(--text);line-height:1.1;
-}
-.footer-badge-text small{
-  display:block;font-family:var(--body);
-  font-size:11px;font-weight:700;
-  color:var(--red-b);letter-spacing:.1em;
-  text-transform:uppercase;margin-top:6px;
-}
-.footer-logo-col{
-  display:flex;align-items:center;justify-content:center;
-  padding:22px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-}
-@media(min-width:600px){
-  .footer-logo-col{border:none;border-left:1px solid var(--border)}
-}
-.footer-logo{height:68px;object-fit:contain}
-.footer-right-col{
-  display:flex;flex-direction:column;gap:14px;align-items:flex-start;
-}
-.footer-tagline{
-  font-size:12.5px;font-weight:700;
-  letter-spacing:.07em;text-transform:uppercase;
-  color:var(--text2);line-height:1.55;
-}
-.footer-btn{
+.site-footer{border-top:1px solid var(--border-r)}
+.footer-cta-band{
   position:relative;overflow:hidden;
-  display:inline-flex;align-items:center;gap:8px;
-  padding:15px 22px;
+  text-align:center;
+  padding:52px 24px 56px;
+  background:linear-gradient(160deg,rgba(204,10,18,0.1) 0%,transparent 55%),var(--surf);
+}
+.footer-cta-band::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 50% -20%,rgba(204,10,18,0.28) 0%,transparent 55%);
+}
+.footer-logo-cta{
+  height:64px;object-fit:contain;
+  margin:0 auto 22px;position:relative;
+}
+.footer-cta-headline{
+  font-family:var(--display);
+  font-size:clamp(22px,6.5vw,40px);
+  letter-spacing:.03em;text-transform:uppercase;
+  color:var(--text);margin-bottom:12px;
+  line-height:1;position:relative;
+}
+.footer-cta-headline em{font-style:normal;color:var(--red-b)}
+.footer-cta-sub{
+  font-size:clamp(14px,3.5vw,16px);font-weight:500;
+  line-height:1.55;color:var(--text2);
+  max-width:420px;margin:0 auto 32px;
+  position:relative;
+}
+.footer-cta-btn{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:12px;
+  padding:22px 40px;
   background:var(--red);color:#fff;
   font-family:var(--display);
-  font-size:clamp(12px,3.5vw,14px);
+  font-size:clamp(14px,4vw,18px);
   letter-spacing:.06em;text-transform:uppercase;
-  border-radius:4px;
-  box-shadow:0 4px 24px rgba(204,10,18,0.44);
-  transition:background .18s var(--ease),transform .18s var(--ease),box-shadow .18s;
-  white-space:nowrap;
+  border-radius:6px;
+  box-shadow:0 6px 48px rgba(204,10,18,0.65);
+  transition:background .18s var(--ease),transform .2s var(--ease),box-shadow .2s;
 }
-.footer-btn:hover{
-  background:var(--red-b);transform:translateY(-2px);
-  box-shadow:0 8px 36px rgba(204,10,18,0.62);
+.footer-cta-btn::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,0.26) 50%,transparent 75%);
+  transform:translateX(-120%);
+  animation:shine 3.5s ease-in-out 1s infinite;
 }
+.footer-cta-btn:hover{
+  background:var(--red-b);
+  transform:translateY(-3px);
+  box-shadow:0 12px 60px rgba(232,16,28,0.75);
+}
+.footer-cta-btn:active{transform:translateY(0)}
 .footer-copyright{
   text-align:center;padding:14px 18px;
   font-size:10px;font-weight:600;
@@ -574,11 +565,6 @@ a{color:inherit;text-decoration:none}
       <!-- fishing rod icon -->
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="4"/><path d="M20 4l-1.5 5.5M20 4l-5.5 1.5"/><circle cx="5.5" cy="18.5" r="1.5"/></svg>
       EQUIPAMENTOS
-    </a>
-    <a href="#resultados">
-      <!-- medal/award icon -->
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-      RESULTADOS
     </a>
     <a href="#grupo">
       <!-- people icon -->
@@ -699,44 +685,40 @@ a{color:inherit;text-decoration:none}
     EQUIPAMENTOS PARA TODA PESCARIA
     <span class="section-title-line" aria-hidden="true"></span>
   </h2>
-  <div class="products-strip" role="list">
+  <div class="products-carousel-wrap">
+    <div class="products-strip" id="productsStrip" role="list">
 
-    <a href="#" class="product-card" role="listitem" id="linkVara" aria-label="Varas e Carretilhas" style="transition-delay:.05s">
-      <div class="product-card-overlay" aria-hidden="true"></div>
-      <img src="images/vara.webp" class="product-card-img" alt="Varas de pesca" loading="lazy"/>
-      <div class="product-card-bar">VARAS E CARRETILHAS <span class="product-card-arrow" aria-hidden="true">→</span></div>
-    </a>
+      <a href="#" class="product-card" role="listitem" aria-label="Varas e Carretilhas">
+        <div class="product-card-overlay" aria-hidden="true"></div>
+        <img src="images/vara.webp" class="product-card-img" alt="Varas de pesca" loading="lazy"/>
+        <div class="product-card-bar">VARAS E CARRETILHAS <span class="product-card-arrow" aria-hidden="true">→</span></div>
+      </a>
 
-    <a href="#" class="product-card" role="listitem" id="linkIsca" aria-label="Iscas Artificiais" style="transition-delay:.15s">
-      <div class="product-card-overlay" aria-hidden="true"></div>
-      <img src="images/isca.webp" class="product-card-img" alt="Iscas artificiais" loading="lazy"/>
-      <div class="product-card-bar">ISCAS ARTIFICIAIS <span class="product-card-arrow" aria-hidden="true">→</span></div>
-    </a>
+      <a href="#" class="product-card" role="listitem" aria-label="Iscas Artificiais">
+        <div class="product-card-overlay" aria-hidden="true"></div>
+        <img src="images/isca.webp" class="product-card-img" alt="Iscas artificiais" loading="lazy"/>
+        <div class="product-card-bar">ISCAS ARTIFICIAIS <span class="product-card-arrow" aria-hidden="true">→</span></div>
+      </a>
 
-    <a href="#" class="product-card" role="listitem" id="linkLinha" aria-label="Linhas e Multifilamentos" style="transition-delay:.25s">
-      <div class="product-card-overlay" aria-hidden="true"></div>
-      <img src="images/linha.webp" class="product-card-img" alt="Linhas de pesca" loading="lazy"/>
-      <div class="product-card-bar">LINHAS E MULTIFILAMENTOS <span class="product-card-arrow" aria-hidden="true">→</span></div>
-    </a>
+      <a href="#" class="product-card" role="listitem" aria-label="Linhas e Multifilamentos">
+        <div class="product-card-overlay" aria-hidden="true"></div>
+        <img src="images/linha.webp" class="product-card-img" alt="Linhas de pesca" loading="lazy"/>
+        <div class="product-card-bar">LINHAS E MULTIFILAMENTOS <span class="product-card-arrow" aria-hidden="true">→</span></div>
+      </a>
 
-    <a href="#" class="product-card" role="listitem" id="linkAcessorio" aria-label="Acessórios Pro" style="transition-delay:.35s">
-      <div class="product-card-overlay" aria-hidden="true"></div>
-      <img src="images/carretilha.webp" class="product-card-img" alt="Carretilhas e acessórios" loading="lazy"/>
-      <div class="product-card-bar">ACESSÓRIOS PRO <span class="product-card-arrow" aria-hidden="true">→</span></div>
-    </a>
+      <a href="#" class="product-card" role="listitem" aria-label="Acessórios Pro">
+        <div class="product-card-overlay" aria-hidden="true"></div>
+        <img src="images/carretilha.webp" class="product-card-img" alt="Carretilhas e acessórios" loading="lazy"/>
+        <div class="product-card-bar">ACESSÓRIOS PRO <span class="product-card-arrow" aria-hidden="true">→</span></div>
+      </a>
 
-    <a href="#" class="product-card" role="listitem" id="linkVestuario" aria-label="Vestuário Pro" style="transition-delay:.45s">
-      <div class="product-card-overlay" aria-hidden="true"></div>
-      <img src="images/vestuario.webp" class="product-card-img" alt="Vestuário de pesca" loading="lazy"/>
-      <div class="product-card-bar">VESTUÁRIO PRO <span class="product-card-arrow" aria-hidden="true">→</span></div>
-    </a>
+      <a href="#" class="product-card" role="listitem" aria-label="Vestuário Pro">
+        <div class="product-card-overlay" aria-hidden="true"></div>
+        <img src="images/vestuario.webp" class="product-card-img" alt="Vestuário de pesca" loading="lazy"/>
+        <div class="product-card-bar">VESTUÁRIO PRO <span class="product-card-arrow" aria-hidden="true">→</span></div>
+      </a>
 
-  </div>
-  <div class="products-all reveal d2">
-    <a href="#" class="products-all-btn" id="footerBtn">
-      VER TODOS OS PRODUTOS
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-    </a>
+    </div>
   </div>
 </section>
 
@@ -744,31 +726,24 @@ a{color:inherit;text-decoration:none}
 
 <!-- ═══ FOOTER ═══ -->
 <footer class="site-footer">
-  <div class="footer-cta-row">
-
-    <div class="footer-col reveal-l">
-      <div class="footer-badge-row">
-        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-        <div class="footer-badge-text">
-          PERFORMANCE<br>QUALIDADE<br>RESULTADO
-          <small>Esse é o padrão BigBait!</small>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-logo-col reveal">
-      <img src="images/logo.jpeg" class="footer-logo" alt="Big Bait Fishing Pro"/>
-    </div>
-
-    <div class="footer-col footer-right-col reveal-r">
-      <p class="footer-tagline">SEJA PRO. PESQUE MAIS.<br>TRANSFORME SUA PESCARIA.</p>
-      <a href="https://chat.whatsapp.com/BlBeAKdVT9h0HlWVGbB2P2?s=cl&p=i&mlu=0&ilr=0"
-         class="footer-btn" id="footerWaBtn"
-         target="_blank" rel="noopener noreferrer">
-        ENTRAR NO GRUPO EXCLUSIVO&nbsp;→
-      </a>
-    </div>
-
+  <div class="footer-cta-band reveal">
+    <img src="images/logo.jpeg" class="footer-logo-cta" alt="Big Bait Fishing Pro"/>
+    <h2 class="footer-cta-headline">
+      PRONTO PARA PESCAR <em>OS GRANDES?</em>
+    </h2>
+    <p class="footer-cta-sub">
+      Junte-se à comunidade Big Bait e receba dicas exclusivas, participe de sorteios e garanta as melhores ofertas antes de todo mundo.
+    </p>
+    <a
+      href="https://chat.whatsapp.com/BlBeAKdVT9h0HlWVGbB2P2?s=cl&p=i&mlu=0&ilr=0"
+      class="footer-cta-btn"
+      id="footerWaBtn"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      ENTRAR NO GRUPO EXCLUSIVO&nbsp;→
+    </a>
   </div>
   <p class="footer-copyright">&copy; 2025 Big Bait Fishing Pro. Todos os direitos reservados.</p>
 </footer>
@@ -799,7 +774,6 @@ function trackCta(id){
 
 trackCta('heroCta');
 trackCta('ctaWa');
-trackCta('footerBtn');
 trackCta('footerWaBtn');
 
 /* ── SCROLL REVEAL ── */
@@ -813,15 +787,42 @@ if('IntersectionObserver' in window){
     });
   },{threshold:0.1,rootMargin:'0px 0px -20px 0px'});
 
-  document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.product-card').forEach(function(el){
+  document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(function(el){
     obs.observe(el);
   });
 } else {
-  /* fallback for old browsers */
-  document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.product-card').forEach(function(el){
+  document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(function(el){
     el.classList.add('visible');
   });
 }
+
+/* ── CAROUSEL LOOP ── */
+(function(){
+  var strip=document.getElementById('productsStrip');
+  if(!strip) return;
+  var reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduced) return;
+
+  var origCards=Array.from(strip.querySelectorAll('.product-card'));
+  /* clone cards for seamless loop */
+  origCards.forEach(function(c){
+    var cl=c.cloneNode(true);
+    cl.setAttribute('aria-hidden','true');
+    cl.removeAttribute('id');
+    strip.appendChild(cl);
+  });
+
+  /* measure after layout paints */
+  function startCarousel(){
+    var gap=10;
+    var setW=origCards.reduce(function(s,c){return s+c.offsetWidth;},0)
+             +origCards.length*gap;
+    if(setW===0){setTimeout(startCarousel,60);return;}
+    strip.style.setProperty('--loop-x','translateX(-'+setW+'px)');
+    strip.classList.add('carousel-running');
+  }
+  setTimeout(startCarousel,60);
+})();
 
 /* ── PARALLAX ORB ── */
 var orb=document.getElementById('heroOrb');
