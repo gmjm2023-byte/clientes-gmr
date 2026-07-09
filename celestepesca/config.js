@@ -7,7 +7,7 @@ const pageConfig = {
 
   brand: {
     name:     "CELESTE PESCA",
-    tagline:  "SORTEIOS & VENDAS DE EQUIPAMENTOS",
+    tagline:  "ACHADOS EM PROMOÇÃO",
     handle:   "@celeste_pesca01",
     logo:     "images/logo.jpg",
   },
@@ -18,8 +18,8 @@ const pageConfig = {
     statusLabel: "Grupo Ativo",
 
     /* Prêmio / destaque */
-    name:       "SORTEIOS DE EQUIPAMENTOS",
-    nameSub:    "DE PESCA",
+    name:       "ACHADOS EM PROMOÇÃO",
+    nameSub:    "PESCA · CAMPING · FERRAMENTAS",
     prizeSub:   "+ Ofertas Exclusivas para Membros",
 
     /* Mídia principal: "logo" | "image" | "video" */
@@ -27,7 +27,7 @@ const pageConfig = {
       type:   "logo",   // troque para "image" ou "video" quando tiver o asset
       src:    null,     // ex: "images/campanha.webp" ou "assets/promo.mp4"
       poster: null,     // usado quando type="video"
-      alt:    "Celeste Pesca — Sorteios de Equipamentos de Pesca",
+      alt:    "Celeste Pesca — Achados em Promoção",
     },
 
     /* Meta bar do card */
@@ -37,11 +37,11 @@ const pageConfig = {
     valueLabel:  "Participação",
 
     /* Banner promo (dentro do card) */
-    promoBanner: "SORTEIOS EXCLUSIVOS PARA MEMBROS DO GRUPO",
+    promoBanner: "PROMOÇÕES EXCLUSIVAS PARA MEMBROS DO GRUPO",
 
     /* Features 2×2 */
     features: [
-      { val: "SORTEIOS",  lbl: "Equipamentos"  },
+      { val: "ACHADOS",   lbl: "Em Promoção"    },
       { val: "OFERTAS",   lbl: "Relâmpago"     },
       { val: "ACESSO",    lbl: "Gratuito"       },
       { val: "SAÍDA",     lbl: "Quando quiser"  },
@@ -66,13 +66,13 @@ const pageConfig = {
   ticker: {
     enabled: true,
     messages: [
-      "Sorteios de Equipamentos",
+      "Achados em Promoção",
       "Ofertas Exclusivas",
       "Celeste Pesca",
       "Grupo Oficial",
-      "Pesca Esportiva",
-      "Ações para Membros",
-      "Varas · Molinetes · Iscas",
+      "Pesca · Camping · Ferramentas",
+      "Ofertas Relâmpago",
+      "Descontos Todos os Dias",
       "Participação Gratuita",
     ],
   },
@@ -81,8 +81,8 @@ const pageConfig = {
   benefits: [
     {
       icon: "rod",
-      title: "Sorteios de Equipamentos",
-      desc:  "Varas, molinetes, iscas e muito mais. Participação exclusiva para membros do grupo.",
+      title: "Achados em Promoção",
+      desc:  "Itens de pesca, camping e ferramentas com desconto, selecionados todos os dias para o grupo.",
     },
     {
       icon: "bolt",
@@ -92,20 +92,20 @@ const pageConfig = {
     {
       icon: "lock",
       title: "Acesso Antecipado",
-      desc:  "Premiações e promoções chegam primeiro para quem está no grupo.",
+      desc:  "As melhores ofertas chegam primeiro para quem está no grupo.",
     },
     {
       icon: "gift",
-      title: "Brindes Surpresa",
-      desc:  "Ações especiais com brindes e premiações extras para membros ativos.",
+      title: "Achados Variados",
+      desc:  "Itens de pesca, camping e ferramentas garimpados especialmente para os membros.",
     },
   ],
 
   /* ── COMO PARTICIPAR ─────────────────────────────────────────── */
   howItWorks: [
     { step: "01", title: "Entre no grupo",     desc: "Clique no botão do WhatsApp e solicite participação. O acesso é gratuito e sem compromisso." },
-    { step: "02", title: "Receba os avisos",   desc: "Sorteios e promoções são publicados pelo administrador diretamente no grupo." },
-    { step: "03", title: "Participe das ações",desc: "Siga as instruções de cada sorteio ou promoção conforme publicado no grupo." },
+    { step: "02", title: "Receba os avisos",   desc: "Achados e promoções são publicados pelo administrador diretamente no grupo." },
+    { step: "03", title: "Aproveite os achados",desc: "As melhores ofertas saem rápido — aproveite assim que forem publicadas no grupo." },
   ],
 
   /* ── GANHADORES ──────────────────────────────────────────────── */
@@ -137,16 +137,16 @@ const pageConfig = {
       a: "Sim. A entrada é completamente gratuita e sem compromisso. Você pode sair a qualquer momento.",
     },
     {
-      q: "Como funcionam os sorteios?",
-      a: "Os sorteios são realizados pelo administrador e divulgados diretamente no grupo. As regras e condições ficam disponíveis junto com cada ação.",
+      q: "Como funcionam as promoções?",
+      a: "As ofertas e achados são selecionados pelo administrador e divulgados diretamente no grupo assim que aparecem.",
     },
     {
-      q: "Como acompanho o resultado?",
-      a: "O resultado é divulgado no próprio grupo do WhatsApp e também no Instagram @celeste_pesca01.",
+      q: "Onde vejo as promoções?",
+      a: "As promoções são divulgadas no próprio grupo do WhatsApp e também no Instagram @celeste_pesca01.",
     },
     {
-      q: "Posso participar de todas as ações?",
-      a: "Sendo membro do grupo, você recebe os avisos de cada ação e pode participar conforme as regras divulgadas.",
+      q: "Posso aproveitar todas as ofertas?",
+      a: "Sendo membro do grupo, você recebe todas as promoções e pode aproveitar as que quiser, sem compromisso.",
     },
     {
       q: "Como entro em contato?",
@@ -158,7 +158,7 @@ const pageConfig = {
   trust: [
     { text: "Grupo Oficial"    },
     { text: "Acesso Gratuito"  },
-    { text: "Sorteios Reais"   },
+    { text: "Ofertas Reais"    },
     { text: "Saída Livre"      },
   ],
 
@@ -187,13 +187,13 @@ const pageConfig = {
   /* ── DISCLAIMER ──────────────────────────────────────────────── */
   disclaimer: {
     enabled: true,
-    text: "Ao entrar no grupo você concorda em receber conteúdos e ofertas relacionados à pesca. Você pode sair a qualquer momento. Os sorteios e premiações são realizados de forma transparente pelo administrador do grupo.",
+    text: "Ao entrar no grupo você concorda em receber conteúdos e ofertas de pesca, camping e ferramentas. Você pode sair a qualquer momento. As promoções são divulgadas de forma transparente pelo administrador do grupo.",
   },
 
   /* ── META ────────────────────────────────────────────────────── */
   meta: {
-    title:       "Celeste Pesca | Sorteios de Equipamentos de Pesca",
-    description: "Entre no grupo oficial da Celeste Pesca e participe de sorteios de equipamentos, ofertas relâmpago e promoções exclusivas. Acesso gratuito.",
+    title:       "Celeste Pesca | Achados e Promoções de Pesca, Camping e Ferramentas",
+    description: "Entre no grupo oficial da Celeste Pesca e receba achados e promoções de itens de pesca, camping e ferramentas. Acesso gratuito.",
     themeColor:  "#060D1A",
   },
 
