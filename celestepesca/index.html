@@ -271,7 +271,7 @@ a{color:inherit;text-decoration:none}
 .hero-img-col{
   position:relative;border-radius:8px;overflow:hidden;
   border:1px solid var(--border-r);
-  aspect-ratio:3/4;
+  aspect-ratio:1/1;
   display:flex;align-items:center;justify-content:center;
   background:
     radial-gradient(ellipse at 28% 22%,rgba(23,185,219,0.30) 0%,transparent 55%),
@@ -280,13 +280,12 @@ a{color:inherit;text-decoration:none}
   animation:heroRight .75s var(--ease) 0.15s both;
 }
 .hero-img-col .deal-logo{
-  width:46%;max-width:220px;object-fit:contain;
-  border-radius:16px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.5);
-  position:relative;z-index:2;
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;
+  z-index:1;
 }
 .deal-badge{
-  position:absolute;
+  position:absolute;z-index:2;
   display:flex;align-items:center;justify-content:center;
   border-radius:50%;
   background:var(--surf);
