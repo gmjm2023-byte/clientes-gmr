@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+
+<!-- Meta Pixel Code — descomente e preencha o ID quando o pixel estiver criado -->
+<!--
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','SEU_PIXEL_ID_AQUI');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/></noscript>
+-->
+<!-- End Meta Pixel Code -->
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+
+<title>NM Pesca e Camping | Rifas e Sorteios de Equipamentos</title>
+<meta name="description" content="Grupo oficial de rifas e sorteios de equipamentos de pesca e camping: varas, barracas, iscas e muito mais. Participação gratuita, entre agora!"/>
+<meta name="keywords" content="nm pesca e camping, rifa de pesca, sorteio de equipamentos de pesca, rifa de camping, grupo whatsapp pesca, varas de pesca, barracas de camping, iscas"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#060000"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:site_name" content="NM Pesca e Camping"/>
+<meta property="og:title" content="NM Pesca e Camping | Rifas e Sorteios de Equipamentos"/>
+<meta property="og:description" content="Rifas e sorteios exclusivos de varas, barracas, iscas e muito mais. Participação gratuita, entre no grupo!"/>
+<meta property="og:image" content="images/logo.png"/>
+<meta property="og:image:width" content="500"/>
+<meta property="og:image:height" content="500"/>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="NM Pesca e Camping | Rifas e Sorteios de Equipamentos"/>
+<meta name="twitter:description" content="Rifas e sorteios exclusivos de varas, barracas, iscas e muito mais. Entre no grupo, é gratuito!"/>
+<meta name="twitter:image" content="images/logo.png"/>
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"NM Pesca e Camping",
+  "description":"Grupo de rifas e sorteios de equipamentos de pesca e camping: varas, barracas, iscas e acessórios.",
+  "url":"https://pages.gmrmidias.com/nmpesca/",
+  "logo":"images/logo.png",
+  "image":"images/logo.png",
+  "sameAs":["https://chat.whatsapp.com/HFiaVfi51JH8FO1QX2l3l0"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+<style>
+:root{
+  --red:     #CC0A12;
+  --red-b:   #E8101C;
+  --red-d:   #6E0008;
+  --red-gl:  rgba(204,10,18,0.22);
+  --bg:      #060000;
+  --surf:    #0D0102;
+  --surf2:   rgba(255,255,255,0.045);
+  --text:    #FFFFFF;
+  --text2:   rgba(255,255,255,0.82);
+  --text3:   rgba(255,255,255,0.40);
+  --border:  rgba(255,255,255,0.09);
+  --border-r:rgba(204,10,18,0.32);
+  --display: 'Russo One',sans-serif;
+  --body:    'Barlow Condensed',sans-serif;
+  --ease:    cubic-bezier(.2,.8,.3,1);
+  --hh:      56px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--body);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ── TOPBAR ── */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:var(--hh);
+  background:rgba(6,0,0,0.96);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(204,10,18,0.22);
+  display:flex;align-items:center;
+  padding:0 14px;gap:10px;
+}
+.topbar-logo{
+  height:38px;width:38px;object-fit:contain;
+  flex-shrink:0;
+  transition:opacity .18s;
+}
+.topbar-logo:hover{opacity:.8}
+.topbar-nav{
+  display:flex;align-items:center;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;flex:1;
+}
+.topbar-nav::-webkit-scrollbar{display:none}
+.topbar-nav a{
+  display:flex;align-items:center;gap:6px;
+  padding:0 12px;height:var(--hh);
+  font-family:var(--body);font-size:10px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--text3);white-space:nowrap;
+  border-right:1px solid var(--border);
+  transition:color .18s,background .18s;
+}
+.topbar-nav a:first-child{border-left:1px solid var(--border)}
+.topbar-nav a:hover{color:var(--text);background:var(--surf2)}
+.topbar-nav a:hover svg{color:var(--red-b)}
+.topbar-nav a svg{flex-shrink:0;transition:color .18s}
+
+/* ── SCROLL REVEAL ── */
+.reveal,.reveal-l,.reveal-r{
+  transition:opacity .65s var(--ease),transform .65s var(--ease);
+  will-change:opacity,transform;
+}
+.reveal{opacity:0;transform:translateY(30px)}
+.reveal-l{opacity:0;transform:translateX(-30px)}
+.reveal-r{opacity:0;transform:translateX(30px)}
+.reveal.visible,.reveal-l.visible,.reveal-r.visible{
+  opacity:1;transform:none;
+}
+.d1{transition-delay:.10s}
+.d2{transition-delay:.22s}
+.d3{transition-delay:.34s}
+.d4{transition-delay:.46s}
+.d5{transition-delay:.58s}
+
+/* ── HERO ── */
+.hero{
+  padding-top:var(--hh);
+  position:relative;overflow:hidden;
+}
+.hero-accent{
+  position:absolute;top:var(--hh);left:0;right:0;height:2px;z-index:2;
+  background:linear-gradient(90deg,transparent 0%,var(--red) 25%,var(--red-b) 50%,var(--red) 75%,transparent 100%);
+}
+.hero-orb{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 22% 38%,rgba(180,0,12,0.26) 0%,transparent 52%),
+    radial-gradient(ellipse at 82% 12%,rgba(130,0,10,0.14) 0%,transparent 45%);
+  transition:transform .08s linear;
+}
+.hero-grain{
+  position:absolute;inset:0;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+}
+
+.hero-inner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr;
+  max-width:1024px;margin:0 auto;
+  padding:32px 18px 0;gap:28px;
+}
+@media(min-width:640px){
+  .hero-inner{grid-template-columns:1fr 1fr;align-items:center;padding:40px 24px 0;gap:36px}
+}
+
+/* hero entrance animations */
+.hero-brand-logo{
+  height:52px;width:auto;object-fit:contain;
+  margin-bottom:16px;
+  animation:heroUp .65s var(--ease) 0.05s both;
+}
+.hero-headline{
+  font-family:var(--display);
+  font-size:clamp(28px,8.5vw,50px);
+  line-height:1;
+  letter-spacing:.02em;text-transform:uppercase;
+  color:var(--text);margin-bottom:16px;
+  text-shadow:0 2px 24px rgba(0,0,0,0.7);
+  animation:heroUp .65s var(--ease) 0.15s both;
+}
+.hero-headline em{
+  font-style:normal;color:var(--red-b);display:block;
+  text-shadow:0 0 40px rgba(232,16,28,0.5),0 2px 24px rgba(0,0,0,0.7);
+}
+.hero-desc{
+  font-size:clamp(14px,3.8vw,16px);
+  font-weight:500;line-height:1.58;
+  color:var(--text2);
+  margin-bottom:18px;max-width:420px;
+  animation:heroUp .65s var(--ease) 0.27s both;
+}
+.hero-desc strong{color:var(--text);font-weight:700}
+.hero-bullets{
+  list-style:none;margin-bottom:24px;
+  display:flex;flex-direction:column;gap:10px;
+  animation:heroUp .65s var(--ease) 0.38s both;
+}
+.hero-bullets li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:clamp(13px,3.4vw,15px);font-weight:600;
+  letter-spacing:.02em;color:var(--text2);line-height:1.35;
+}
+.bullet-check{
+  flex-shrink:0;margin-top:2px;
+  width:16px;height:16px;
+  background:var(--red);
+  clip-path:polygon(14% 44%,0 65%,50% 100%,100% 16%,80% 0%,43% 62%);
+}
+.hero-ctas{
+  display:flex;flex-wrap:wrap;align-items:center;gap:12px;
+  animation:heroUp .65s var(--ease) 0.50s both;
+}
+.hero-cta{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:17px 22px;
+  background:var(--red);color:#fff;
+  font-family:var(--display);
+  font-size:clamp(12px,3.6vw,15px);
+  letter-spacing:.05em;text-transform:uppercase;
+  border-radius:4px;max-width:340px;
+  box-shadow:0 4px 32px rgba(204,10,18,0.52);
+  transition:background .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease);
+}
+.hero-cta::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,0.26) 50%,transparent 75%);
+  transform:translateX(-120%);
+  animation:shine 4s ease-in-out 1.2s infinite;
+}
+.hero-cta:hover{background:var(--red-b);transform:translateY(-2px);box-shadow:0 8px 40px rgba(204,10,18,0.65)}
+.hero-cta:active{transform:translateY(0)}
+
+/* hero deal panel (logo cobrindo 1:1) */
+.hero-img-col{
+  position:relative;border-radius:8px;overflow:hidden;
+  border:1px solid var(--border-r);
+  aspect-ratio:1/1;
+  display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(ellipse at 28% 22%,rgba(204,10,18,0.30) 0%,transparent 55%),
+    radial-gradient(ellipse at 82% 78%,rgba(232,16,28,0.16) 0%,transparent 50%),
+    var(--surf);
+  animation:heroRight .75s var(--ease) 0.15s both;
+}
+.hero-img-col .deal-logo{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;
+  z-index:1;
+}
+.deal-badge{
+  position:absolute;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  background:var(--surf);
+  border:1px solid var(--border-r);
+  color:var(--red-b);
+  box-shadow:0 8px 28px rgba(0,0,0,0.45);
+  animation:bob 4.5s ease-in-out infinite;
+}
+.deal-badge svg{width:46%;height:46%}
+.badge-1{top:10%;left:10%;width:56px;height:56px;animation-delay:0s}
+.badge-2{bottom:14%;right:8%;width:64px;height:64px;animation-delay:1.1s}
+.badge-3{top:14%;right:14%;width:40px;height:40px;animation-delay:2.2s}
+.hero-img-fade{
+  position:absolute;bottom:0;left:0;right:0;height:35%;
+  background:linear-gradient(transparent,rgba(6,0,0,0.9));pointer-events:none;
+}
+
+/* trust bar */
+.trust-bar{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--border);
+  margin-top:28px;
+}
+.trust-item{
+  display:flex;align-items:center;justify-content:center;
+  gap:8px;padding:15px 8px;
+  font-size:10px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;
+  color:var(--text2);text-align:center;
+  background:var(--surf2);
+}
+.trust-item+.trust-item{border-left:1px solid var(--border)}
+.trust-item svg{color:var(--red-b);flex-shrink:0}
+
+/* ── DIVIDER ── */
+.red-divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent 0%,rgba(204,10,18,0.4) 30%,rgba(232,16,28,0.6) 50%,rgba(204,10,18,0.4) 70%,transparent 100%);
+}
+
+/* ── WA SECTION ── */
+.wa-section{
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:var(--surf);
+  position:relative;overflow:hidden;
+}
+.wa-section::before{
+  content:'';
+  position:absolute;top:0;left:0;bottom:0;width:3px;
+  background:linear-gradient(to bottom,transparent,var(--red) 30%,var(--red-b) 50%,var(--red) 70%,transparent);
+  opacity:.6;
+}
+.wa-inner{
+  display:grid;grid-template-columns:1fr;
+  max-width:1024px;margin:0 auto;
+}
+@media(min-width:700px){
+  .wa-inner{grid-template-columns:1.25fr 1fr 1fr;align-items:stretch}
+}
+.wa-col{padding:26px 22px}
+.wa-col+.wa-col{border-top:1px solid var(--border)}
+@media(min-width:700px){
+  .wa-col+.wa-col{border-top:none;border-left:1px solid var(--border)}
+}
+.wa-eyebrow{
+  font-size:10px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--red-b);margin-bottom:10px;
+}
+.wa-headline{
+  font-family:var(--display);
+  font-size:clamp(19px,5.8vw,30px);
+  line-height:1;text-transform:uppercase;color:var(--text);
+}
+.wa-headline em{font-style:normal;color:var(--red-b)}
+.wa-subtitle{
+  font-size:clamp(13px,3.2vw,14px);font-weight:500;
+  line-height:1.55;color:var(--text2);
+  margin-top:12px;
+}
+.wa-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.wa-list li{
+  display:flex;align-items:center;gap:9px;
+  font-size:11.5px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;
+  color:var(--text2);
+}
+.wa-list-dot{
+  flex-shrink:0;width:7px;height:7px;
+  background:var(--red-b);
+  clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);
+}
+.wa-btn-wrap{
+  display:flex;align-items:center;justify-content:center;
+}
+.wa-btn{
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:20px 18px;width:100%;
+  background:var(--red);color:#fff;
+  font-family:var(--display);
+  font-size:clamp(13px,4vw,16px);
+  letter-spacing:.06em;text-align:center;
+  border-radius:4px;
+  box-shadow:0 4px 32px rgba(204,10,18,0.5);
+  transition:background .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease);
+}
+.wa-btn::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,0.22) 50%,transparent 75%);
+  transform:translateX(-120%);
+  animation:shine 4s ease-in-out 2.8s infinite;
+}
+.wa-btn:hover{background:var(--red-b);transform:translateY(-2px);box-shadow:0 8px 44px rgba(204,10,18,0.68)}
+.wa-btn:active{transform:translateY(0)}
+
+/* ── CATEGORIAS / CARROSSEL ── */
+.products{padding:36px 0;background:var(--bg)}
+.section-eyebrow{
+  font-size:10px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--red-b);text-align:center;
+  margin-bottom:6px;padding:0 18px;
+}
+.section-title{
+  font-family:var(--display);
+  font-size:clamp(14px,4vw,18px);
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text);text-align:center;
+  margin-bottom:22px;padding:0 18px;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+}
+.section-title-line{
+  flex:1;max-width:70px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--red));
+}
+.section-title-line:last-child{
+  background:linear-gradient(90deg,var(--red),transparent);
+}
+/* carousel wrapper */
+.products-carousel-wrap{
+  position:relative;overflow:hidden;
+}
+.products-carousel-wrap::before,
+.products-carousel-wrap::after{
+  content:'';position:absolute;top:0;bottom:8px;width:64px;z-index:2;pointer-events:none;
+}
+.products-carousel-wrap::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.products-carousel-wrap::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
+
+.products-strip{
+  display:flex;gap:10px;
+  padding:0 8px 8px;
+  width:max-content;
+}
+.products-strip.carousel-running{
+  animation:carouselLoop 28s linear infinite;
+}
+.products-strip.carousel-running:hover{animation-play-state:paused}
+@keyframes carouselLoop{
+  0%{transform:translateX(0)}
+  100%{transform:var(--loop-x,translateX(-50%))}
+}
+.product-card{
+  flex:0 0 clamp(150px,42vw,190px);
+  border-radius:6px;overflow:hidden;
+  border:1px solid var(--border);
+  background:var(--surf);
+  position:relative;
+  transition:border-color .22s,box-shadow .22s,transform .22s var(--ease);
+}
+.product-card:hover{
+  border-color:var(--border-r);
+  transform:translateY(-4px);
+  box-shadow:0 12px 32px rgba(204,10,18,0.2);
+}
+.product-card-icon{
+  width:100%;aspect-ratio:1/1;
+  display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(ellipse at 30% 20%,rgba(204,10,18,0.22),transparent 60%),
+    #150606;
+  color:var(--red-b);
+  transition:transform .36s var(--ease);
+}
+.product-card-icon svg{width:38%;height:38%}
+.product-card:hover .product-card-icon{transform:scale(1.07)}
+.product-card-bar{
+  padding:11px 12px;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:6px;
+  font-size:10.5px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--text);line-height:1.25;
+}
+.product-card-arrow{
+  color:var(--red-b);font-weight:900;
+  flex-shrink:0;transition:transform .18s;
+}
+.product-card:hover .product-card-arrow{transform:translateX(3px)}
+
+/* ── FOOTER ── */
+.site-footer{border-top:1px solid var(--border-r)}
+.footer-cta-band{
+  position:relative;overflow:hidden;
+  text-align:center;
+  padding:52px 24px 56px;
+  background:linear-gradient(160deg,rgba(204,10,18,0.1) 0%,transparent 55%),var(--surf);
+}
+.footer-cta-band::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 50% -20%,rgba(204,10,18,0.28) 0%,transparent 55%);
+}
+.footer-logo-cta{
+  height:88px;object-fit:contain;
+  margin:0 auto 22px;position:relative;
+}
+.footer-cta-headline{
+  font-family:var(--display);
+  font-size:clamp(22px,6.5vw,40px);
+  letter-spacing:.03em;text-transform:uppercase;
+  color:var(--text);margin-bottom:12px;
+  line-height:1;position:relative;
+}
+.footer-cta-headline em{font-style:normal;color:var(--red-b)}
+.footer-cta-sub{
+  font-size:clamp(14px,3.5vw,16px);font-weight:500;
+  line-height:1.55;color:var(--text2);
+  max-width:420px;margin:0 auto 32px;
+  position:relative;
+}
+.footer-ctas{
+  position:relative;
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+}
+.footer-cta-btn{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:12px;
+  padding:22px 40px;
+  background:var(--red);color:#fff;
+  font-family:var(--display);
+  font-size:clamp(14px,4vw,18px);
+  letter-spacing:.06em;text-transform:uppercase;
+  border-radius:6px;
+  box-shadow:0 6px 48px rgba(204,10,18,0.65);
+  transition:background .18s var(--ease),transform .2s var(--ease),box-shadow .2s;
+}
+.footer-cta-btn::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,0.26) 50%,transparent 75%);
+  transform:translateX(-120%);
+  animation:shine 3.5s ease-in-out 1s infinite;
+}
+.footer-cta-btn:hover{
+  background:var(--red-b);
+  transform:translateY(-3px);
+  box-shadow:0 12px 60px rgba(232,16,28,0.75);
+}
+.footer-cta-btn:active{transform:translateY(0)}
+.footer-copyright{
+  text-align:center;padding:14px 18px;
+  font-size:10px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--text3);border-top:1px solid var(--border);
+}
+
+/* ── KEYFRAMES ── */
+@keyframes shine{
+  0%{transform:translateX(-120%)}
+  35%{transform:translateX(120%)}
+  100%{transform:translateX(120%)}
+}
+@keyframes heroUp{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:none}
+}
+@keyframes heroRight{
+  from{opacity:0;transform:translateX(22px)}
+  to{opacity:1;transform:none}
+}
+@keyframes bob{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+
+/* ── UTILS ── */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ TOPBAR ═══ -->
+<header class="topbar">
+  <img src="images/logo.png" class="topbar-logo" alt="NM Pesca e Camping"/>
+  <nav class="topbar-nav" aria-label="Menu principal">
+    <a href="#produtos">
+      <!-- gift icon -->
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+      RIFAS
+    </a>
+    <a href="#grupo">
+      <!-- people icon -->
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      GRUPO
+    </a>
+  </nav>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="produtos">
+  <div class="hero-accent" aria-hidden="true"></div>
+  <div class="hero-orb" id="heroOrb" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <img src="images/logo.png" class="hero-brand-logo" alt="NM Pesca e Camping"/>
+      <h1 class="hero-headline">
+        CONCORRA A EQUIPAMENTOS<br>DE PESCA E
+        <em>CAMPING DE VERDADE.</em>
+      </h1>
+      <p class="hero-desc">
+        Rifas e sorteios exclusivos de varas, barracas, iscas e muito mais.
+        <strong>Participação gratuita, direto no grupo do WhatsApp.</strong>
+      </p>
+      <ul class="hero-bullets">
+        <li><span class="bullet-check" aria-hidden="true"></span>Rifas semanais de equipamentos de pesca e camping</li>
+        <li><span class="bullet-check" aria-hidden="true"></span>Sorteios 100% transparentes, direto no grupo</li>
+        <li><span class="bullet-check" aria-hidden="true"></span>Participação gratuita, saída livre quando quiser</li>
+      </ul>
+      <div class="hero-ctas">
+        <a href="https://chat.whatsapp.com/HFiaVfi51JH8FO1QX2l3l0?s=cl&p=a&mlu=4"
+           class="hero-cta" id="heroCta"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Entrar no grupo NM Pesca e Camping no WhatsApp">
+          QUERO CONCORRER AGORA&nbsp;→
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-img-col" aria-hidden="true">
+      <img src="images/logo.png" class="deal-logo" alt=""/>
+      <div class="deal-badge badge-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22l12-12"/><path d="M7.5 16.5L6 15l1.5-1.5"/><path d="M17 3l-3 3"/><path d="M20 6l-3-3 3-3 3 3-3 3z"/><path d="M14 6l4 4"/></svg>
+      </div>
+      <div class="deal-badge badge-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+      </div>
+      <div class="deal-badge badge-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l9-16 9 16"/><path d="M12 12.5L7 21"/><path d="M12 12.5l5 8.5"/><path d="M9.5 17h5"/></svg>
+      </div>
+      <div class="hero-img-fade" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <!-- Trust bar -->
+  <div class="trust-bar" role="list">
+    <div class="trust-item reveal d1" role="listitem">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      SORTEIOS 100% TRANSPARENTES
+    </div>
+    <div class="trust-item reveal d2" role="listitem">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      EQUIPAMENTOS DE QUALIDADE
+    </div>
+    <div class="trust-item reveal d3" role="listitem">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h1"/><path d="M7 8V6a5 5 0 0 1 9.9-1"/></svg>
+      PARTICIPAÇÃO GRATUITA
+    </div>
+  </div>
+</section>
+
+<div class="red-divider" aria-hidden="true"></div>
+
+<!-- ═══ WHATSAPP (CTA ÚNICO) ═══ -->
+<section class="wa-section" id="grupo">
+  <div class="wa-inner">
+    <div class="wa-col reveal-l">
+      <p class="wa-eyebrow">Comunidade de pescadores e campistas</p>
+      <h2 class="wa-headline">ENTRE NO GRUPO E CONCORRA A <em>EQUIPAMENTOS TOP!</em></h2>
+      <p class="wa-subtitle">Centenas de pescadores e campistas já participam dos nossos sorteios. Entre e concorra você também.</p>
+    </div>
+    <div class="wa-col reveal d1">
+      <ul class="wa-list">
+        <li><span class="wa-list-dot" aria-hidden="true"></span>RIFAS SEMANAIS</li>
+        <li><span class="wa-list-dot" aria-hidden="true"></span>PESCA · CAMPING · EQUIPAMENTOS</li>
+        <li><span class="wa-list-dot" aria-hidden="true"></span>SORTEIOS TRANSPARENTES</li>
+        <li><span class="wa-list-dot" aria-hidden="true"></span>SAÍDA LIVRE QUANDO QUISER</li>
+      </ul>
+    </div>
+    <div class="wa-col wa-btn-wrap reveal-r">
+      <a
+        href="https://chat.whatsapp.com/HFiaVfi51JH8FO1QX2l3l0?s=cl&p=a&mlu=4"
+        class="wa-btn"
+        id="ctaWa"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Entrar no grupo NM Pesca e Camping no WhatsApp"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        ENTRAR NO GRUPO AGORA&nbsp;→
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="red-divider" aria-hidden="true"></div>
+
+<!-- ═══ CATEGORIAS ═══ -->
+<section class="products" id="rifas">
+  <p class="section-eyebrow reveal">O que você pode ganhar</p>
+  <h2 class="section-title reveal d1">
+    <span class="section-title-line" aria-hidden="true"></span>
+    RIFAS DE TODA CATEGORIA
+    <span class="section-title-line" aria-hidden="true"></span>
+  </h2>
+  <div class="products-carousel-wrap">
+    <div class="products-strip" id="productsStrip" role="list">
+
+      <div class="product-card" role="listitem" aria-label="Varas e molinetes">
+        <div class="product-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 22l12-12"/><path d="M7.5 16.5L6 15l1.5-1.5"/><path d="M17 3l-3 3"/><path d="M20 6l-3-3 3-3 3 3-3 3z"/><path d="M14 6l4 4"/></svg>
+        </div>
+        <div class="product-card-bar">VARAS E MOLINETES <span class="product-card-arrow" aria-hidden="true">→</span></div>
+      </div>
+
+      <div class="product-card" role="listitem" aria-label="Barracas">
+        <div class="product-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l9-16 9 16"/><path d="M12 12.5L7 21"/><path d="M12 12.5l5 8.5"/><path d="M9.5 17h5"/></svg>
+        </div>
+        <div class="product-card-bar">BARRACAS <span class="product-card-arrow" aria-hidden="true">→</span></div>
+      </div>
+
+      <div class="product-card" role="listitem" aria-label="Iscas">
+        <div class="product-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="12" rx="9" ry="4"/><path d="M3 12c0-1 4-2 9-2s9 1 9 2"/><circle cx="7" cy="12" r=".8" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div class="product-card-bar">ISCAS <span class="product-card-arrow" aria-hidden="true">→</span></div>
+      </div>
+
+      <div class="product-card" role="listitem" aria-label="Mochilas e acessórios">
+        <div class="product-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0v13H6V8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+        </div>
+        <div class="product-card-bar">MOCHILAS E ACESSÓRIOS <span class="product-card-arrow" aria-hidden="true">→</span></div>
+      </div>
+
+      <div class="product-card" role="listitem" aria-label="Lanternas e iluminação">
+        <div class="product-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2h6l1 4H8l1-4z"/><path d="M8 6h8l-1 5H9L8 6z"/><path d="M9 11h6l1 10H8L9 11z"/><line x1="12" y1="14" x2="12" y2="18"/></svg>
+        </div>
+        <div class="product-card-bar">LANTERNAS <span class="product-card-arrow" aria-hidden="true">→</span></div>
+      </div>
+
+      <div class="product-card" role="listitem" aria-label="Rifas e sorteios">
+        <div class="product-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+        </div>
+        <div class="product-card-bar">RIFAS E SORTEIOS <span class="product-card-arrow" aria-hidden="true">→</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="red-divider" aria-hidden="true"></div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer">
+  <div class="footer-cta-band reveal">
+    <img src="images/logo.png" class="footer-logo-cta" alt="NM Pesca e Camping"/>
+    <h2 class="footer-cta-headline">
+      PRONTO PRA CONCORRER A <em>SEU PRÓXIMO EQUIPAMENTO?</em>
+    </h2>
+    <p class="footer-cta-sub">
+      Entre no grupo e concorra a varas, barracas, iscas e muito mais. É rápido e gratuito.
+    </p>
+    <div class="footer-ctas">
+      <a
+        href="https://chat.whatsapp.com/HFiaVfi51JH8FO1QX2l3l0?s=cl&p=a&mlu=4"
+        class="footer-cta-btn"
+        id="footerWaBtn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        ENTRAR NO GRUPO AGORA&nbsp;→
+      </a>
+    </div>
+  </div>
+  <p class="footer-copyright">&copy; 2026 NM Pesca e Camping. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+(function(){
+'use strict';
+
+/* ── CAPI ── */
+function sendCapi(eId){
+  function gc(n){var v=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return v?v.pop():'';}
+  fetch('capi.php',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({event_id:eId,url:location.href,fbc:gc('_fbc'),fbp:gc('_fbp')})
+  }).catch(function(){});
+}
+
+function trackCta(id){
+  var el=document.getElementById(id);
+  if(!el) return;
+  var fired=false;
+  el.addEventListener('click',function(){
+    if(fired) return; fired=true;
+    var eId='ld_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
+    try{if(typeof fbq==='function') fbq('track','Lead',{},{eventID:eId});}catch(e){}
+    sendCapi(eId);
+  });
+}
+
+trackCta('heroCta');
+trackCta('ctaWa');
+trackCta('footerWaBtn');
+
+/* ── SCROLL REVEAL ── */
+if('IntersectionObserver' in window){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -20px 0px'});
+
+  document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(function(el){
+    obs.observe(el);
+  });
+} else {
+  document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(function(el){
+    el.classList.add('visible');
+  });
+}
+
+/* ── CAROUSEL LOOP (infinito) ── */
+(function(){
+  var strip=document.getElementById('productsStrip');
+  if(!strip) return;
+  var reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduced) return;
+
+  var origCards=Array.from(strip.querySelectorAll('.product-card'));
+  /* clone cards for seamless loop */
+  origCards.forEach(function(c){
+    var cl=c.cloneNode(true);
+    cl.setAttribute('aria-hidden','true');
+    cl.removeAttribute('id');
+    strip.appendChild(cl);
+  });
+
+  /* measure after layout paints */
+  function startCarousel(){
+    var gap=10;
+    var setW=origCards.reduce(function(s,c){return s+c.offsetWidth;},0)
+             +origCards.length*gap;
+    if(setW===0){setTimeout(startCarousel,60);return;}
+    strip.style.setProperty('--loop-x','translateX(-'+setW+'px)');
+    strip.classList.add('carousel-running');
+  }
+  setTimeout(startCarousel,60);
+})();
+
+/* ── PARALLAX ORB ── */
+var orb=document.getElementById('heroOrb');
+if(orb && window.matchMedia('(prefers-reduced-motion: no-preference)').matches){
+  window.addEventListener('scroll',function(){
+    orb.style.transform='translateY('+Math.round(window.scrollY*0.22)+'px)';
+  },{passive:true});
+}
+
+})();
+</script>
+
+</body>
+</html>
