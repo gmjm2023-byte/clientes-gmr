@@ -417,91 +417,6 @@ a{color:inherit;text-decoration:none}
 .ig-btn svg{color:var(--gold-b)}
 .ig-btn:hover{background:var(--surf2);border-color:var(--gold);transform:translateY(-2px)}
 
-/* ── PRODUCTS / CARROSSEL ── */
-.products{padding:36px 0;background:var(--bg)}
-.section-eyebrow{
-  font-size:10px;font-weight:700;
-  letter-spacing:.16em;text-transform:uppercase;
-  color:var(--gold-b);text-align:center;
-  margin-bottom:6px;padding:0 18px;
-}
-.section-title{
-  font-family:var(--display);
-  font-size:clamp(14px,4vw,18px);
-  letter-spacing:.1em;text-transform:uppercase;
-  color:var(--text);text-align:center;
-  margin-bottom:22px;padding:0 18px;
-  display:flex;align-items:center;justify-content:center;gap:14px;
-}
-.section-title-line{
-  flex:1;max-width:70px;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold));
-}
-.section-title-line:last-child{
-  background:linear-gradient(90deg,var(--gold),transparent);
-}
-/* carousel wrapper */
-.products-carousel-wrap{
-  position:relative;overflow:hidden;
-}
-.products-carousel-wrap::before,
-.products-carousel-wrap::after{
-  content:'';position:absolute;top:0;bottom:8px;width:64px;z-index:2;pointer-events:none;
-}
-.products-carousel-wrap::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
-.products-carousel-wrap::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
-
-.products-strip{
-  display:flex;gap:10px;
-  padding:0 8px 8px;
-  width:max-content;
-}
-.products-strip.carousel-running{
-  animation:carouselLoop 32s linear infinite;
-}
-.products-strip.carousel-running:hover{animation-play-state:paused}
-@keyframes carouselLoop{
-  0%{transform:translateX(0)}
-  100%{transform:var(--loop-x,translateX(-50%))}
-}
-.product-card{
-  flex:0 0 clamp(148px,42vw,190px);
-  border-radius:6px;overflow:hidden;
-  border:1px solid var(--border);
-  background:var(--surf);
-  position:relative;
-  transition:border-color .22s,box-shadow .22s,transform .22s var(--ease);
-}
-.product-card:hover{
-  border-color:var(--border-r);
-  transform:translateY(-4px);
-  box-shadow:0 12px 32px rgba(201,153,46,0.18);
-}
-.product-card-img{
-  width:100%;aspect-ratio:3/4;
-  object-fit:cover;background:#151009;
-  transition:transform .36s var(--ease);
-}
-.product-card:hover .product-card-img{transform:scale(1.07)}
-.product-card-bar{
-  padding:10px 11px;
-  border-top:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  gap:6px;
-  font-size:10.5px;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;
-  color:var(--text);line-height:1.25;
-}
-.product-card-arrow{
-  color:var(--gold-b);font-weight:900;
-  flex-shrink:0;transition:transform .18s;
-}
-.product-card:hover .product-card-arrow{transform:translateX(3px)}
-.product-card-overlay{
-  position:absolute;inset:0 0 auto;height:30%;
-  background:linear-gradient(to bottom,rgba(10,8,6,0.28),transparent);pointer-events:none;
-}
-
 /* ── FOOTER ── */
 .site-footer{border-top:1px solid var(--border-r)}
 .footer-cta-band{
@@ -741,77 +656,6 @@ a{color:inherit;text-decoration:none}
 
 <div class="gold-divider" aria-hidden="true"></div>
 
-<!-- ═══ CARROSSEL DE PEÇAS ═══ -->
-<section class="products" id="resultados">
-  <p class="section-eyebrow reveal">Peças em exposição</p>
-  <h2 class="section-title reveal d1">
-    <span class="section-title-line" aria-hidden="true"></span>
-    FACAS QUE JÁ ENTRARAM NO SORTEIO
-    <span class="section-title-line" aria-hidden="true"></span>
-  </h2>
-  <div class="products-carousel-wrap">
-    <div class="products-strip" id="productsStrip" role="list">
-
-      <div class="product-card" role="listitem" aria-label="Peça artesanal 01">
-        <div class="product-card-overlay" aria-hidden="true"></div>
-        <img src="images/faca2.jpg" class="product-card-img" alt="Faca artesanal Corte Bruto 01" loading="lazy" onerror="this.remove()"/>
-        <div class="product-card-bar">PEÇA Nº 01 <span class="product-card-arrow" aria-hidden="true">→</span></div>
-      </div>
-
-      <div class="product-card" role="listitem" aria-label="Peça artesanal 02">
-        <div class="product-card-overlay" aria-hidden="true"></div>
-        <img src="images/faca3.jpg" class="product-card-img" alt="Faca artesanal Corte Bruto 02" loading="lazy" onerror="this.remove()"/>
-        <div class="product-card-bar">PEÇA Nº 02 <span class="product-card-arrow" aria-hidden="true">→</span></div>
-      </div>
-
-      <div class="product-card" role="listitem" aria-label="Peça artesanal 03">
-        <div class="product-card-overlay" aria-hidden="true"></div>
-        <img src="images/faca4.jpg" class="product-card-img" alt="Faca artesanal Corte Bruto 03" loading="lazy" onerror="this.remove()"/>
-        <div class="product-card-bar">PEÇA Nº 03 <span class="product-card-arrow" aria-hidden="true">→</span></div>
-      </div>
-
-      <div class="product-card" role="listitem" aria-label="Peça artesanal 04">
-        <div class="product-card-overlay" aria-hidden="true"></div>
-        <img src="images/faca5.jpg" class="product-card-img" alt="Faca artesanal Corte Bruto 04" loading="lazy" onerror="this.remove()"/>
-        <div class="product-card-bar">PEÇA Nº 04 <span class="product-card-arrow" aria-hidden="true">→</span></div>
-      </div>
-
-      <div class="product-card" role="listitem" aria-label="Peça artesanal 05">
-        <div class="product-card-overlay" aria-hidden="true"></div>
-        <img src="images/faca6.jpg" class="product-card-img" alt="Faca artesanal Corte Bruto 05" loading="lazy" onerror="this.remove()"/>
-        <div class="product-card-bar">PEÇA Nº 05 <span class="product-card-arrow" aria-hidden="true">→</span></div>
-      </div>
-
-      <div class="product-card" role="listitem" aria-label="Peça artesanal 06">
-        <div class="product-card-overlay" aria-hidden="true"></div>
-        <img src="images/faca7.jpg" class="product-card-img" alt="Faca artesanal Corte Bruto 06" loading="lazy" onerror="this.remove()"/>
-        <div class="product-card-bar">PEÇA Nº 06 <span class="product-card-arrow" aria-hidden="true">→</span></div>
-      </div>
-
-      <div class="product-card" role="listitem" aria-label="Peça artesanal 07">
-        <div class="product-card-overlay" aria-hidden="true"></div>
-        <img src="images/faca8.jpg" class="product-card-img" alt="Faca artesanal Corte Bruto 07" loading="lazy" onerror="this.remove()"/>
-        <div class="product-card-bar">PEÇA Nº 07 <span class="product-card-arrow" aria-hidden="true">→</span></div>
-      </div>
-
-      <div class="product-card" role="listitem" aria-label="Peça artesanal 08">
-        <div class="product-card-overlay" aria-hidden="true"></div>
-        <img src="images/faca9.jpg" class="product-card-img" alt="Faca artesanal Corte Bruto 08" loading="lazy" onerror="this.remove()"/>
-        <div class="product-card-bar">PEÇA Nº 08 <span class="product-card-arrow" aria-hidden="true">→</span></div>
-      </div>
-
-      <div class="product-card" role="listitem" aria-label="Peça artesanal 09">
-        <div class="product-card-overlay" aria-hidden="true"></div>
-        <img src="images/faca10.jpg" class="product-card-img" alt="Faca artesanal Corte Bruto 09" loading="lazy" onerror="this.remove()"/>
-        <div class="product-card-bar">PEÇA Nº 09 <span class="product-card-arrow" aria-hidden="true">→</span></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="gold-divider" aria-hidden="true"></div>
-
 <!-- ═══ FOOTER ═══ -->
 <footer class="site-footer">
   <div class="footer-cta-band reveal">
@@ -899,34 +743,6 @@ if('IntersectionObserver' in window){
     el.classList.add('visible');
   });
 }
-
-/* ── CAROUSEL LOOP (infinito) ── */
-(function(){
-  var strip=document.getElementById('productsStrip');
-  if(!strip) return;
-  var reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  if(reduced) return;
-
-  var origCards=Array.from(strip.querySelectorAll('.product-card'));
-  /* clone cards for seamless loop */
-  origCards.forEach(function(c){
-    var cl=c.cloneNode(true);
-    cl.setAttribute('aria-hidden','true');
-    cl.removeAttribute('id');
-    strip.appendChild(cl);
-  });
-
-  /* measure after layout paints */
-  function startCarousel(){
-    var gap=10;
-    var setW=origCards.reduce(function(s,c){return s+c.offsetWidth;},0)
-             +origCards.length*gap;
-    if(setW===0){setTimeout(startCarousel,60);return;}
-    strip.style.setProperty('--loop-x','translateX(-'+setW+'px)');
-    strip.classList.add('carousel-running');
-  }
-  setTimeout(startCarousel,60);
-})();
 
 /* ── PARALLAX ORB ── */
 var orb=document.getElementById('heroOrb');
