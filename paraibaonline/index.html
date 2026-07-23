@@ -466,6 +466,43 @@ a{color:inherit;text-decoration:none}
 }
 .product-card:hover .product-card-arrow{transform:translateX(3px)}
 
+/* ── PRÊMIOS PAGOS (PROVA SOCIAL) ── */
+.proof-section{padding:36px 18px 8px;background:var(--bg)}
+.proof-grid{
+  display:grid;grid-template-columns:1fr;gap:14px;
+  max-width:1024px;margin:0 auto;
+}
+@media(min-width:700px){
+  .proof-grid{grid-template-columns:repeat(3,1fr)}
+}
+.proof-card{
+  border-radius:8px;overflow:hidden;
+  border:1px solid var(--border);
+  background:var(--surf);
+  transition:border-color .22s,box-shadow .22s,transform .22s var(--ease);
+}
+.proof-card:hover{
+  border-color:var(--border-r);
+  transform:translateY(-4px);
+  box-shadow:0 12px 32px rgba(204,10,18,0.2);
+}
+.proof-card img{width:100%;object-fit:cover;display:block}
+.proof-card-bar{
+  padding:12px 14px;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:8px;flex-wrap:wrap;
+  font-size:11px;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text2);
+}
+.proof-card-value{color:var(--red-b);font-family:var(--display);font-size:12px}
+.proof-disclaimer{
+  max-width:640px;margin:18px auto 0;
+  font-size:10px;line-height:1.6;color:var(--text3);
+  text-align:center;padding:0 18px;
+}
+
 /* ── FOOTER ── */
 .site-footer{border-top:1px solid var(--border-r)}
 .footer-cta-band{
@@ -760,6 +797,33 @@ a{color:inherit;text-decoration:none}
 
     </div>
   </div>
+</section>
+
+<div class="red-divider" aria-hidden="true"></div>
+
+<!-- ═══ PRÊMIOS PAGOS (PROVA SOCIAL) ═══ -->
+<section class="proof-section" id="premios">
+  <p class="section-eyebrow reveal">Prova social</p>
+  <h2 class="section-title reveal d1">
+    <span class="section-title-line" aria-hidden="true"></span>
+    PRÊMIOS PAGOS DE VERDADE
+    <span class="section-title-line" aria-hidden="true"></span>
+  </h2>
+  <div class="proof-grid">
+    <div class="proof-card reveal d1">
+      <img src="images/social-caruaru.jpg" alt="Prêmio pago em Caruaru - PE, R$9.900,00" loading="lazy"/>
+      <div class="proof-card-bar">CARUARU - PE <span class="proof-card-value">R$ 9.900,00</span></div>
+    </div>
+    <div class="proof-card reveal d2">
+      <img src="images/social-jurema.jpg" alt="Prêmio pago em Jurema - PE, R$2.100,00" loading="lazy"/>
+      <div class="proof-card-bar">JUREMA - PE <span class="proof-card-value">R$ 2.100,00</span></div>
+    </div>
+    <div class="proof-card reveal d3">
+      <img src="images/social-49mil.jpg" alt="Comprovante de prêmio pago, R$49.000,00" loading="lazy"/>
+      <div class="proof-card-bar">PRÊMIO PAGO <span class="proof-card-value">R$ 49.000,00</span></div>
+    </div>
+  </div>
+  <p class="proof-disclaimer">Valores e resultados meramente ilustrativos, referentes a pagamentos já realizados. Não constituem garantia de premiação futura.</p>
 </section>
 
 <div class="red-divider" aria-hidden="true"></div>
