@@ -248,10 +248,14 @@ button{font:inherit}
 .testimonials{background:#fff}
 .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .proof-card{
-  position:relative;overflow:hidden;border-radius:7px;background:#e9edf1;
+  position:relative;overflow:hidden;border-radius:7px;background:#071a32;
   box-shadow:0 10px 32px rgba(12,26,42,.1);
 }
-.proof-card img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .5s var(--ease)}
+.proof-card img{
+  width:100%;aspect-ratio:4/5;
+  object-fit:contain;object-position:center;
+  transition:transform .5s var(--ease)
+}
 .proof-card:hover img{transform:scale(1.035)}
 .proof-badge{
   position:absolute;left:13px;bottom:13px;
@@ -404,7 +408,7 @@ button{font:inherit}
   .steps,.why-grid{grid-template-columns:1fr}
   .step{min-height:210px}
   .proof-grid{grid-template-columns:1fr 1fr;gap:9px}
-  .proof-card img{aspect-ratio:3/4}
+  .proof-card img{aspect-ratio:3/4;object-fit:contain}
   .product-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}
   .product-card{min-width:77vw;scroll-snap-align:start}
   .about-grid{gap:35px}
