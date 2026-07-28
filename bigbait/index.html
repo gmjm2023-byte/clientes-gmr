@@ -347,7 +347,11 @@ button{font:inherit}
 .social{background:#fff}
 .social-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}
 .social-collage{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.social-collage img{width:100%;aspect-ratio:1/1.15;object-fit:cover;border-radius:5px}
+.social-collage img{
+  width:100%;aspect-ratio:1/1.15;
+  object-fit:contain;object-position:center;
+  background:var(--navy);border-radius:5px
+}
 .social .section-title{font-size:clamp(42px,6vw,70px)}
 .social p{margin:18px 0 28px;color:var(--muted);font-size:14px;line-height:1.75}
 
