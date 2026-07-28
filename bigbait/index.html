@@ -455,6 +455,13 @@ a{color:inherit;text-decoration:none}
   transition:transform .36s var(--ease);
 }
 .product-card:hover .product-card-img{transform:scale(1.07)}
+/* prova social — formato stories 9:16, sem recorte */
+#proofStrip .product-card{flex-basis:clamp(120px,32vw,160px)}
+#proofStrip .product-card-img{
+  aspect-ratio:9/16;
+  object-fit:contain;
+  background:#000;
+}
 .product-card-bar{
   padding:11px 12px;
   border-top:1px solid var(--border);
