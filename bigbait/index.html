@@ -293,13 +293,15 @@ button{font:inherit}
 .products{background:var(--off)}
 .product-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
 .product-card{
-  background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 10px 30px rgba(7,26,50,.09);
-  border-bottom:3px solid var(--red);
+  min-width:0;
+  background:transparent;border-radius:0;overflow:visible;
+  box-shadow:none;border:0;
 }
 .product-card img{
   width:100%;aspect-ratio:1/1;
   object-fit:contain;object-position:center;
-  background:transparent
+  background:transparent;
+  mix-blend-mode:multiply
 }
 .product-card-body{padding:17px}
 .product-card h3{font-family:var(--display);font-size:20px;text-transform:uppercase}
@@ -460,8 +462,14 @@ button{font:inherit}
   .step{min-height:210px}
   .proof-grid{grid-template-columns:1fr 1fr;gap:9px}
   .proof-card img{aspect-ratio:3/4;object-fit:contain}
-  .product-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}
-  .product-card{min-width:77vw;scroll-snap-align:start}
+  .product-grid{
+    display:flex;overflow-x:hidden;
+    scroll-behavior:smooth;
+    touch-action:pan-y;
+    user-select:none;-webkit-user-select:none;
+    padding-bottom:12px
+  }
+  .product-card{flex:0 0 77vw;min-width:77vw}
   .about-grid{gap:35px}
   .about-mark{width:105px;height:105px;right:-5px;font-size:13px}
   .about-list{grid-template-columns:1fr}
@@ -640,7 +648,7 @@ button{font:inherit}
         <h2 class="section-title">Equipamentos que fazem parte dessa experiência</h2>
         <p class="section-copy">Categorias selecionadas para quem busca desempenho e qualidade em cada pescaria.</p>
       </div>
-      <div class="product-grid">
+      <div class="product-grid" id="equipmentCarousel" aria-label="Carrossel automático de equipamentos">
         <article class="product-card reveal"><img src="images/carretilha.webp" alt="Carretilhas de pesca" loading="lazy"/><div class="product-card-body"><h3>Carretilhas</h3><p>Precisão, força e controle para diferentes modalidades.</p></div></article>
         <article class="product-card reveal"><img src="images/vara.webp" alt="Varas de pesca" loading="lazy"/><div class="product-card-body"><h3>Varas</h3><p>Modelos leves, resistentes e equilibrados.</p></div></article>
         <article class="product-card reveal"><img src="images/isca.webp" alt="Iscas artificiais" loading="lazy"/><div class="product-card-body"><h3>Iscas</h3><p>Ações e cores para as espécies mais desejadas.</p></div></article>
@@ -792,6 +800,20 @@ function moveSocialCarousel(direction){
 }
 if(socialPrev)socialPrev.addEventListener('click',function(){moveSocialCarousel(-1)});
 if(socialNext)socialNext.addEventListener('click',function(){moveSocialCarousel(1)});
+
+var equipmentCarousel=document.getElementById('equipmentCarousel');
+if(equipmentCarousel&&window.matchMedia('(max-width:620px)').matches){
+  var equipmentTimer=window.setInterval(function(){
+    var firstCard=equipmentCarousel.querySelector('.product-card');
+    if(!firstCard)return;
+    var gap=14;
+    var step=firstCard.getBoundingClientRect().width+gap;
+    var limit=equipmentCarousel.scrollWidth-equipmentCarousel.clientWidth;
+    var next=equipmentCarousel.scrollLeft+step;
+    if(next>=limit-4)next=0;
+    equipmentCarousel.scrollTo({left:next,behavior:'smooth'});
+  },3200);
+}
 
 if('IntersectionObserver' in window){
   var observer=new IntersectionObserver(function(entries){
