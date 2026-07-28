@@ -255,7 +255,7 @@ button{font:inherit}
 .testimonials{background:#fff}
 .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .proof-card{
-  position:relative;overflow:hidden;border-radius:7px;background:#071a32;
+  position:relative;overflow:hidden;border-radius:7px;background:transparent;
   box-shadow:0 10px 32px rgba(12,26,42,.1);
 }
 .proof-card img{
@@ -263,7 +263,7 @@ button{font:inherit}
   object-fit:contain;object-position:center;
   transition:transform .5s var(--ease)
 }
-.proof-card:hover img{transform:scale(1.035)}
+.proof-card:hover img{transform:none}
 .proof-badge{
   position:absolute;left:13px;bottom:13px;
   padding:8px 11px;border-radius:3px;background:rgba(7,26,50,.92);color:#fff;
@@ -296,7 +296,11 @@ button{font:inherit}
   background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 10px 30px rgba(7,26,50,.09);
   border-bottom:3px solid var(--red);
 }
-.product-card img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#fff}
+.product-card img{
+  width:100%;aspect-ratio:1/1;
+  object-fit:contain;object-position:center;
+  background:transparent
+}
 .product-card-body{padding:17px}
 .product-card h3{font-family:var(--display);font-size:20px;text-transform:uppercase}
 .product-card p{margin-top:6px;color:var(--muted);font-size:11px;line-height:1.55}
@@ -315,7 +319,12 @@ button{font:inherit}
 .about{background:var(--wine);color:#fff}
 .about-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:54px;align-items:center}
 .about-media{position:relative}
-.about-media img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px;box-shadow:0 22px 65px rgba(0,0,0,.28)}
+.about-media img{
+  width:100%;height:auto;
+  object-fit:contain;object-position:center;
+  background:transparent;border-radius:8px;
+  box-shadow:0 22px 65px rgba(0,0,0,.28)
+}
 .about-mark{
   position:absolute;right:-18px;bottom:24px;width:128px;height:128px;border-radius:50%;
   display:grid;place-items:center;background:var(--orange);color:#111;text-align:center;
@@ -358,7 +367,7 @@ button{font:inherit}
 .social-collage img{
   width:100%;aspect-ratio:1/1.15;
   object-fit:contain;object-position:center;
-  background:var(--navy);border-radius:5px
+  background:transparent;border-radius:5px
 }
 .social-controls{display:none}
 .social-control{
