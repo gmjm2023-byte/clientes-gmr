@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090806">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Rifas de carnes selecionadas, bebidas e facas artesanais aos domingos. Entre no grupo Cartela da Sorte Goes e acompanhe os próximos sorteios.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Cartela da Sorte Goes">
+  <meta property="og:title" content="Cartela da Sorte Goes | Rifas de carnes e grandes prêmios">
+  <meta property="og:description" content="Carnes selecionadas, bebidas e facas artesanais aos domingos. Entre no grupo e participe.">
+  <meta property="og:image" content="images/ganhador-05.jpg">
+  <title>Cartela da Sorte Goes | Rifas de carnes e grandes prêmios</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #090806;
+      --surface: #12100c;
+      --surface-soft: #18150f;
+      --cream: #f5efe4;
+      --muted: #bdb5a8;
+      --bronze: #b9863e;
+      --bronze-bright: #e0b15f;
+      --green: #20d666;
+      --green-dark: #12a84b;
+      --green-glow: rgba(32, 214, 102, .28);
+      --line: rgba(255, 255, 255, .1);
+      --line-bronze: rgba(224, 177, 95, .35);
+      --display: "Russo One", Impact, sans-serif;
+      --body: "Barlow Condensed", Arial, sans-serif;
+      --ease: cubic-bezier(.2, .8, .3, 1);
+      --header-h: 64px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      min-width: 320px;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .032;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 12px;
+      color: var(--bronze-bright);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    .section-title {
+      max-width: 760px;
+      font-family: var(--display);
+      font-size: clamp(30px, 7vw, 58px);
+      font-weight: 400;
+      line-height: .98;
+      letter-spacing: -.025em;
+      text-transform: uppercase;
+    }
+
+    .section-title em {
+      color: var(--bronze-bright);
+      font-style: normal;
+    }
+
+    .section-copy {
+      max-width: 620px;
+      margin-top: 17px;
+      color: var(--muted);
+      font-size: clamp(18px, 2.5vw, 22px);
+      line-height: 1.45;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand-clover {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      transform: rotate(45deg);
+    }
+
+    .brand-clover span {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50% 50% 50% 3px;
+      background: var(--green);
+      box-shadow: 0 0 18px var(--green-glow);
+    }
+
+    .brand-clover span:nth-child(1) { top: 0; left: 0; }
+    .brand-clover span:nth-child(2) { top: 0; right: 0; transform: rotate(90deg); }
+    .brand-clover span:nth-child(3) { bottom: 0; right: 0; transform: rotate(180deg); }
+    .brand-clover span:nth-child(4) { bottom: 0; left: 0; transform: rotate(270deg); }
+
+    .brand-text {
+      display: grid;
+      line-height: .85;
+      text-transform: uppercase;
+    }
+
+    .brand-text strong {
+      font-family: var(--display);
+      font-size: clamp(15px, 2.4vw, 22px);
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+
+    .brand-text small {
+      margin-top: 6px;
+      color: var(--bronze-bright);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .22em;
+    }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: var(--header-h);
+      border-bottom: 1px solid var(--line-bronze);
+      background: rgba(9, 8, 6, .94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .topbar-inner {
+      width: min(1120px, calc(100% - 28px));
+      height: 100%;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: rgba(255, 255, 255, .65);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .topbar-nav a {
+      transition: color .2s;
+    }
+
+    .topbar-nav a:hover {
+      color: var(--cream);
+    }
+
+    .topbar-cta {
+      padding: 10px 15px;
+      border-radius: 5px;
+      background: var(--green);
+      color: #061b0e !important;
+      font-family: var(--display);
+      font-size: 11px;
+      box-shadow: 0 4px 24px var(--green-glow);
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      min-height: 100svh;
+      padding-top: var(--header-h);
+      overflow: hidden;
+      border-bottom: 1px solid var(--line-bronze);
+      background:
+        radial-gradient(circle at 13% 36%, rgba(185, 134, 62, .22), transparent 37%),
+        radial-gradient(circle at 85% 18%, rgba(32, 214, 102, .09), transparent 28%),
+        var(--bg);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: var(--header-h) 0 auto;
+      height: 2px;
+      z-index: 3;
+      background: linear-gradient(90deg, transparent, var(--bronze), var(--bronze-bright), var(--bronze), transparent);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1120px, calc(100% - 36px));
+      min-height: calc(100svh - var(--header-h));
+      margin-inline: auto;
+      padding: 44px 0 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(330px, .78fr);
+      align-items: center;
+      gap: clamp(34px, 6vw, 84px);
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 20px;
+      padding: 7px 11px;
+      border: 1px solid var(--line-bronze);
+      border-radius: 4px;
+      background: rgba(224, 177, 95, .07);
+      color: var(--bronze-bright);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 13px var(--green);
+    }
+
+    .hero h1 {
+      max-width: 710px;
+      font-family: var(--display);
+      font-size: clamp(42px, 7vw, 78px);
+      font-weight: 400;
+      line-height: .93;
+      letter-spacing: -.035em;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+
+    .hero h1 em {
+      display: block;
+      color: var(--bronze-bright);
+      font-style: normal;
+      text-shadow: 0 0 42px rgba(224, 177, 95, .22);
+    }
+
+    .hero-copy {
+      max-width: 610px;
+      margin: 21px 0;
+      color: var(--muted);
+      font-size: clamp(19px, 2.4vw, 24px);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .hero-copy strong {
+      color: var(--cream);
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 27px;
+      list-style: none;
+    }
+
+    .hero-list li {
+      display: flex;
+      gap: 11px;
+      align-items: center;
+      color: rgba(255, 255, 255, .84);
+      font-size: clamp(16px, 2vw, 19px);
+      font-weight: 600;
+    }
+
+    .check {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      background: var(--green);
+      clip-path: polygon(15% 43%, 0 65%, 48% 100%, 100% 17%, 81% 0, 43% 62%);
+    }
+
+    .cta {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      min-height: 58px;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      padding: 17px 25px;
+      border: 0;
+      border-radius: 5px;
+      background: var(--green);
+      color: #061b0e;
+      font-family: var(--display);
+      font-size: clamp(13px, 2vw, 17px);
+      letter-spacing: .04em;
+      text-align: center;
+      text-transform: uppercase;
+      box-shadow: 0 8px 38px var(--green-glow);
+      transition: transform .2s var(--ease), background .2s, box-shadow .2s;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translateX(-120%);
+      background: linear-gradient(105deg, transparent 25%, rgba(255, 255, 255, .42) 50%, transparent 75%);
+      animation: shine 4s ease-in-out 1.4s infinite;
+    }
+
+    .cta:hover {
+      transform: translateY(-3px);
+      background: #36e979;
+      box-shadow: 0 12px 52px rgba(32, 214, 102, .42);
+    }
+
+    .cta-note {
+      margin-top: 11px;
+      color: rgba(255, 255, 255, .48);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      justify-self: end;
+      width: min(100%, 430px);
+    }
+
+    .hero-photo-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -12px 12px 12px -12px;
+      z-index: -1;
+      border: 1px solid var(--line-bronze);
+      border-radius: 6px;
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      filter: contrast(1.03) saturate(.92);
+    }
+
+    .hero-photo-label {
+      position: absolute;
+      right: -12px;
+      bottom: 24px;
+      max-width: 250px;
+      padding: 13px 16px;
+      border-left: 3px solid var(--green);
+      background: rgba(9, 8, 6, .94);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, .45);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .proof-strip {
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .proof-strip-inner {
+      width: min(1120px, 100%);
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .proof-point {
+      min-height: 94px;
+      padding: 19px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    .proof-point + .proof-point {
+      border-left: 1px solid var(--line);
+    }
+
+    .proof-point svg {
+      width: 27px;
+      height: 27px;
+      flex: 0 0 27px;
+      color: var(--bronze-bright);
+    }
+
+    .prizes {
+      padding: clamp(72px, 9vw, 118px) 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.015), transparent 28%),
+        var(--bg);
+    }
+
+    .prize-grid {
+      margin-top: 42px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line-bronze);
+      border-bottom: 1px solid var(--line-bronze);
+    }
+
+    .prize {
+      position: relative;
+      min-height: 315px;
+      padding: 32px 28px;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+    }
+
+    .prize + .prize {
+      border-left: 1px solid var(--line);
+    }
+
+    .prize-number {
+      position: absolute;
+      top: -25px;
+      right: -3px;
+      color: rgba(255, 255, 255, .035);
+      font-family: var(--display);
+      font-size: 132px;
+      line-height: 1;
+    }
+
+    .prize-icon {
+      width: 58px;
+      height: 58px;
+      margin-bottom: 30px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-bronze);
+      color: var(--bronze-bright);
+      transform: rotate(45deg);
+    }
+
+    .prize-icon svg {
+      width: 31px;
+      height: 31px;
+      transform: rotate(-45deg);
+    }
+
+    .prize h3 {
+      position: relative;
+      font-family: var(--display);
+      font-size: clamp(22px, 3vw, 29px);
+      font-weight: 400;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .prize p {
+      position: relative;
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.42;
+    }
+
+    .prize-main {
+      background:
+        radial-gradient(circle at 78% 22%, rgba(185, 134, 62, .2), transparent 34%),
+        var(--surface-soft);
+    }
+
+    .prize-main h3 {
+      color: var(--bronze-bright);
+    }
+
+    .sunday {
+      position: relative;
+      overflow: hidden;
+      border-block: 1px solid var(--line-bronze);
+      background:
+        radial-gradient(circle at 80% 40%, rgba(224, 177, 95, .17), transparent 34%),
+        var(--surface);
+    }
+
+    .sunday-inner {
+      min-height: 410px;
+      padding-block: 74px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .7fr);
+      align-items: center;
+      gap: 60px;
+    }
+
+    .sunday-card {
+      position: relative;
+      padding: 32px;
+      border: 1px solid var(--line-bronze);
+      background: rgba(9, 8, 6, .62);
+    }
+
+    .sunday-card::before,
+    .sunday-card::after {
+      content: "";
+      position: absolute;
+      width: 38px;
+      height: 38px;
+      border-color: var(--green);
+    }
+
+    .sunday-card::before {
+      top: -1px;
+      left: -1px;
+      border-top: 3px solid;
+      border-left: 3px solid;
+    }
+
+    .sunday-card::after {
+      right: -1px;
+      bottom: -1px;
+      border-right: 3px solid;
+      border-bottom: 3px solid;
+    }
+
+    .sunday-day {
+      color: var(--green);
+      font-family: var(--display);
+      font-size: clamp(38px, 7vw, 68px);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .sunday-card p {
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.38;
+    }
+
+    .winners {
+      padding: clamp(76px, 9vw, 118px) 0;
+      overflow: hidden;
+    }
+
+    .winners-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .winner-count {
+      flex: 0 0 auto;
+      color: var(--green);
+      font-family: var(--display);
+      font-size: 15px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .carousel {
+      position: relative;
+      margin-top: 42px;
+      overflow: hidden;
+      cursor: default;
+      touch-action: pan-y;
+    }
+
+    .carousel-track {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      transition: transform .75s var(--ease);
+      will-change: transform;
+    }
+
+    .winner-card {
+      min-width: calc((100% - 36px) / 3);
+      flex: 0 0 calc((100% - 36px) / 3);
+    }
+
+    .winner-photo {
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line-bronze);
+      border-radius: 4px;
+    }
+
+    .winner-caption {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 12px;
+      color: rgba(255, 255, 255, .68);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .winner-caption::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 10px var(--green-glow);
+    }
+
+    .carousel-progress {
+      height: 2px;
+      margin-top: 28px;
+      background: rgba(255, 255, 255, .1);
+    }
+
+    .carousel-progress span {
+      display: block;
+      width: 33.333%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--green-dark), var(--green));
+      transition: transform .75s var(--ease);
+      transform-origin: left;
+    }
+
+    .group {
+      border-block: 1px solid var(--line-bronze);
+      background:
+        radial-gradient(circle at 16% 50%, rgba(32, 214, 102, .11), transparent 32%),
+        var(--surface);
+    }
+
+    .group-inner {
+      min-height: 470px;
+      padding-block: 78px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, .78fr);
+      align-items: center;
+      gap: 70px;
+    }
+
+    .group-list {
+      margin-top: 25px;
+      display: grid;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .group-list li {
+      display: flex;
+      gap: 11px;
+      color: rgba(255, 255, 255, .78);
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .group-cta-box {
+      padding: 34px;
+      border: 1px solid rgba(32, 214, 102, .36);
+      background: rgba(9, 8, 6, .72);
+      box-shadow: 0 28px 65px rgba(0, 0, 0, .32);
+    }
+
+    .group-name {
+      margin-bottom: 9px;
+      color: var(--bronze-bright);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .group-cta-box h3 {
+      font-family: var(--display);
+      font-size: clamp(25px, 4vw, 39px);
+      font-weight: 400;
+      line-height: 1.04;
+      text-transform: uppercase;
+    }
+
+    .group-cta-box p {
+      margin: 15px 0 24px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .group-cta-box .cta {
+      width: 100%;
+    }
+
+    .footer {
+      padding: 34px 0 calc(26px + env(safe-area-inset-bottom));
+      text-align: center;
+      background: #060504;
+    }
+
+    .footer .brand {
+      justify-content: center;
+    }
+
+    .footer p {
+      margin-top: 19px;
+      color: rgba(255, 255, 255, .34);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .footer .footer-disclaimer {
+      max-width: 680px;
+      margin: 17px auto 0;
+      color: rgba(255, 255, 255, .46);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .035em;
+      line-height: 1.45;
+      text-transform: none;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s var(--ease), transform .65s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-120%); }
+      35%, 100% { transform: translateX(120%); }
+    }
+
+    @media (max-width: 820px) {
+      :root { --header-h: 58px; }
+
+      .topbar-nav a:not(.topbar-cta) {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding: 40px 0 46px;
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
+      .hero-content {
+        text-align: left;
+      }
+
+      .hero h1 {
+        font-size: clamp(40px, 12.1vw, 68px);
+      }
+
+      .hero-photo-wrap {
+        justify-self: center;
+        width: min(100%, 510px);
+      }
+
+      .hero-photo-label {
+        right: 0;
+      }
+
+      .prize-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .prize {
+        min-height: 0;
+      }
+
+      .prize + .prize {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .sunday-inner,
+      .group-inner {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .winner-card {
+        min-width: calc((100% - 18px) / 2);
+        flex-basis: calc((100% - 18px) / 2);
+      }
+
+      .carousel-progress span {
+        width: 25%;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap,
+      .hero-inner {
+        width: min(100%, calc(100% - 28px));
+      }
+
+      .topbar-inner {
+        width: calc(100% - 20px);
+      }
+
+      .brand-clover {
+        width: 29px;
+        height: 29px;
+        flex-basis: 29px;
+      }
+
+      .brand-clover span {
+        width: 14px;
+        height: 14px;
+      }
+
+      .topbar .brand-text strong {
+        font-size: 12px;
+      }
+
+      .topbar .brand-text small {
+        display: none;
+      }
+
+      .topbar-cta {
+        padding-inline: 12px;
+        font-size: 9px;
+      }
+
+      .hero-inner {
+        padding-top: 34px;
+      }
+
+      .hero-kicker {
+        font-size: 9px;
+      }
+
+      .hero h1 {
+        font-size: clamp(37px, 12.6vw, 55px);
+      }
+
+      .hero-copy {
+        font-size: 18px;
+      }
+
+      .cta {
+        width: 100%;
+        padding-inline: 14px;
+      }
+
+      .proof-strip-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-point {
+        min-height: 73px;
+        justify-content: flex-start;
+        padding-inline: 22px;
+      }
+
+      .proof-point + .proof-point {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .prize {
+        padding: 28px 22px;
+      }
+
+      .sunday-inner,
+      .group-inner {
+        padding-block: 60px;
+      }
+
+      .sunday-card,
+      .group-cta-box {
+        padding: 26px 21px;
+      }
+
+      .winners-header {
+        display: block;
+      }
+
+      .winner-count {
+        margin-top: 16px;
+      }
+
+      .winner-card {
+        min-width: 100%;
+        flex-basis: 100%;
+      }
+
+      .carousel-progress span {
+        width: 11.111%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#inicio" aria-label="Cartela da Sorte Goes — início">
+        <span class="brand-clover" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </span>
+        <span class="brand-text">
+          <strong>Cartela da Sorte</strong>
+          <small>Goes</small>
+        </span>
+      </a>
+
+      <nav class="topbar-nav" aria-label="Menu principal">
+        <a href="#premios">Prêmios</a>
+        <a href="#ganhadores">Ganhadores</a>
+        <a class="topbar-cta" href="https://chat.whatsapp.com/Ea85hlM33Ga9jQeSNgD0NZ?s=cl&amp;p=i&amp;ilr=0&amp;amv=2" target="_blank" rel="noopener noreferrer">Entrar no grupo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-kicker">Rifas exclusivas no WhatsApp</div>
+          <h1>
+            Sua mesa pode receber
+            <em>um prêmio de peso.</em>
+          </h1>
+          <p class="hero-copy">
+            Concorra a <strong>carnes selecionadas para o seu churrasco</strong>, bebidas e premiações especiais com a Cartela da Sorte Goes.
+          </p>
+          <ul class="hero-list">
+            <li><span class="check" aria-hidden="true"></span>Carnes são o grande destaque dos sorteios</li>
+            <li><span class="check" aria-hidden="true"></span>Participação simples direto pelo grupo</li>
+            <li><span class="check" aria-hidden="true"></span>Ganhadores reais e prêmios entregues</li>
+          </ul>
+          <a class="cta" href="https://chat.whatsapp.com/Ea85hlM33Ga9jQeSNgD0NZ?s=cl&amp;p=i&amp;ilr=0&amp;amv=2" target="_blank" rel="noopener noreferrer">
+            Quero entrar no grupo <span aria-hidden="true">→</span>
+          </a>
+          <p class="cta-note">Avisos e novas cartelas direto no WhatsApp</p>
+        </div>
+
+        <figure class="hero-photo-wrap">
+          <img class="hero-photo" src="images/ganhador-05.jpg" alt="Ganhador da Cartela da Sorte Goes segurando grandes peças de carne">
+          <figcaption class="hero-photo-label">Prêmio entregue. Ganhador de verdade.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="Diferenciais">
+      <div class="proof-strip-inner">
+        <div class="proof-point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+          Sorteios transparentes
+        </div>
+        <div class="proof-point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 14h16"></path>
+            <path d="M7 14c0-4 2-7 5-7s5 3 5 7"></path>
+            <path d="M12 7V4"></path>
+            <path d="M3 18h18"></path>
+          </svg>
+          Prêmios selecionados
+        </div>
+        <div class="proof-point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 7 9 18l-5-5"></path>
+            <path d="M16 3h5v5"></path>
+          </svg>
+          Entregas comprovadas
+        </div>
+      </div>
+    </section>
+
+    <section class="prizes" id="premios">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="eyebrow">O que você pode ganhar</p>
+          <h2 class="section-title">Prêmios para quem gosta de <em>coisa boa.</em></h2>
+          <p class="section-copy">O foco é carne: cortes e caixas preparadas para reunir a família e fazer um churrasco de respeito.</p>
+        </div>
+
+        <div class="prize-grid">
+          <article class="prize prize-main reveal">
+            <span class="prize-number" aria-hidden="true">01</span>
+            <div class="prize-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 5c3-3 9-2 12 2 2 3 1 8-3 10-4 2-9 1-11-2-2-3-1-7 2-10Z"></path>
+                <path d="M9 8c2 1 3 3 3 6"></path>
+                <path d="M15 8h.01"></path>
+              </svg>
+            </div>
+            <h3>Carnes selecionadas</h3>
+            <p>Peças generosas e caixas de carne para transformar o próximo churrasco.</p>
+          </article>
+
+          <article class="prize reveal">
+            <span class="prize-number" aria-hidden="true">02</span>
+            <div class="prize-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 2h8"></path>
+                <path d="M9 2v5l-2 3v10c0 1 1 2 2 2h6c1 0 2-1 2-2V10l-2-3V2"></path>
+                <path d="M7 13h10"></path>
+              </svg>
+            </div>
+            <h3>Bebidas</h3>
+            <p>Premiações especiais para completar a resenha e acompanhar a carne.</p>
+          </article>
+
+          <article class="prize reveal">
+            <span class="prize-number" aria-hidden="true">03</span>
+            <div class="prize-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21 15 9"></path>
+                <path d="m14 4 6 6"></path>
+                <path d="M13 5c3-3 6-3 8-2-1 3-2 5-5 8"></path>
+                <path d="m3 21 4-1-3-3-1 4Z"></path>
+              </svg>
+            </div>
+            <h3>Facas artesanais</h3>
+            <p>Uma premiação especial reservada para os sorteios de domingo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sunday">
+      <div class="wrap sunday-inner">
+        <div class="reveal">
+          <p class="eyebrow">Edição especial</p>
+          <h2 class="section-title">Domingo também é dia de <em>faca artesanal.</em></h2>
+          <p class="section-copy">Durante a semana, o destaque são as carnes. Aos domingos, entram em cena as facas artesanais para quem gosta de uma peça única.</p>
+        </div>
+
+        <aside class="sunday-card reveal">
+          <p class="sunday-day">Só aos domingos</p>
+          <p>Acompanhe as informações no grupo e não perca a abertura das cartelas especiais.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="winners" id="ganhadores">
+      <div class="wrap">
+        <div class="winners-header reveal">
+          <div>
+            <p class="eyebrow">Prova social</p>
+            <h2 class="section-title">Quem participa, <em>pode levar.</em></h2>
+            <p class="section-copy">Ganhadores reais, registrados na hora de receber seus prêmios.</p>
+          </div>
+          <p class="winner-count">9 entregas registradas</p>
+        </div>
+
+        <div class="carousel reveal" aria-label="Fotos dos ganhadores">
+          <div class="carousel-track">
+            <figure class="winner-card">
+              <img class="winner-photo" src="images/ganhador-01.jpg" alt="Ganhador segurando carnes recebidas na Cartela da Sorte Goes" loading="lazy">
+              <figcaption class="winner-caption">Prêmio entregue</figcaption>
+            </figure>
+            <figure class="winner-card">
+              <img class="winner-photo" src="images/ganhador-02.jpg" alt="Ganhadores mostrando uma grande caixa de carnes" loading="lazy">
+              <figcaption class="winner-caption">Ganhadores reais</figcaption>
+            </figure>
+            <figure class="winner-card">
+              <img class="winner-photo" src="images/ganhador-03.jpg" alt="Ganhador recebendo uma caixa cheia de carnes" loading="lazy">
+              <figcaption class="winner-caption">Entrega comprovada</figcaption>
+            </figure>
+            <figure class="winner-card">
+              <img class="winner-photo" src="images/ganhador-04.jpg" alt="Ganhador segurando grandes peças de carne" loading="lazy">
+              <figcaption class="winner-caption">Prêmio de peso</figcaption>
+            </figure>
+            <figure class="winner-card">
+              <img class="winner-photo" src="images/ganhador-05.jpg" alt="Ganhador segurando duas grandes peças de carne" loading="lazy">
+              <figcaption class="winner-caption">Carne de verdade</figcaption>
+            </figure>
+            <figure class="winner-card">
+              <img class="winner-photo" src="images/ganhador-06.jpg" alt="Ganhador colocando uma caixa de carnes no carro" loading="lazy">
+              <figcaption class="winner-caption">Premiação retirada</figcaption>
+            </figure>
+            <figure class="winner-card">
+              <img class="winner-photo" src="images/ganhador-07.jpg" alt="Ganhador mostrando uma grande peça de carne" loading="lazy">
+              <figcaption class="winner-caption">Mais um ganhador</figcaption>
+            </figure>
+            <figure class="winner-card">
+              <img class="winner-photo" src="images/ganhador-08.jpg" alt="Ganhador com uma caixa completa de carnes" loading="lazy">
+              <figcaption class="winner-caption">Caixa entregue</figcaption>
+            </figure>
+            <figure class="winner-card">
+              <img class="winner-photo" src="images/ganhador-09.jpg" alt="Ganhador ao lado de uma caixa cheia de carnes" loading="lazy">
+              <figcaption class="winner-caption">Sorteio concluído</figcaption>
+            </figure>
+          </div>
+          <div class="carousel-progress" aria-hidden="true"><span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="group" id="grupo">
+      <div class="wrap group-inner">
+        <div class="reveal">
+          <p class="eyebrow">Comunidade no WhatsApp</p>
+          <h2 class="section-title">Entre, acompanhe e escolha a sua <em>cartela da sorte.</em></h2>
+          <ul class="group-list">
+            <li><span class="check" aria-hidden="true"></span>Novas rifas e avisos direto no grupo</li>
+            <li><span class="check" aria-hidden="true"></span>Carnes, bebidas e especiais de domingo</li>
+            <li><span class="check" aria-hidden="true"></span>Fotos e entregas dos ganhadores</li>
+          </ul>
+        </div>
+
+        <div class="group-cta-box reveal">
+          <p class="group-name">🍀 Cartela da Sorte Goes 🍀</p>
+          <h3>Seu próximo prêmio pode estar aqui.</h3>
+          <p>Toque no botão, entre no grupo oficial e acompanhe a abertura das próximas cartelas.</p>
+          <a class="cta" href="https://chat.whatsapp.com/Ea85hlM33Ga9jQeSNgD0NZ?s=cl&amp;p=i&amp;ilr=0&amp;amv=2" target="_blank" rel="noopener noreferrer">
+            Acessar grupo agora <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="brand" aria-label="Cartela da Sorte Goes">
+        <span class="brand-clover" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </span>
+        <span class="brand-text">
+          <strong>Cartela da Sorte</strong>
+          <small>Goes</small>
+        </span>
+      </div>
+      <p class="footer-disclaimer">Consulte as regras de cada ação no grupo. Bebida alcoólica: aprecie com moderação. Venda proibida para menores de 18 anos.</p>
+      <p>&copy; 2026 Cartela da Sorte Goes. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var revealItems = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -24px" });
+
+        revealItems.forEach(function (item) {
+          observer.observe(item);
+        });
+      } else {
+        revealItems.forEach(function (item) {
+          item.classList.add("visible");
+        });
+      }
+
+      var carousel = document.querySelector(".carousel");
+      var track = document.querySelector(".carousel-track");
+      var cards = Array.prototype.slice.call(document.querySelectorAll(".winner-card"));
+      var progress = document.querySelector(".carousel-progress span");
+      var current = 0;
+      var timer;
+
+      function visibleCards() {
+        if (window.innerWidth <= 560) return 1;
+        if (window.innerWidth <= 820) return 2;
+        return 3;
+      }
+
+      function goTo(index) {
+        var visible = visibleCards();
+        var max = Math.max(0, cards.length - visible);
+        current = index > max ? 0 : Math.max(0, index);
+        var cardWidth = cards[0].getBoundingClientRect().width;
+        var gap = parseFloat(getComputedStyle(track).gap) || 0;
+        track.style.transform = "translate3d(" + (-(cardWidth + gap) * current) + "px,0,0)";
+        if (progress) {
+          var travel = max ? current / max : 0;
+          var progressTravel = ((cards.length / visible) - 1) * 100;
+          progress.style.transform = "translateX(" + (travel * progressTravel) + "%)";
+        }
+      }
+
+      function startCarousel() {
+        window.clearInterval(timer);
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        timer = window.setInterval(function () {
+          goTo(current + 1);
+        }, 3400);
+      }
+
+      if (carousel && track && cards.length) {
+        carousel.addEventListener("mouseenter", function () { window.clearInterval(timer); });
+        carousel.addEventListener("mouseleave", startCarousel);
+        window.addEventListener("resize", function () { goTo(0); });
+        goTo(0);
+        startCarousel();
+      }
+
+      document.querySelectorAll('a[href*="chat.whatsapp.com"]').forEach(function (link) {
+        link.addEventListener("click", function () {
+          try {
+            if (typeof window.fbq === "function") {
+              window.fbq("track", "Lead");
+            }
+          } catch (error) {
+            /* A navegação para o grupo não depende do rastreamento. */
+          }
+        });
+      });
+    }());
+  </script>
+</body>
+</html>
