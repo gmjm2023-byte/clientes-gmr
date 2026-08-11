@@ -70,7 +70,7 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/><
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 
 <style>
 :root{
@@ -78,7 +78,7 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/><
   --lime-b:   #C6FF66;
   --lime-d:   #4D8F00;
   --black:    #050505;
-  --surf:     #0E120A;
+  --surf:     #0D0F09;
   --surf2:    rgba(168,255,0,0.05);
   --white:    #FFFFFF;
   --text2:    rgba(255,255,255,.74);
@@ -86,9 +86,10 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/><
   --border:   rgba(168,255,0,.16);
   --border-b: rgba(168,255,0,.38);
   --display:  'Montserrat',sans-serif;
+  --stat:     'Anton',sans-serif;
   --body:     'Montserrat',sans-serif;
   --ease:     cubic-bezier(.2,.8,.3,1);
-  --hh:       60px;
+  --hh:       64px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -101,413 +102,374 @@ body{
 }
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
+::selection{background:var(--lime);color:#0A1200}
+::-webkit-scrollbar{width:9px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--lime-d);border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:var(--lime)}
+
+/* ── CURSOR GLOW (desktop only) ── */
+.cursor-glow{
+  position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(340px circle at var(--mx,50%) var(--my,20%),rgba(168,255,0,.07),transparent 65%);
+  transition:opacity .3s;
+}
+@media(hover:none),(pointer:coarse){.cursor-glow{display:none}}
+
+/* ── SCROLL REVEAL ── */
+.reveal,.reveal-l,.reveal-r,.reveal-sc{
+  transition:opacity .7s var(--ease),transform .7s var(--ease);
+  will-change:opacity,transform;
+}
+.reveal{opacity:0;transform:translateY(34px)}
+.reveal-l{opacity:0;transform:translateX(-34px)}
+.reveal-r{opacity:0;transform:translateX(34px)}
+.reveal-sc{opacity:0;transform:scale(.94)}
+.reveal.visible,.reveal-l.visible,.reveal-r.visible,.reveal-sc.visible{opacity:1;transform:none}
+.d1{transition-delay:.08s}
+.d2{transition-delay:.18s}
+.d3{transition-delay:.28s}
+.d4{transition-delay:.38s}
 
 /* ── TOPBAR ── */
 .topbar{
-  position:fixed;top:0;left:0;right:0;z-index:100;
+  position:fixed;top:0;left:0;right:0;z-index:200;
   height:var(--hh);
-  background:rgba(5,5,5,0.94);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
+  display:flex;align-items:center;
+  padding:0 18px;gap:14px;
+  background:transparent;
+  border-bottom:1px solid transparent;
+  transition:background .3s,border-color .3s,backdrop-filter .3s;
+}
+.topbar.scrolled{
+  background:rgba(5,5,5,0.88);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border);
-  display:flex;align-items:center;
-  padding:0 14px;gap:10px;
 }
-.topbar-logo{
-  height:38px;width:38px;object-fit:cover;
-  flex-shrink:0;border-radius:50%;
-  border:1px solid var(--border-b);
-  transition:opacity .18s;
-}
-.topbar-logo:hover{opacity:.8}
-.topbar-nav{
-  display:flex;align-items:center;
-  overflow-x:auto;-webkit-overflow-scrolling:touch;
-  scrollbar-width:none;flex:1;
-}
+.topbar-logo{height:38px;width:38px;object-fit:cover;flex-shrink:0;border-radius:50%;border:1px solid var(--border-b)}
+.topbar-nav{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1}
 .topbar-nav::-webkit-scrollbar{display:none}
 .topbar-nav a{
-  display:flex;align-items:center;gap:6px;
-  padding:0 12px;height:var(--hh);
-  font-family:var(--body);font-size:10px;font-weight:700;
-  letter-spacing:.08em;text-transform:uppercase;
-  color:var(--text3);white-space:nowrap;
-  border-right:1px solid rgba(168,255,0,.1);
-  transition:color .18s,background .18s;
+  padding:9px 14px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--text2);white-space:nowrap;border-radius:100px;transition:color .18s,background .18s;
 }
-.topbar-nav a:first-child{border-left:1px solid rgba(168,255,0,.1)}
-.topbar-nav a:hover{color:var(--white);background:var(--surf2)}
-.topbar-nav a:hover svg{color:var(--lime)}
-.topbar-nav a svg{flex-shrink:0;transition:color .18s;color:var(--lime-d)}
+.topbar-nav a:hover{color:var(--black);background:var(--lime)}
+.topbar-cta{
+  flex-shrink:0;padding:11px 18px;border-radius:100px;
+  background:var(--lime);color:#0A1200;
+  font-family:var(--display);font-weight:800;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;
+  box-shadow:0 4px 22px rgba(168,255,0,.28);white-space:nowrap;
+  transition:transform .18s,box-shadow .18s;
+}
+.topbar-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(168,255,0,.4)}
+@media(max-width:760px){.topbar-cta{display:none}}
 
-/* ── SCROLL REVEAL ── */
-.reveal,.reveal-l,.reveal-r{
-  transition:opacity .65s var(--ease),transform .65s var(--ease);
-  will-change:opacity,transform;
+/* ── STICKY WHATSAPP FAB ── */
+.wa-fab{
+  position:fixed;right:16px;bottom:16px;z-index:300;
+  width:58px;height:58px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--lime);color:#0A1200;
+  box-shadow:0 8px 30px rgba(168,255,0,.4);
+  opacity:0;transform:scale(.4) translateY(20px);pointer-events:none;
+  transition:opacity .3s var(--ease),transform .3s var(--ease);
 }
-.reveal{opacity:0;transform:translateY(30px)}
-.reveal-l{opacity:0;transform:translateX(-30px)}
-.reveal-r{opacity:0;transform:translateX(30px)}
-.reveal.visible,.reveal-l.visible,.reveal-r.visible{opacity:1;transform:none}
-.d1{transition-delay:.10s}
-.d2{transition-delay:.22s}
-.d3{transition-delay:.34s}
-.d4{transition-delay:.46s}
+.wa-fab.show{opacity:1;transform:none;pointer-events:auto}
+.wa-fab::after{
+  content:'';position:absolute;inset:-6px;border-radius:50%;
+  border:2px solid rgba(168,255,0,.45);animation:fabPulse 2.2s ease-out infinite;
+}
+.wa-fab svg{width:27px;height:27px;position:relative}
 
 /* ── HERO ── */
-.hero{padding-top:var(--hh);position:relative;overflow:hidden}
-.hero-accent{
-  position:absolute;top:var(--hh);left:0;right:0;height:2px;z-index:2;
-  background:linear-gradient(90deg,transparent 0%,var(--lime) 25%,var(--lime-b) 50%,var(--lime) 75%,transparent 100%);
-}
-.hero-orb{
-  position:absolute;inset:0;pointer-events:none;
+.hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;padding:calc(var(--hh) + 20px) 0 40px}
+.hero-bg-glow{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
   background:
-    radial-gradient(ellipse at 20% 30%,rgba(168,255,0,0.16) 0%,transparent 50%),
-    radial-gradient(ellipse at 85% 10%,rgba(77,143,0,0.22) 0%,transparent 45%);
-  transition:transform .08s linear;
+    radial-gradient(ellipse 640px 460px at 78% 18%,rgba(77,143,0,.35),transparent 60%),
+    radial-gradient(ellipse 520px 420px at 8% 82%,rgba(168,255,0,.14),transparent 55%);
 }
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  margin:24px auto 0;padding:8px 16px;
-  border:1px solid var(--border-b);border-radius:100px;
-  background:rgba(168,255,0,.06);
-  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--lime);
+.hero-ghost{
+  position:absolute;left:50%;top:52%;z-index:0;pointer-events:none;
+  transform:translate(-50%,-50%) rotate(-4deg);
+  font-family:var(--stat);
+  font-size:min(30vw,300px);line-height:.8;
+  color:transparent;-webkit-text-stroke:1.5px rgba(168,255,0,.10);
+  white-space:nowrap;letter-spacing:.02em;
+  user-select:none;
 }
-.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px var(--lime);flex-shrink:0}
-.hero-badge-wrap{display:flex;justify-content:center;padding:0 18px}
-@media(min-width:640px){.hero-badge-wrap{justify-content:flex-start;padding:0}}
-
 .hero-inner{
   position:relative;z-index:2;
-  display:grid;grid-template-columns:1fr;
-  max-width:1060px;margin:0 auto;
-  padding:20px 18px 0;gap:30px;
+  max-width:1180px;margin:0 auto;padding:0 18px;
+  display:grid;grid-template-columns:1fr;gap:36px;
 }
-@media(min-width:640px){
-  .hero-inner{grid-template-columns:1.05fr .95fr;align-items:center;padding:28px 24px 0;gap:40px}
+@media(min-width:900px){.hero-inner{grid-template-columns:1.15fr .85fr;align-items:center;gap:30px}}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;padding:8px 16px;
+  border:1px solid var(--border-b);border-radius:100px;background:rgba(168,255,0,.06);
+  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);
 }
+.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px var(--lime);flex-shrink:0;animation:dotBlink 1.8s ease-in-out infinite}
+
 .hero-headline{
-  font-family:var(--display);
-  font-weight:900;
-  font-size:clamp(34px,9vw,62px);
-  line-height:.98;
-  letter-spacing:-.01em;text-transform:uppercase;
-  color:var(--white);margin-bottom:16px;
-  animation:heroUp .65s var(--ease) 0.1s both;
-}
-.hero-headline em{
-  font-style:normal;color:var(--lime);display:block;
-  text-shadow:0 0 40px rgba(168,255,0,0.35);
-}
-.hero-desc{
-  font-size:clamp(14px,3.8vw,16.5px);
-  font-weight:500;line-height:1.6;
-  color:var(--text2);
-  margin-bottom:20px;max-width:460px;
-  animation:heroUp .65s var(--ease) 0.2s both;
-}
-.hero-desc strong{color:var(--white);font-weight:700}
-.hero-bullets{
-  list-style:none;margin-bottom:26px;
-  display:flex;flex-direction:column;gap:10px;
-  animation:heroUp .65s var(--ease) 0.3s both;
-}
-.hero-bullets li{
-  display:flex;align-items:flex-start;gap:10px;
-  font-size:clamp(13px,3.4vw,15px);font-weight:600;
-  color:var(--text2);line-height:1.35;
-}
-.bullet-check{
-  flex-shrink:0;margin-top:3px;
-  width:16px;height:16px;
-  background:var(--lime);
-  clip-path:polygon(14% 44%,0 65%,50% 100%,100% 16%,80% 0%,43% 62%);
-}
-.hero-ctas{
-  display:flex;flex-wrap:wrap;align-items:center;gap:12px;
-  animation:heroUp .65s var(--ease) 0.4s both;
-}
-.hero-cta{
-  position:relative;overflow:hidden;
-  display:inline-flex;align-items:center;gap:8px;
-  padding:17px 24px;
-  background:var(--lime);color:#0A1200;
-  font-family:var(--display);font-weight:800;
-  font-size:clamp(13px,3.6vw,16px);
-  letter-spacing:.02em;text-transform:uppercase;
-  border-radius:5px;max-width:360px;
-  box-shadow:0 4px 32px rgba(168,255,0,.28);
-  transition:background .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease);
-}
-.hero-cta::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,0.4) 50%,transparent 75%);
-  transform:translateX(-120%);
-  animation:shine 4s ease-in-out 1.2s infinite;
-}
-.hero-cta:hover{background:var(--lime-b);transform:translateY(-2px);box-shadow:0 8px 40px rgba(168,255,0,.4)}
-.hero-cta:active{transform:translateY(0)}
-
-.hero-cta-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:15px 20px;
-  background:transparent;color:var(--white);
-  border:1px solid var(--border-b);
-  font-family:var(--display);font-weight:700;
-  font-size:clamp(11px,3.4vw,13px);
-  letter-spacing:.04em;text-transform:uppercase;
-  border-radius:5px;
-  transition:background .18s var(--ease),border-color .18s var(--ease),transform .18s var(--ease);
-}
-.hero-cta-secondary svg{color:var(--lime)}
-.hero-cta-secondary:hover{background:var(--surf2);border-color:var(--lime);transform:translateY(-2px)}
-.hero-cta-secondary:active{transform:translateY(0)}
-
-/* hero image */
-.hero-img-col{
-  position:relative;border-radius:14px;overflow:hidden;
-  border:1px solid var(--border-b);background:var(--surf);
-  animation:heroRight .75s var(--ease) 0.15s both;
-  display:flex;align-items:center;justify-content:center;
-  padding:10px;
-}
-.hero-img-col img{
-  width:100%;border-radius:8px;display:block;
-}
-
-/* trust bar */
-.trust-bar{
-  position:relative;z-index:2;
-  display:grid;grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--border);
-  margin-top:30px;
-}
-.trust-item{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:6px;padding:16px 6px;
-  font-size:10px;font-weight:700;
-  letter-spacing:.04em;text-transform:uppercase;
-  color:var(--text2);text-align:center;
-  background:var(--surf2);
-}
-.trust-item+.trust-item{border-left:1px solid var(--border)}
-.trust-item svg{color:var(--lime);flex-shrink:0}
-.trust-item span{font-size:9px;font-weight:600;color:var(--text3);letter-spacing:.02em;text-transform:none}
-@media(min-width:640px){.trust-item{flex-direction:row;text-align:left;padding:16px 14px}}
-
-/* ── DIVIDER ── */
-.lime-divider{
-  height:1px;
-  background:linear-gradient(90deg,transparent 0%,rgba(168,255,0,0.4) 30%,rgba(198,255,102,0.6) 50%,rgba(168,255,0,0.4) 70%,transparent 100%);
-}
-
-/* ── PREMIO ── */
-.premio{padding:44px 0;background:var(--black);text-align:center}
-.section-eyebrow{
-  font-size:10px;font-weight:700;
-  letter-spacing:.16em;text-transform:uppercase;
-  color:var(--lime);text-align:center;
-  margin-bottom:8px;padding:0 18px;
-}
-.section-title{
   font-family:var(--display);font-weight:900;
-  font-size:clamp(24px,6.5vw,42px);
-  letter-spacing:-.01em;text-transform:uppercase;
-  color:var(--white);text-align:center;
-  margin-bottom:10px;padding:0 18px;
+  font-size:clamp(38px,7.4vw,80px);line-height:.94;letter-spacing:-.02em;text-transform:uppercase;
+  margin-bottom:20px;
 }
-.premio-sub{
-  font-family:var(--display);font-weight:700;
-  font-size:clamp(16px,4.5vw,22px);color:var(--lime);
-  margin-bottom:16px;
+.hero-headline .l2{color:var(--lime);text-shadow:0 0 50px rgba(168,255,0,.4)}
+
+.hero-prize-strip{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px;
+  margin-bottom:22px;padding:18px 20px;
+  background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;
 }
-.premio-desc{
-  max-width:560px;margin:0 auto;padding:0 18px;
-  font-size:14px;line-height:1.65;color:var(--text2);
+.hp-num{font-family:var(--stat);font-size:clamp(30px,6vw,46px);color:var(--lime);line-height:.8}
+.hp-label{font-size:12px;font-weight:700;letter-spacing:.03em;color:var(--text2);text-transform:uppercase}
+.hp-or{font-size:11px;font-weight:800;color:var(--text3);letter-spacing:.1em}
+
+.hero-desc{font-size:clamp(14px,3.6vw,16px);font-weight:500;line-height:1.6;color:var(--text2);margin-bottom:26px;max-width:480px}
+.hero-desc strong{color:var(--white)}
+
+.hero-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:20px}
+.btn-primary{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:9px;padding:18px 26px;
+  background:var(--lime);color:#0A1200;
+  font-family:var(--display);font-weight:800;font-size:clamp(13px,3.6vw,16px);
+  letter-spacing:.02em;text-transform:uppercase;border-radius:6px;
+  box-shadow:0 6px 34px rgba(168,255,0,.32);
+  transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s;
 }
+.btn-primary::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,.45) 50%,transparent 75%);
+  transform:translateX(-120%);animation:shine 3.6s ease-in-out 1s infinite;
+}
+.btn-primary:hover{background:var(--lime-b);transform:translateY(-3px) scale(1.02);box-shadow:0 12px 44px rgba(168,255,0,.44)}
+.btn-primary:active{transform:translateY(0) scale(1)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;padding:16px 20px;
+  border:1px solid var(--border-b);border-radius:6px;color:var(--white);
+  font-family:var(--display);font-weight:700;font-size:clamp(11px,3.2vw,13px);
+  letter-spacing:.04em;text-transform:uppercase;transition:background .18s,border-color .18s,transform .18s;
+}
+.btn-ghost svg{color:var(--lime)}
+.btn-ghost:hover{background:var(--surf2);border-color:var(--lime);transform:translateY(-2px)}
+
+.hero-microtrust{display:flex;flex-wrap:wrap;gap:16px}
+.hero-microtrust span{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--text3)}
+.hero-microtrust svg{width:14px;height:14px;color:var(--lime-d);flex-shrink:0}
+
+/* hero visual card */
+.hero-visual{perspective:1200px}
+.hero-visual-card{
+  position:relative;border-radius:20px;overflow:hidden;
+  border:1px solid var(--border-b);
+  background:linear-gradient(155deg,rgba(168,255,0,.08),rgba(0,0,0,.4));
+  padding:14px;
+  transform-style:preserve-3d;
+  transition:transform .25s var(--ease);
+  box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 0 1px rgba(168,255,0,.04);
+}
+.hero-visual-card img{border-radius:12px;display:block;width:100%}
+.hero-visual-ring{
+  position:absolute;inset:-30%;z-index:-1;pointer-events:none;
+  background:conic-gradient(from 0deg,rgba(168,255,0,.25),transparent 30%,transparent 70%,rgba(168,255,0,.25));
+  animation:ringSpin 9s linear infinite;
+  opacity:.5;filter:blur(20px);
+}
+@media(max-width:899px){.hero-visual{max-width:420px;margin:0 auto}}
+
+.scroll-cue{
+  position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);
+}
+.scroll-cue svg{animation:cueBounce 1.8s ease-in-out infinite;color:var(--lime-d)}
+@media(max-width:640px){.scroll-cue{display:none}}
+
+/* ── MARQUEE ── */
+.marquee{overflow:hidden;background:var(--lime);border-block:1px solid rgba(0,0,0,.1);position:relative;z-index:2}
+.marquee-track{
+  width:max-content;display:flex;gap:0;padding:13px 0;
+  animation:marquee 22s linear infinite;
+}
+.marquee-track span{
+  display:flex;align-items:center;gap:10px;padding:0 22px;
+  font-family:var(--stat);font-size:15px;letter-spacing:.03em;text-transform:uppercase;color:#0A1200;
+}
+.marquee-track span svg{width:14px;height:14px;flex-shrink:0}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ── STATS SPOTLIGHT (PRÊMIO) ── */
+.spotlight{padding:clamp(64px,9vw,110px) 0;background:var(--black);position:relative;overflow:hidden}
+.spotlight-inner{max-width:1140px;margin:0 auto;padding:0 18px;display:grid;grid-template-columns:1fr;gap:44px}
+@media(min-width:900px){.spotlight-inner{grid-template-columns:1.1fr .9fr;align-items:center;gap:30px}}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:26px;height:2px;background:var(--lime)}
+.spotlight-title{font-family:var(--display);font-weight:900;font-size:clamp(26px,5vw,44px);line-height:1.04;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:18px}
+.spotlight-title em{font-style:normal;color:var(--lime)}
+.spotlight-copy{font-size:14.5px;line-height:1.7;color:var(--text2);max-width:480px;margin-bottom:28px}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.stat-box{
+  padding:20px 14px;border:1px solid var(--border);border-radius:12px;
+  background:linear-gradient(160deg,rgba(168,255,0,.05),transparent);
+  text-align:center;
+}
+.stat-num{font-family:var(--stat);font-size:clamp(30px,7vw,44px);color:var(--lime);line-height:1;display:block}
+.stat-num sup{font-size:.4em;top:-.6em}
+.stat-cap{margin-top:8px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text3)}
+
+.spotlight-media{position:relative}
+.spotlight-media-frame{
+  position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--border-b);
+  background:var(--surf);padding:12px;
+}
+.spotlight-media-frame img{border-radius:10px;width:100%;display:block}
+.spotlight-tag{
+  position:absolute;top:-14px;right:18px;z-index:3;
+  background:var(--lime);color:#0A1200;padding:9px 16px;border-radius:8px;
+  font-family:var(--stat);font-size:13px;letter-spacing:.02em;
+  box-shadow:0 8px 24px rgba(168,255,0,.35);
+  transform:rotate(-3deg);
+}
+
+/* ── BENTO TRUST ── */
+.bento{padding:clamp(60px,8vw,100px) 0;background:var(--surf);position:relative}
+.bento::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(168,255,0,.4),transparent);
+}
+.bento-head{max-width:640px;margin:0 auto 40px;text-align:center;padding:0 18px}
+.bento-head .eyebrow{justify-content:center}
+.bento-head .eyebrow::before{display:none}
+.bento-title{font-family:var(--display);font-weight:900;font-size:clamp(24px,5.5vw,40px);text-transform:uppercase;letter-spacing:-.01em}
+.bento-title em{font-style:normal;color:var(--lime)}
+.bento-grid{
+  display:grid;grid-template-columns:1fr;gap:14px;
+  max-width:1140px;margin:0 auto;padding:0 18px;
+}
+@media(min-width:760px){
+  .bento-grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:150px}
+  .bento-a{grid-column:span 2;grid-row:span 2}
+  .bento-b{grid-column:span 2;grid-row:span 1}
+  .bento-c{grid-column:span 1;grid-row:span 1}
+  .bento-d{grid-column:span 1;grid-row:span 1}
+  .bento-e{grid-column:span 2;grid-row:span 1}
+}
+.bento-card{
+  background:var(--black);border:1px solid var(--border);border-radius:14px;
+  padding:22px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;
+  position:relative;overflow:hidden;
+  transition:border-color .22s,transform .22s var(--ease),box-shadow .22s;
+}
+.bento-card:hover{border-color:var(--border-b);transform:translateY(-4px);box-shadow:0 16px 40px rgba(168,255,0,.12)}
+.bento-card svg{color:var(--lime);width:24px;height:24px;flex-shrink:0}
+.bento-card h3{font-family:var(--display);font-weight:800;font-size:16px;text-transform:uppercase}
+.bento-card p{font-size:12px;line-height:1.55;color:var(--text2)}
+.bento-a{justify-content:center;text-align:center;align-items:center;background:linear-gradient(160deg,rgba(168,255,0,.09),transparent)}
+.bento-a svg{width:38px;height:38px;margin-bottom:6px}
+.bento-a h3{font-size:20px}
+.bento-a p{font-size:13px;max-width:280px}
 
 /* ── COMO FUNCIONA ── */
-.como-funciona{padding:50px 0 44px;background:var(--surf)}
-.cf-grid{
+.como{padding:clamp(64px,9vw,110px) 0;background:var(--black)}
+.como-head{max-width:640px;margin:0 auto 44px;text-align:center;padding:0 18px}
+.como-head .eyebrow{justify-content:center}
+.como-head .eyebrow::before{display:none}
+.como-title{font-family:var(--display);font-weight:900;font-size:clamp(24px,5.5vw,40px);text-transform:uppercase;letter-spacing:-.01em}
+.como-title em{font-style:normal;color:var(--lime)}
+.como-track{
   display:grid;grid-template-columns:1fr;gap:16px;
-  max-width:1060px;margin:0 auto;padding:0 18px;
+  max-width:1140px;margin:0 auto;padding:0 18px;
 }
-@media(min-width:700px){.cf-grid{grid-template-columns:repeat(4,1fr)}}
-.cf-card{
-  background:var(--black);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:26px 20px;
-  text-align:center;
-  transition:border-color .22s,box-shadow .22s,transform .22s var(--ease);
-}
-.cf-card:hover{border-color:var(--border-b);transform:translateY(-4px);box-shadow:0 14px 34px rgba(168,255,0,.1)}
-.cf-num{
-  width:36px;height:36px;margin:0 auto 14px;
-  display:flex;align-items:center;justify-content:center;
-  border-radius:50%;
-  background:var(--lime);color:#0A1200;
-  font-family:var(--display);font-weight:800;font-size:15px;
-}
-.cf-title{font-family:var(--display);font-weight:700;font-size:15px;color:var(--white);margin-bottom:8px}
-.cf-text{font-size:12.5px;line-height:1.5;color:var(--text2)}
-
-/* ── CONFIANCA ── */
-.confianca{padding:50px 0;background:var(--black)}
-.conf-grid{
-  display:grid;grid-template-columns:1fr;gap:16px;
-  max-width:1000px;margin:0 auto;padding:0 18px;
-}
-@media(min-width:700px){.conf-grid{grid-template-columns:repeat(3,1fr)}}
-.conf-card{
-  background:var(--surf);border:1px solid var(--border);border-radius:10px;
-  padding:24px 22px;
-}
-.conf-card svg{color:var(--lime);margin-bottom:14px}
-.conf-card p{font-size:13px;line-height:1.6;color:var(--text2)}
-.conf-card p strong{color:var(--white)}
-
-/* ── WA SECTION ── */
-.wa-section{
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  background:var(--surf);
+@media(min-width:760px){.como-track{grid-template-columns:repeat(4,1fr)}}
+.como-card{
   position:relative;overflow:hidden;
+  background:var(--surf);border:1px solid var(--border);border-radius:14px;
+  padding:30px 22px 24px;min-height:200px;
+  transition:border-color .22s,transform .22s var(--ease);
 }
-.wa-section::before{
-  content:'';position:absolute;top:0;left:0;bottom:0;width:3px;
-  background:linear-gradient(to bottom,transparent,var(--lime) 30%,var(--lime-b) 50%,var(--lime) 70%,transparent);
-  opacity:.6;
+.como-card:hover{border-color:var(--border-b);transform:translateY(-5px)}
+.como-ghost{
+  position:absolute;top:-8px;right:6px;z-index:0;
+  font-family:var(--stat);font-size:88px;line-height:1;
+  color:transparent;-webkit-text-stroke:1px rgba(168,255,0,.14);
+  user-select:none;
 }
-.wa-inner{display:grid;grid-template-columns:1fr;max-width:1024px;margin:0 auto}
-@media(min-width:700px){.wa-inner{grid-template-columns:1.25fr 1fr 1fr;align-items:stretch}}
-.wa-col{padding:26px 22px}
-.wa-col+.wa-col{border-top:1px solid var(--border)}
-@media(min-width:700px){.wa-col+.wa-col{border-top:none;border-left:1px solid var(--border)}}
-.wa-eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:10px}
-.wa-headline{font-family:var(--display);font-weight:800;font-size:clamp(19px,5.8vw,30px);line-height:1;text-transform:uppercase;color:var(--white)}
-.wa-headline em{font-style:normal;color:var(--lime)}
-.wa-subtitle{font-size:clamp(13px,3.2vw,14px);font-weight:500;line-height:1.55;color:var(--text2);margin-top:12px}
-.wa-list{list-style:none;display:flex;flex-direction:column;gap:10px}
-.wa-list li{display:flex;align-items:center;gap:9px;font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text2)}
-.wa-list-dot{flex-shrink:0;width:7px;height:7px;background:var(--lime);clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%)}
-.wa-btn-wrap{display:flex;align-items:center;justify-content:center}
-.wa-btn{
-  position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  padding:20px 18px;width:100%;
-  background:var(--lime);color:#0A1200;
-  font-family:var(--display);font-weight:800;
-  font-size:clamp(13px,4vw,16px);letter-spacing:.02em;text-align:center;
-  border-radius:5px;
-  box-shadow:0 4px 32px rgba(168,255,0,.28);
-  transition:background .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease);
+.como-icon{
+  position:relative;z-index:1;width:38px;height:38px;margin-bottom:16px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;background:var(--lime);color:#0A1200;
 }
-.wa-btn::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,0.35) 50%,transparent 75%);
-  transform:translateX(-120%);
-  animation:shine 4s ease-in-out 2.8s infinite;
-}
-.wa-btn:hover{background:var(--lime-b);transform:translateY(-2px);box-shadow:0 8px 44px rgba(168,255,0,.38)}
-.wa-btn:active{transform:translateY(0)}
+.como-icon svg{width:19px;height:19px}
+.como-card h3{position:relative;z-index:1;font-family:var(--display);font-weight:800;font-size:16px;text-transform:uppercase;margin-bottom:8px}
+.como-card p{position:relative;z-index:1;font-size:12.5px;line-height:1.55;color:var(--text2)}
 
-/* ── INSTAGRAM STRIP ── */
+/* ── DIAGONAL CTA BILLBOARD ── */
+.billboard{position:relative;padding:0}
+.billboard-shape{
+  position:relative;background:linear-gradient(135deg,var(--lime) 0%,var(--lime-b) 100%);
+  clip-path:polygon(0 6%,100% 0,100% 94%,0 100%);
+  padding:clamp(70px,10vw,110px) 18px;
+  text-align:center;color:#0A1200;
+}
+.billboard-title{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(28px,7vw,58px);line-height:.98;letter-spacing:-.01em;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.billboard-sub{font-size:clamp(14px,3.5vw,17px);font-weight:600;max-width:480px;margin:0 auto 32px;line-height:1.5;opacity:.85}
+.btn-dark{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:10px;padding:20px 34px;
+  background:#0A1200;color:var(--lime);
+  font-family:var(--display);font-weight:800;font-size:clamp(14px,3.8vw,17px);
+  letter-spacing:.02em;text-transform:uppercase;border-radius:7px;
+  box-shadow:0 10px 40px rgba(0,0,0,.35);
+  transition:transform .2s var(--ease),box-shadow .2s;
+}
+.btn-dark:hover{transform:translateY(-3px);box-shadow:0 16px 50px rgba(0,0,0,.45)}
+.btn-dark:active{transform:translateY(0)}
+
+/* ── IG STRIP ── */
 .ig-strip{
-  border-bottom:1px solid var(--border);
-  background:var(--black);
-  padding:22px 18px;
-  display:flex;flex-direction:column;align-items:center;
-  gap:12px;text-align:center;
+  background:var(--surf);padding:26px 18px;
+  display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;
 }
-@media(min-width:640px){.ig-strip{flex-direction:row;justify-content:center;padding:20px 24px}}
+@media(min-width:640px){.ig-strip{flex-direction:row;justify-content:center;padding:24px}}
 .ig-strip-text{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text2)}
 .ig-strip-text strong{color:var(--white)}
 .ig-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:11px 18px;border:1px solid var(--border-b);border-radius:5px;
-  font-family:var(--display);font-weight:700;
-  font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--white);
-  transition:background .18s var(--ease),border-color .18s var(--ease),transform .18s var(--ease);
+  display:inline-flex;align-items:center;gap:8px;padding:11px 18px;
+  border:1px solid var(--border-b);border-radius:100px;
+  font-family:var(--display);font-weight:700;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--white);transition:background .18s,border-color .18s,transform .18s;
 }
 .ig-btn svg{color:var(--lime)}
 .ig-btn:hover{background:var(--surf2);border-color:var(--lime);transform:translateY(-2px)}
 
-/* ── URGENCY BANNER ── */
-.urgency{padding:52px 0;background:var(--surf);text-align:center}
-.urgency-title{font-family:var(--display);font-weight:900;font-size:clamp(24px,6.5vw,40px);text-transform:uppercase;letter-spacing:-.01em;margin-bottom:12px}
-.urgency-title em{font-style:normal;color:var(--lime)}
-.urgency-text{max-width:520px;margin:0 auto 28px;padding:0 18px;font-size:14px;line-height:1.6;color:var(--text2)}
-
 /* ── FOOTER ── */
-.site-footer{border-top:1px solid var(--border-b)}
-.footer-cta-band{
-  position:relative;overflow:hidden;text-align:center;
-  padding:52px 24px 56px;
-  background:linear-gradient(160deg,rgba(168,255,0,0.08) 0%,transparent 55%),var(--surf);
-}
-.footer-cta-band::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse at 50% -20%,rgba(168,255,0,0.22) 0%,transparent 55%);
-}
-.footer-logo-cta{height:64px;margin:0 auto 22px;position:relative}
-.footer-cta-headline{
-  font-family:var(--display);font-weight:900;
-  font-size:clamp(22px,6.5vw,38px);letter-spacing:-.01em;text-transform:uppercase;
-  color:var(--white);margin-bottom:12px;line-height:1.05;position:relative;
-}
-.footer-cta-headline em{font-style:normal;color:var(--lime)}
-.footer-cta-sub{
-  font-size:clamp(14px,3.5vw,16px);font-weight:500;line-height:1.55;color:var(--text2);
-  max-width:420px;margin:0 auto 32px;position:relative;
-}
-.footer-ctas{position:relative;display:flex;flex-direction:column;align-items:center;gap:14px}
-.footer-cta-btn{
-  position:relative;overflow:hidden;
-  display:inline-flex;align-items:center;gap:12px;padding:22px 40px;
-  background:var(--lime);color:#0A1200;
-  font-family:var(--display);font-weight:800;
-  font-size:clamp(14px,4vw,18px);letter-spacing:.02em;text-transform:uppercase;
-  border-radius:6px;
-  box-shadow:0 6px 48px rgba(168,255,0,.35);
-  transition:background .18s var(--ease),transform .2s var(--ease),box-shadow .2s;
-}
-.footer-cta-btn::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,0.35) 50%,transparent 75%);
-  transform:translateX(-120%);
-  animation:shine 3.5s ease-in-out 1s infinite;
-}
-.footer-cta-btn:hover{background:var(--lime-b);transform:translateY(-3px);box-shadow:0 12px 60px rgba(168,255,0,.48)}
-.footer-cta-btn:active{transform:translateY(0)}
-.footer-cta-btn-secondary{
-  display:inline-flex;align-items:center;gap:10px;padding:14px 26px;
-  background:transparent;color:var(--white);
-  border:1px solid var(--border-b);
-  font-family:var(--display);font-weight:700;
-  font-size:clamp(12px,3.4vw,14px);letter-spacing:.04em;text-transform:uppercase;
-  border-radius:5px;
-  transition:background .18s var(--ease),border-color .18s var(--ease),transform .18s var(--ease);
-}
-.footer-cta-btn-secondary svg{color:var(--lime)}
-.footer-cta-btn-secondary:hover{background:var(--surf2);border-color:var(--lime);transform:translateY(-2px)}
-.footer-disclaimer{
-  max-width:680px;margin:0 auto;padding:18px 18px 4px;
-  font-size:10.5px;line-height:1.6;color:var(--text3);text-align:center;position:relative;
-}
-.footer-copyright{
-  text-align:center;padding:14px 18px;
-  font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--text3);border-top:1px solid var(--border);
-}
+.site-footer{background:var(--black);border-top:1px solid var(--border)}
+.footer-inner{max-width:1140px;margin:0 auto;padding:48px 18px 24px;display:grid;grid-template-columns:1fr;gap:32px}
+@media(min-width:760px){.footer-inner{grid-template-columns:1.3fr 1fr 1fr}}
+.footer-brand{display:flex;align-items:center;gap:12px}
+.footer-brand img{width:44px;height:44px;border-radius:50%;border:1px solid var(--border-b)}
+.footer-brand strong{font-family:var(--display);font-weight:800;font-size:15px;text-transform:uppercase;display:block}
+.footer-brand span{font-size:11px;color:var(--text3)}
+.footer-col h4{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text2);margin-bottom:12px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:12.5px;color:var(--text3);transition:color .18s}
+.footer-links a:hover{color:var(--lime)}
+.footer-disclaimer{max-width:900px;margin:0 auto;padding:20px 18px 0;font-size:10px;line-height:1.6;color:var(--text3);text-align:center;border-top:1px solid var(--border)}
+.footer-copyright{text-align:center;padding:16px 18px 28px;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--text3)}
 
 /* ── KEYFRAMES ── */
 @keyframes shine{0%{transform:translateX(-120%)}35%{transform:translateX(120%)}100%{transform:translateX(120%)}}
-@keyframes heroUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-@keyframes heroRight{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:none}}
+@keyframes dotBlink{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes cueBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@keyframes ringSpin{to{transform:rotate(360deg)}}
+@keyframes fabPulse{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.35)}}
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
@@ -516,182 +478,192 @@ a{color:inherit;text-decoration:none}
 </head>
 <body>
 
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
 <!-- ═══ TOPBAR ═══ -->
-<header class="topbar">
+<header class="topbar" id="topbar">
   <img src="images/logo.jpg" class="topbar-logo" alt="Impacto Play Prêmios"/>
   <nav class="topbar-nav" aria-label="Menu principal">
-    <a href="#premio">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
-      PRÊMIO
-    </a>
-    <a href="#como-funciona">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-      COMO FUNCIONA
-    </a>
-    <a href="https://www.instagram.com/impactoplay.premios" target="_blank" rel="noopener noreferrer" id="navIg">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      INSTAGRAM
-    </a>
+    <a href="#premio">Prêmio</a>
+    <a href="#como-funciona">Como funciona</a>
+    <a href="https://www.instagram.com/impactoplay.premios" target="_blank" rel="noopener noreferrer" id="navIg">Instagram</a>
   </nav>
+  <a href="LINK_WHATSAPP_AQUI" class="topbar-cta" id="topbarCta" target="_blank" rel="noopener noreferrer">Garantir bilhete</a>
 </header>
 
-<!-- ═══ HERO ═══ -->
-<section class="hero">
-  <div class="hero-accent" aria-hidden="true"></div>
-  <div class="hero-orb" id="heroOrb" aria-hidden="true"></div>
+<!-- ═══ STICKY WHATSAPP FAB ═══ -->
+<a href="LINK_WHATSAPP_AQUI" class="wa-fab" id="waFab" target="_blank" rel="noopener noreferrer" aria-label="Garantir bilhete pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
 
-  <div class="hero-badge-wrap">
-    <span class="hero-badge"><span class="hero-badge-dot" aria-hidden="true"></span>SORTEIO ABERTO — PARTICIPE HOJE</span>
-  </div>
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="topo">
+  <div class="hero-bg-glow" aria-hidden="true"></div>
+  <div class="hero-ghost" aria-hidden="true">IMPACTO</div>
 
   <div class="hero-inner">
     <div class="hero-content">
-      <h1 class="hero-headline">PARTICIPE<br>E <em>CONCORRA!</em></h1>
-      <p class="hero-desc">
-        <strong>3 iPhones 17 Pro Max ou R$ 20.000,00 em dinheiro via PIX.</strong>
-        Um bilhete pode mudar sua vida — o ganhador escolhe o prêmio ou o valor em PIX.
-      </p>
-      <ul class="hero-bullets">
-        <li><span class="bullet-check" aria-hidden="true"></span>Transmissão ao vivo e auditada</li>
-        <li><span class="bullet-check" aria-hidden="true"></span>Apuração pela Loteria Federal (Caixa Econômica)</li>
-        <li><span class="bullet-check" aria-hidden="true"></span>Pagamento via PIX em até 24 horas</li>
-      </ul>
+      <span class="hero-badge"><span class="hero-badge-dot" aria-hidden="true"></span>SORTEIO ABERTO — PARTICIPE HOJE</span>
+
+      <h1 class="hero-headline">UM BILHETE<br><span class="l2">PODE MUDAR<br>SUA VIDA.</span></h1>
+
+      <div class="hero-prize-strip reveal">
+        <span class="hp-num">3</span><span class="hp-label">iPhones 17<br>Pro Max</span>
+        <span class="hp-or">OU</span>
+        <span class="hp-num">20K</span><span class="hp-label">em dinheiro<br>via PIX</span>
+      </div>
+
+      <p class="hero-desc">O ganhador escolhe o prêmio ou o valor em PIX. <strong>Transmissão ao vivo, apuração auditada pela Loteria Federal.</strong></p>
+
       <div class="hero-ctas">
-        <a href="LINK_WHATSAPP_AQUI"
-           class="hero-cta" id="heroCta"
-           target="_blank" rel="noopener noreferrer"
-           aria-label="Garantir meu bilhete pelo WhatsApp">
+        <a href="LINK_WHATSAPP_AQUI" class="btn-primary" id="heroCta" target="_blank" rel="noopener noreferrer" aria-label="Garantir meu bilhete pelo WhatsApp">
           GARANTIR MEU BILHETE&nbsp;→
         </a>
-        <a href="https://www.instagram.com/impactoplay.premios"
-           class="hero-cta-secondary" id="heroCtaIg"
-           target="_blank" rel="noopener noreferrer"
-           aria-label="Seguir Impacto Play Prêmios no Instagram">
+        <a href="https://www.instagram.com/impactoplay.premios" class="btn-ghost" id="heroCtaIg" target="_blank" rel="noopener noreferrer" aria-label="Seguir Impacto Play Prêmios no Instagram">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          SEGUIR NO INSTAGRAM
+          INSTAGRAM
         </a>
+      </div>
+
+      <div class="hero-microtrust">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="9" rx="1"/><path d="M2 10h20L12 4z"/></svg>Loteria Federal</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>PIX em 24h</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Dados seguros</span>
       </div>
     </div>
 
-    <div class="hero-img-col reveal-r">
-      <img src="images/hero-banner.png" alt="Impacto Play Prêmios — Participe e concorra a 3 iPhones 17 Pro Max ou R$ 20.000 em PIX"/>
+    <div class="hero-visual">
+      <div class="hero-visual-card" id="tiltCard">
+        <div class="hero-visual-ring" aria-hidden="true"></div>
+        <img src="images/hero-banner.png" alt="Impacto Play Prêmios — Participe e concorra a 3 iPhones 17 Pro Max ou R$ 20.000 em PIX"/>
+      </div>
     </div>
   </div>
 
-  <!-- Trust bar -->
-  <div class="trust-bar" role="list">
-    <div class="trust-item reveal d1" role="listitem">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="9" rx="1"/><path d="M2 10h20L12 4z"/><path d="M6 19v-6M10 19v-6M14 19v-6M18 19v-6"/></svg>
-      <span>CAIXA ECONÔMICA<br>Apuração via Loteria Federal</span>
+  <div class="scroll-cue" aria-hidden="true">
+    ROLE
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ═══ MARQUEE ═══ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>3 iPhones 17 Pro Max</span>
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>R$ 20.000 no PIX</span>
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="9"/></svg>Sorteio ao vivo</span>
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 7v6c0 5.5 3.8 9.7 10 11 6.2-1.3 10-5.5 10-11V7z"/></svg>Loteria Federal</span>
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>3 iPhones 17 Pro Max</span>
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>R$ 20.000 no PIX</span>
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="9"/></svg>Sorteio ao vivo</span>
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 7v6c0 5.5 3.8 9.7 10 11 6.2-1.3 10-5.5 10-11V7z"/></svg>Loteria Federal</span>
+  </div>
+</div>
+
+<!-- ═══ PRÊMIO (SPOTLIGHT) ═══ -->
+<section class="spotlight" id="premio">
+  <div class="spotlight-inner">
+    <div class="reveal-l">
+      <p class="eyebrow">Prêmio do sorteio</p>
+      <h2 class="spotlight-title">3 IPHONES 17 PRO MAX<br>OU <em>R$ 20.000</em> NO PIX</h2>
+      <p class="spotlight-copy">Um bilhete pode mudar sua vida. O ganhador escolhe o prêmio ou o valor equivalente em dinheiro, pago via PIX. Transmissão ao vivo e apuração auditada pela Loteria Federal (Caixa Econômica Federal).</p>
+      <div class="stat-row">
+        <div class="stat-box"><span class="stat-num">3x</span><span class="stat-cap">iPhone 17<br>Pro Max</span></div>
+        <div class="stat-box"><span class="stat-num">20K</span><span class="stat-cap">Reais<br>via PIX</span></div>
+        <div class="stat-box"><span class="stat-num">24h</span><span class="stat-cap">Pra cair<br>o prêmio</span></div>
+      </div>
     </div>
-    <div class="trust-item reveal d2" role="listitem">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      <span>PIX EM 24H<br>Pagamento garantido</span>
-    </div>
-    <div class="trust-item reveal d3" role="listitem">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/></svg>
-      <span>SORTEIO AO VIVO<br>Transmissão transparente</span>
-    </div>
-    <div class="trust-item reveal d4" role="listitem">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      <span>DADOS SEGUROS<br>Criptografia SSL</span>
+    <div class="spotlight-media reveal-r">
+      <span class="spotlight-tag">AO VIVO</span>
+      <div class="spotlight-media-frame">
+        <img src="images/hero-banner.png" alt="Prêmios do sorteio Impacto Play — 3 iPhones 17 Pro Max ou R$ 20.000 em PIX"/>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="lime-divider" aria-hidden="true"></div>
-
-<!-- ═══ PRÊMIO ═══ -->
-<section class="premio" id="premio">
-  <p class="section-eyebrow reveal">Prêmio do sorteio</p>
-  <h2 class="section-title reveal d1">3 IPHONES 17 PRO MAX</h2>
-  <p class="premio-sub reveal d1">ou R$ 20.000,00 em dinheiro via PIX</p>
-  <p class="premio-desc reveal d2">Um bilhete pode mudar sua vida. O ganhador escolhe o prêmio ou o valor equivalente em dinheiro, pago via PIX. Transmissão ao vivo e apuração auditada pela Loteria Federal.</p>
+<!-- ═══ BENTO TRUST ═══ -->
+<section class="bento">
+  <div class="bento-head">
+    <p class="eyebrow">Por que confiar</p>
+    <h2 class="bento-title">FEITO PRA VOCÊ <em>JOGAR TRANQUILO</em></h2>
+  </div>
+  <div class="bento-grid">
+    <div class="bento-card bento-a reveal-sc">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/></svg>
+      <h3>Sorteio 100% ao vivo</h3>
+      <p>Toda a apuração é transmitida em tempo real, com resultado oficial da Loteria Federal — nada de números escondidos.</p>
+    </div>
+    <div class="bento-card bento-b reveal-sc d1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      <h3>PIX em até 24h</h3>
+      <p>Ganhou? Nossa equipe entra em contato e o pagamento cai na sua conta em até 24 horas. Sem enrolação.</p>
+    </div>
+    <div class="bento-card bento-c reveal-sc d2">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="9" rx="1"/><path d="M2 10h20L12 4z"/></svg>
+      <h3>Loteria Federal</h3>
+      <p>Apuração com base em resultado oficial e público.</p>
+    </div>
+    <div class="bento-card bento-d reveal-sc d3">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <h3>Dados seguros</h3>
+      <p>Criptografia SSL de ponta a ponta.</p>
+    </div>
+    <div class="bento-card bento-e reveal-sc d4">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <h3>Regulamento e suporte 24h</h3>
+      <p>Regulamento completo, suporte todos os dias e reembolso garantido se o sorteio for cancelado antes da data.</p>
+    </div>
+  </div>
 </section>
 
 <!-- ═══ COMO FUNCIONA ═══ -->
-<section class="como-funciona" id="como-funciona">
-  <p class="section-eyebrow reveal">É simples assim</p>
-  <h2 class="section-title reveal d1">COMO FUNCIONA</h2>
-  <div class="cf-grid">
-    <div class="cf-card reveal d1">
-      <div class="cf-num">1</div>
-      <p class="cf-title">Escolha o pacote</p>
-      <p class="cf-text">Selecione a quantidade de bilhetes que quiser — quanto mais, maiores suas chances.</p>
+<section class="como" id="como-funciona">
+  <div class="como-head">
+    <p class="eyebrow">É simples assim</p>
+    <h2 class="como-title">DO BILHETE AO <em>PIX NA CONTA</em></h2>
+  </div>
+  <div class="como-track">
+    <div class="como-card reveal d1">
+      <span class="como-ghost" aria-hidden="true">01</span>
+      <div class="como-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg></div>
+      <h3>Escolha o pacote</h3>
+      <p>Selecione a quantidade de bilhetes que quiser — quanto mais, maiores suas chances.</p>
     </div>
-    <div class="cf-card reveal d2">
-      <div class="cf-num">2</div>
-      <p class="cf-title">Pague com PIX</p>
-      <p class="cf-text">Pagamento instantâneo e seguro. Seus bilhetes são confirmados em segundos.</p>
+    <div class="como-card reveal d2">
+      <span class="como-ghost" aria-hidden="true">02</span>
+      <div class="como-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <h3>Pague com PIX</h3>
+      <p>Pagamento instantâneo e seguro. Seus bilhetes são confirmados em segundos.</p>
     </div>
-    <div class="cf-card reveal d3">
-      <div class="cf-num">3</div>
-      <p class="cf-title">Assista ao vivo</p>
-      <p class="cf-text">Acompanhe a apuração com resultados oficiais da Caixa Econômica Federal (Loteria Federal).</p>
+    <div class="como-card reveal d3">
+      <span class="como-ghost" aria-hidden="true">03</span>
+      <div class="como-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/></svg></div>
+      <h3>Assista ao vivo</h3>
+      <p>Acompanhe a apuração com resultados oficiais da Loteria Federal.</p>
     </div>
-    <div class="cf-card reveal d4">
-      <div class="cf-num">4</div>
-      <p class="cf-title">Receba o prêmio</p>
-      <p class="cf-text">Ganhou? O PIX cai na sua conta em até 24 horas. Sem burocracia.</p>
+    <div class="como-card reveal d4">
+      <span class="como-ghost" aria-hidden="true">04</span>
+      <div class="como-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h9l5-5"/><path d="m14 20 3-3 3 3"/></svg></div>
+      <h3>Receba o prêmio</h3>
+      <p>Ganhou? O PIX cai na sua conta em até 24 horas. Sem burocracia.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══ CONFIANÇA ═══ -->
-<section class="confianca">
-  <p class="section-eyebrow reveal">Nossa promessa</p>
-  <h2 class="section-title reveal d1">COMO CONDUZIMOS NOSSOS SORTEIOS</h2>
-  <div class="conf-grid" style="margin-top:30px">
-    <div class="conf-card reveal-l">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/></svg>
-      <p><strong>Apuração do prêmio principal</strong> com resultados da Caixa Econômica Federal (Loteria Federal), transmitida ao vivo no dia do sorteio.</p>
-    </div>
-    <div class="conf-card reveal d1">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      <p><strong>Prêmios pagos via PIX</strong> em até 24 horas após a apuração, com contato direto da nossa equipe aos ganhadores.</p>
-    </div>
-    <div class="conf-card reveal-r">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      <p><strong>Regulamento completo, suporte 24h</strong> e política de reembolso se o sorteio for cancelado antes da data.</p>
-    </div>
+<!-- ═══ BILLBOARD CTA ═══ -->
+<section class="billboard">
+  <div class="billboard-shape reveal-sc">
+    <h2 class="billboard-title">NÃO DEIXE SUA<br>SORTE ESCAPAR.</h2>
+    <p class="billboard-sub">Bilhetes se esgotando rapidamente. Cada segundo que passa é uma chance a menos — garanta o seu agora.</p>
+    <a href="LINK_WHATSAPP_AQUI" class="btn-dark" id="ctaBillboard" target="_blank" rel="noopener noreferrer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      GARANTIR MEU BILHETE AGORA
+    </a>
   </div>
 </section>
 
-<div class="lime-divider" aria-hidden="true"></div>
-
-<!-- ═══ WHATSAPP (CTA PRINCIPAL) ═══ -->
-<section class="wa-section" id="participar">
-  <div class="wa-inner">
-    <div class="wa-col reveal-l">
-      <p class="wa-eyebrow">Sorteio Impacto Play</p>
-      <h2 class="wa-headline">GARANTA SEU BILHETE E <em>CONCORRA AGORA</em></h2>
-      <p class="wa-subtitle">Fale direto com a gente pelo WhatsApp e garanta seus números antes que o sorteio feche.</p>
-    </div>
-    <div class="wa-col reveal d1">
-      <ul class="wa-list">
-        <li><span class="wa-list-dot" aria-hidden="true"></span>3 IPHONES 17 PRO MAX OU R$ 20.000 NO PIX</li>
-        <li><span class="wa-list-dot" aria-hidden="true"></span>PAGAMENTO INSTANTÂNEO VIA PIX</li>
-        <li><span class="wa-list-dot" aria-hidden="true"></span>SORTEIO AO VIVO E AUDITADO</li>
-        <li><span class="wa-list-dot" aria-hidden="true"></span>SUPORTE 24H</li>
-      </ul>
-    </div>
-    <div class="wa-col wa-btn-wrap reveal-r">
-      <a
-        href="LINK_WHATSAPP_AQUI"
-        class="wa-btn"
-        id="ctaWa"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Garantir meu bilhete pelo WhatsApp"
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        GARANTIR MEU BILHETE&nbsp;→
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ INSTAGRAM (CTA SECUNDÁRIO) ═══ -->
+<!-- ═══ INSTAGRAM STRIP ═══ -->
 <div class="ig-strip reveal">
   <p class="ig-strip-text">Acompanhe os sorteios e ganhadores no <strong>Instagram</strong></p>
   <a href="https://www.instagram.com/impactoplay.premios" class="ig-btn" id="ctaIg" target="_blank" rel="noopener noreferrer" aria-label="Seguir Impacto Play Prêmios no Instagram">
@@ -700,44 +672,30 @@ a{color:inherit;text-decoration:none}
   </a>
 </div>
 
-<div class="lime-divider" aria-hidden="true"></div>
-
-<!-- ═══ URGÊNCIA ═══ -->
-<section class="urgency">
-  <h2 class="urgency-title reveal">NÃO DEIXE SUA <em>SORTE</em> ESCAPAR</h2>
-  <p class="urgency-text reveal d1">Bilhetes se esgotando rapidamente. Cada segundo que passa é uma chance a menos. Garanta os seus agora.</p>
-  <a href="LINK_WHATSAPP_AQUI" class="hero-cta reveal d2" id="ctaUrgency" target="_blank" rel="noopener noreferrer" aria-label="Garantir meu bilhete agora pelo WhatsApp" style="display:inline-flex">
-    GARANTIR MEU BILHETE AGORA&nbsp;→
-  </a>
-</section>
-
 <!-- ═══ FOOTER ═══ -->
 <footer class="site-footer">
-  <div class="footer-cta-band reveal">
-    <img src="images/logo-full.jpg" class="footer-logo-cta" alt="Impacto Play Prêmios"/>
-    <h2 class="footer-cta-headline">PRONTO PRA <em>CONCORRER?</em></h2>
-    <p class="footer-cta-sub">Garanta seu bilhete agora e concorra a 3 iPhones 17 Pro Max ou R$ 20.000,00 em PIX.</p>
-    <div class="footer-ctas">
-      <a
-        href="LINK_WHATSAPP_AQUI"
-        class="footer-cta-btn"
-        id="footerWaBtn"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        GARANTIR MEU BILHETE&nbsp;→
-      </a>
-      <a
-        href="https://www.instagram.com/impactoplay.premios"
-        class="footer-cta-btn-secondary"
-        id="footerIgBtn"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        SEGUIR @IMPACTOPLAY.PREMIOS&nbsp;→
-      </a>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo.jpg" alt="Impacto Play Prêmios"/>
+      <div>
+        <strong>Impacto Play</strong>
+        <span>Prêmios que mudam histórias.</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navegação</h4>
+      <ul class="footer-links">
+        <li><a href="#premio">Prêmio do sorteio</a></li>
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#topo">Voltar ao topo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Atendimento</h4>
+      <ul class="footer-links">
+        <li><a href="LINK_WHATSAPP_AQUI" id="footerWaLink" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/impactoplay.premios" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+      </ul>
     </div>
   </div>
   <p class="footer-disclaimer">Ação promocional conduzida pela Impacto Play Prêmios. Apuração do resultado com base nos números da Loteria Federal (Caixa Econômica Federal). Participação sujeita a regulamento próprio.</p>
@@ -755,7 +713,6 @@ function sendCapi(eId){
     body:JSON.stringify({event_id:eId,url:location.href,fbc:gc('_fbc'),fbp:gc('_fbp')})
   }).catch(function(){});
 }
-
 function trackCta(id){
   var el=document.getElementById(id);
   if(!el) return;
@@ -767,42 +724,49 @@ function trackCta(id){
     sendCapi(eId);
   });
 }
-
-trackCta('heroCta');
-trackCta('ctaWa');
-trackCta('footerWaBtn');
-trackCta('ctaUrgency');
-trackCta('heroCtaIg');
-trackCta('ctaIg');
-trackCta('footerIgBtn');
-trackCta('navIg');
+['heroCta','ctaBillboard','footerWaLink','topbarCta','waFab','heroCtaIg','ctaIg','navIg'].forEach(trackCta);
 
 /* ── SCROLL REVEAL ── */
 if('IntersectionObserver' in window){
   var obs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if(e.isIntersecting){
-        e.target.classList.add('visible');
-        obs.unobserve(e.target);
-      }
+      if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
     });
   },{threshold:0.1,rootMargin:'0px 0px -20px 0px'});
-
-  document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(function(el){
-    obs.observe(el);
-  });
-} else {
-  document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(function(el){
-    el.classList.add('visible');
-  });
+  document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.reveal-sc').forEach(function(el){obs.observe(el)});
+}else{
+  document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.reveal-sc').forEach(function(el){el.classList.add('visible')});
 }
 
-/* ── PARALLAX ORB ── */
-var orb=document.getElementById('heroOrb');
-if(orb && window.matchMedia('(prefers-reduced-motion: no-preference)').matches){
-  window.addEventListener('scroll',function(){
-    orb.style.transform='translateY('+Math.round(window.scrollY*0.22)+'px)';
+/* ── TOPBAR SCROLLED STATE + STICKY FAB ── */
+var topbar=document.getElementById('topbar');
+var waFab=document.getElementById('waFab');
+var heroSection=document.getElementById('topo');
+window.addEventListener('scroll',function(){
+  var y=window.scrollY;
+  if(topbar) topbar.classList.toggle('scrolled', y>10);
+  if(waFab) waFab.classList.toggle('show', y > (heroSection ? heroSection.offsetHeight*0.6 : 400));
+},{passive:true});
+
+/* ── CURSOR GLOW (desktop) ── */
+var glow=document.getElementById('cursorGlow');
+if(glow && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+  document.addEventListener('mousemove',function(e){
+    glow.style.setProperty('--mx', e.clientX+'px');
+    glow.style.setProperty('--my', e.clientY+'px');
   },{passive:true});
+}
+
+/* ── TILT CARD (desktop) ── */
+var tilt=document.getElementById('tiltCard');
+if(tilt && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+  tilt.addEventListener('mousemove',function(e){
+    var r=tilt.getBoundingClientRect();
+    var px=(e.clientX-r.left)/r.width-0.5;
+    var py=(e.clientY-r.top)/r.height-0.5;
+    tilt.style.transform='rotateY('+(px*10)+'deg) rotateX('+(-py*10)+'deg)';
+  });
+  tilt.addEventListener('mouseleave',function(){tilt.style.transform='rotateY(0) rotateX(0)'});
 }
 
 })();
