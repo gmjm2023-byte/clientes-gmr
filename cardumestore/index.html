@@ -41,11 +41,15 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/><
 <meta property="og:site_name" content="Cardume Store"/>
 <meta property="og:title" content="Cardume Store | Artigos de Pesca Premium"/>
 <meta property="og:description" content="Equipamentos de pesca premium selecionados a dedo. Confira o catálogo completo no Instagram."/>
+<meta property="og:image" content="images/logo-full.jpg"/>
+<meta property="og:image:width" content="680"/>
+<meta property="og:image:height" content="485"/>
 
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary"/>
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Cardume Store | Artigos de Pesca Premium"/>
 <meta name="twitter:description" content="Equipamentos de pesca premium selecionados a dedo."/>
+<meta name="twitter:image" content="images/logo-full.jpg"/>
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
@@ -55,6 +59,8 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/><
   "name":"Cardume Store",
   "description":"Loja de artigos de pesca premium: carretilhas, varas, iscas, linhas e vestuário.",
   "url":"https://pages.gmrmidias.com/cardumestore/",
+  "logo":"images/logo-icon.jpg",
+  "image":"images/logo-full.jpg",
   "sameAs":["https://www.instagram.com/cardume.store"]
 }
 </script>
@@ -109,7 +115,7 @@ a{color:inherit;text-decoration:none}
   padding:0 18px;gap:10px;
 }
 .topbar-word{display:flex;align-items:baseline;gap:5px}
-.topbar-word svg{width:24px;height:12px;color:var(--navy);flex-shrink:0}
+.topbar-word img{width:30px;height:auto;flex-shrink:0}
 .topbar-word b{font-family:var(--display);font-weight:900;font-size:15px;letter-spacing:-.01em;color:var(--navy)}
 .topbar-word span{font-family:var(--display);font-weight:600;font-size:9px;letter-spacing:.14em;color:var(--red)}
 .topbar-cta{
@@ -142,30 +148,8 @@ a{color:inherit;text-decoration:none}
 }
 .hero-inner{position:relative;z-index:2;max-width:640px;margin:0 auto}
 
-.brand-mark{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:26px}
-.brand-fish{width:96px;height:48px;color:var(--navy)}
-.brand-word{display:flex;flex-direction:column;align-items:center;gap:2px}
-.brand-word .line1{
-  display:flex;align-items:baseline;gap:10px;
-}
-.brand-word b{
-  font-family:var(--display);font-weight:900;
-  font-size:clamp(32px,8vw,48px);letter-spacing:-.01em;line-height:1;
-  color:var(--navy);
-}
-.brand-word .store{
-  font-family:var(--display);font-weight:600;
-  font-size:clamp(15px,4vw,20px);letter-spacing:.4em;
-  color:var(--red);padding-left:.4em;
-}
-.brand-word .sub1{
-  margin-top:6px;font-family:var(--display);font-weight:700;
-  font-size:clamp(11px,3vw,13px);letter-spacing:.2em;color:var(--navy);
-}
-.brand-word .sub2{
-  margin-top:2px;font-family:var(--display);font-weight:700;
-  font-size:10px;letter-spacing:.35em;color:var(--red);
-}
+.brand-mark{display:flex;flex-direction:column;align-items:center;margin-bottom:22px}
+.brand-logo{width:min(320px,80vw);height:auto}
 
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;padding:7px 15px;
@@ -243,7 +227,7 @@ a{color:inherit;text-decoration:none}
 
 /* ── CTA BAND ── */
 .cta-band{padding:60px 18px;text-align:center;position:relative;z-index:2}
-.cta-band-fish{width:60px;height:30px;color:var(--red);margin:0 auto 18px}
+.cta-band-fish{width:90px;height:auto;margin:0 auto 18px}
 .cta-band-title{
   font-family:var(--display);font-weight:800;
   font-size:clamp(22px,6vw,34px);letter-spacing:-.005em;line-height:1.1;
@@ -279,11 +263,7 @@ a{color:inherit;text-decoration:none}
 <!-- ═══ TOPBAR ═══ -->
 <header class="topbar">
   <div class="topbar-word">
-    <svg viewBox="0 0 100 50" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M6 25Q34 6 66 25Q34 44 6 25Z"/>
-      <path d="M64 25 92 8v34Z"/>
-      <circle cx="19" cy="21" r="2.4" fill="currentColor" stroke="none"/>
-    </svg>
+    <img src="images/logo-icon.jpg" alt="Cardume Store"/>
     <b>CARDUME</b><span>STORE</span>
   </div>
   <a href="https://www.instagram.com/cardume.store?utm_source=qr" class="topbar-cta" id="topbarCta" target="_blank" rel="noopener noreferrer">
@@ -296,16 +276,7 @@ a{color:inherit;text-decoration:none}
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="brand-mark reveal">
-      <svg class="brand-fish" viewBox="0 0 100 50" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M6 25Q34 6 66 25Q34 44 6 25Z"/>
-        <path d="M64 25 92 8v34Z"/>
-        <circle cx="19" cy="21" r="2.4" fill="currentColor" stroke="none"/>
-      </svg>
-      <div class="brand-word">
-        <div class="line1"><b>CARDUME</b><span class="store">STORE</span></div>
-        <span class="sub1">ARTIGOS DE PESCA</span>
-        <span class="sub2">PREMIUM</span>
-      </div>
+      <img src="images/logo-full.jpg" class="brand-logo" alt="Cardume Store — Artigos de Pesca Premium"/>
     </div>
 
     <span class="hero-eyebrow reveal d1">Seleção premium</span>
@@ -378,11 +349,7 @@ a{color:inherit;text-decoration:none}
 
 <!-- ═══ CTA FINAL ═══ -->
 <section class="cta-band">
-  <svg class="cta-band-fish reveal" viewBox="0 0 100 50" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M6 25Q34 6 66 25Q34 44 6 25Z"/>
-    <path d="M64 25 92 8v34Z"/>
-    <circle cx="19" cy="21" r="2.4" fill="currentColor" stroke="none"/>
-  </svg>
+  <img src="images/logo-icon.jpg" class="cta-band-fish reveal" alt=""/>
   <h2 class="cta-band-title reveal d1">Confira o <em>catálogo completo</em><br>no Instagram</h2>
   <p class="cta-band-sub reveal d2">Siga a Cardume Store e acompanhe os lançamentos, promoções e novidades em artigos de pesca premium.</p>
   <a href="https://www.instagram.com/cardume.store?utm_source=qr" class="btn-primary reveal d3" id="ctaBand" target="_blank" rel="noopener noreferrer" aria-label="Seguir Cardume Store no Instagram">
