@@ -256,9 +256,10 @@ a{color:inherit;text-decoration:none}
 .reels{padding:44px 18px;background:var(--cream-2);position:relative;z-index:2}
 .reels-grid{
   display:grid;grid-template-columns:1fr;gap:16px;
-  max-width:900px;margin:0 auto;
+  max-width:1080px;margin:0 auto;
 }
-@media(min-width:640px){.reels-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:560px){.reels-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.reels-grid{grid-template-columns:repeat(4,1fr)}}
 .reel-card{
   border-radius:14px;overflow:hidden;background:var(--cream);
   border:1px solid var(--border);
@@ -371,6 +372,10 @@ a{color:inherit;text-decoration:none}
     <div class="reel-card reveal-r">
       <img src="images/reel-curado.jpg" alt="Carretilha Shimano Curado 150XG"/>
       <div class="reel-card-label"><span>Shimano Curado 150XG</span></div>
+    </div>
+    <div class="reel-card reveal d2">
+      <img src="images/reel-zillion.jpg" alt="Carretilha Daiwa Zillion SV TW G 100XHL"/>
+      <div class="reel-card-label"><span>Daiwa Zillion SV TW G 100XHL</span></div>
     </div>
   </div>
 </section>
