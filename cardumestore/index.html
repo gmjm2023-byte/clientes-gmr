@@ -61,7 +61,7 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/><
   "url":"https://pages.gmrmidias.com/cardumestore/",
   "logo":"images/logo-icon.jpg",
   "image":"images/logo-full.jpg",
-  "sameAs":["https://www.instagram.com/cardume.store"]
+  "sameAs":["https://www.instagram.com/cardume.store","https://chat.whatsapp.com/CH5EeAh3v9F7WHK2MNmik4"]
 }
 </script>
 
@@ -77,6 +77,8 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/><
   --navy-3:   rgba(20,39,63,.44);
   --red:      #8E1E1E;
   --red-b:    #B02929;
+  --green:    #25D366;
+  --green-b:  #33E67A;
   --cream:    #E5E0D3;
   --cream-2:  #EFEAE0;
   --border:   rgba(20,39,63,.12);
@@ -190,6 +192,40 @@ a{color:inherit;text-decoration:none}
 .btn-primary:hover{background:var(--red);transform:translateY(-3px);box-shadow:0 12px 36px rgba(142,30,30,.32)}
 .btn-primary:active{transform:translateY(0)}
 
+.btn-whatsapp{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:9px;padding:17px 28px;
+  background:var(--green);color:#06210F;
+  font-family:var(--display);font-weight:800;font-size:clamp(13px,3.8vw,15.5px);
+  letter-spacing:.03em;text-transform:uppercase;border-radius:100px;
+  box-shadow:0 8px 34px rgba(37,211,102,.4);
+  transition:background .2s var(--ease),transform .2s var(--ease),box-shadow .2s;
+}
+.btn-whatsapp::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,.35) 50%,transparent 75%);
+  transform:translateX(-120%);animation:shine 3.6s ease-in-out 1s infinite;
+}
+.btn-whatsapp:hover{background:var(--green-b);transform:translateY(-3px);box-shadow:0 14px 44px rgba(51,230,122,.5)}
+.btn-whatsapp:active{transform:translateY(0)}
+
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:9px;padding:15px 24px;
+  background:transparent;color:var(--cream-2);
+  border:1px solid rgba(239,234,224,.28);border-radius:100px;
+  font-family:var(--display);font-weight:700;font-size:clamp(11.5px,3.4vw,13.5px);
+  letter-spacing:.04em;text-transform:uppercase;
+  transition:background .2s,border-color .2s,transform .2s var(--ease);
+}
+.btn-ghost:hover{background:rgba(239,234,224,.08);border-color:rgba(239,234,224,.5);transform:translateY(-2px)}
+
+.hero-badge-exclusive{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;padding:8px 18px;
+  border:1px solid rgba(37,211,102,.4);border-radius:100px;background:rgba(37,211,102,.1);
+  font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--green-b);
+}
+.hero-badge-exclusive-dot{width:6px;height:6px;border-radius:50%;background:var(--green-b);box-shadow:0 0 10px var(--green-b);flex-shrink:0}
+
 /* ── CATEGORIES ── */
 .categories{padding:44px 18px;position:relative;z-index:2}
 .section-eyebrow{
@@ -215,6 +251,23 @@ a{color:inherit;text-decoration:none}
 .cat-chip:hover{border-color:var(--border-r);transform:translateY(-4px);box-shadow:0 14px 30px rgba(20,39,63,.08)}
 .cat-chip svg{width:26px;height:26px;color:var(--red)}
 .cat-chip span{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.03em;text-transform:uppercase;color:var(--navy)}
+
+/* ── CARRETILHAS (VITRINE) ── */
+.reels{padding:44px 18px;background:var(--cream-2);position:relative;z-index:2}
+.reels-grid{
+  display:grid;grid-template-columns:1fr;gap:16px;
+  max-width:900px;margin:0 auto;
+}
+@media(min-width:640px){.reels-grid{grid-template-columns:repeat(3,1fr)}}
+.reel-card{
+  border-radius:14px;overflow:hidden;background:var(--cream);
+  border:1px solid var(--border);
+  transition:border-color .2s,transform .2s var(--ease),box-shadow .2s;
+}
+.reel-card:hover{border-color:var(--border-r);transform:translateY(-4px);box-shadow:0 16px 34px rgba(20,39,63,.12)}
+.reel-card img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.reel-card-label{padding:12px 14px;text-align:center}
+.reel-card-label span{font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--navy)}
 
 /* ── VALUES ── */
 .values{padding:44px 18px;background:var(--navy);position:relative;z-index:2}
@@ -272,8 +325,8 @@ a{color:inherit;text-decoration:none}
     <img src="images/logo-icon.jpg" alt="Cardume Store"/>
     <b>CARDUME</b><span>STORE</span>
   </div>
-  <a href="https://www.instagram.com/cardume.store?utm_source=qr" class="topbar-cta" id="topbarCta" target="_blank" rel="noopener noreferrer">
-    Ver no Instagram
+  <a href="https://chat.whatsapp.com/CH5EeAh3v9F7WHK2MNmik4?s=cl&amp;p=i&amp;ilr=2" class="topbar-cta" id="topbarCta" target="_blank" rel="noopener noreferrer">
+    Entrar no Grupo
   </a>
 </header>
 
@@ -285,15 +338,39 @@ a{color:inherit;text-decoration:none}
       <img src="images/logo-full.jpg" class="brand-logo" alt="Cardume Store — Artigos de Pesca Premium"/>
     </div>
 
-    <span class="hero-eyebrow reveal d1">Seleção premium</span>
-    <h1 class="hero-headline reveal d1">Equipamentos pra quem <em>vive a pescaria</em> de verdade.</h1>
-    <p class="hero-desc reveal d2">Carretilhas, varas, iscas e acessórios selecionados a dedo pra quem não abre mão de qualidade em cada arremesso.</p>
+    <span class="hero-badge-exclusive reveal d1"><span class="hero-badge-exclusive-dot" aria-hidden="true"></span>ACESSO EXCLUSIVO</span>
+    <h1 class="hero-headline reveal d1">Faça parte do <em>grupo VIP</em> Cardume Store.</h1>
+    <p class="hero-desc reveal d2">Lançamentos, ofertas e condições exclusivas em carretilhas, varas e iscas premium — direto no grupo do WhatsApp.</p>
 
     <div class="hero-ctas reveal d3">
-      <a href="https://www.instagram.com/cardume.store?utm_source=qr" class="btn-primary" id="heroCta" target="_blank" rel="noopener noreferrer" aria-label="Ver catálogo da Cardume Store no Instagram">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        VER CATÁLOGO NO INSTAGRAM&nbsp;→
+      <a href="https://chat.whatsapp.com/CH5EeAh3v9F7WHK2MNmik4?s=cl&amp;p=i&amp;ilr=2" class="btn-whatsapp" id="heroCtaWa" target="_blank" rel="noopener noreferrer" aria-label="Acessar o grupo VIP da Cardume Store no WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        ACESSAR O GRUPO&nbsp;→
       </a>
+      <a href="https://www.instagram.com/cardume.store?utm_source=qr" class="btn-ghost" id="heroCtaIg" target="_blank" rel="noopener noreferrer" aria-label="Ver catálogo da Cardume Store no Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        SEGUIR NO INSTAGRAM
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CARRETILHAS (VITRINE) ═══ -->
+<section class="reels">
+  <p class="section-eyebrow reveal">Direto da loja</p>
+  <h2 class="section-title reveal d1">Carretilhas em destaque</h2>
+  <div class="reels-grid">
+    <div class="reel-card reveal-l">
+      <img src="images/reel-tatula.jpg" alt="Carretilha Daiwa Tatula SV TW 100XH L"/>
+      <div class="reel-card-label"><span>Daiwa Tatula SV TW 100XH</span></div>
+    </div>
+    <div class="reel-card reveal d1">
+      <img src="images/reel-metanium.jpg" alt="Carretilha Shimano Metanium 101XG"/>
+      <div class="reel-card-label"><span>Shimano Metanium 101XG</span></div>
+    </div>
+    <div class="reel-card reveal-r">
+      <img src="images/reel-curado.jpg" alt="Carretilha Shimano Curado 150XG"/>
+      <div class="reel-card-label"><span>Shimano Curado 150XG</span></div>
     </div>
   </div>
 </section>
@@ -356,12 +433,18 @@ a{color:inherit;text-decoration:none}
 <!-- ═══ CTA FINAL ═══ -->
 <section class="cta-band">
   <img src="images/logo-icon.jpg" class="cta-band-fish reveal" alt=""/>
-  <h2 class="cta-band-title reveal d1">Confira o <em>catálogo completo</em><br>no Instagram</h2>
-  <p class="cta-band-sub reveal d2">Siga a Cardume Store e acompanhe os lançamentos, promoções e novidades em artigos de pesca premium.</p>
-  <a href="https://www.instagram.com/cardume.store?utm_source=qr" class="btn-primary reveal d3" id="ctaBand" target="_blank" rel="noopener noreferrer" aria-label="Seguir Cardume Store no Instagram">
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-    SEGUIR @CARDUME.STORE&nbsp;→
-  </a>
+  <h2 class="cta-band-title reveal d1">Pronto pra entrar no <em>grupo VIP?</em></h2>
+  <p class="cta-band-sub reveal d2">Acesso exclusivo a lançamentos, ofertas e condições especiais em carretilhas, varas e iscas premium.</p>
+  <div class="hero-ctas reveal d3">
+    <a href="https://chat.whatsapp.com/CH5EeAh3v9F7WHK2MNmik4?s=cl&amp;p=i&amp;ilr=2" class="btn-whatsapp" id="ctaBandWa" target="_blank" rel="noopener noreferrer" aria-label="Acessar o grupo VIP da Cardume Store no WhatsApp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      ACESSAR O GRUPO&nbsp;→
+    </a>
+    <a href="https://www.instagram.com/cardume.store?utm_source=qr" class="btn-primary" id="ctaBand" target="_blank" rel="noopener noreferrer" aria-label="Seguir Cardume Store no Instagram">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      SEGUIR @CARDUME.STORE&nbsp;→
+    </a>
+  </div>
 </section>
 
 <!-- ═══ FOOTER ═══ -->
@@ -395,7 +478,7 @@ function trackCta(id){
     sendCapi(eId);
   });
 }
-['heroCta','ctaBand','footerIg','topbarCta'].forEach(trackCta);
+['heroCtaWa','heroCtaIg','ctaBandWa','ctaBand','footerIg','topbarCta'].forEach(trackCta);
 
 /* ── SCROLL REVEAL ── */
 if('IntersectionObserver' in window){
