@@ -41,11 +41,15 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/><
 <meta property="og:site_name" content="Joneka Loterias"/>
 <meta property="og:title" content="Joneka Loterias | Rifa de Dezena — Apenas 100 Números"/>
 <meta property="og:description" content="Só ganha quem joga! Apenas 100 números disponíveis. Resultado todos os dias. Entre no grupo agora."/>
+<meta property="og:image" content="images/logo.jpg"/>
+<meta property="og:image:width" content="900"/>
+<meta property="og:image:height" content="534"/>
 
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary"/>
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Joneka Loterias | Rifa de Dezena — Apenas 100 Números"/>
 <meta name="twitter:description" content="Só ganha quem joga! Apenas 100 números disponíveis."/>
+<meta name="twitter:image" content="images/logo.jpg"/>
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
@@ -55,6 +59,8 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/><
   "name":"Joneka Loterias",
   "description":"Rifa de dezena com apenas 100 números. Resultado todos os dias pela PT, PTN, Corujinha e Federal.",
   "url":"https://pages.gmrmidias.com/jonekaloterias/",
+  "logo":"images/logo.jpg",
+  "image":"images/logo.jpg",
   "sameAs":["https://chat.whatsapp.com/JwnPYebhxY0C58lVJSdLV8","https://www.instagram.com/jonekaloterias"]
 }
 </script>
@@ -106,9 +112,8 @@ a{color:inherit;text-decoration:none}
   display:flex;align-items:center;
   padding:0 14px;gap:10px;
 }
-.topbar-word{display:flex;align-items:baseline;gap:5px;flex-shrink:0}
-.topbar-word b{font-family:var(--display);font-size:16px;letter-spacing:.01em;color:var(--gold)}
-.topbar-word span{font-family:var(--body);font-weight:700;font-size:9px;letter-spacing:.16em;color:var(--text3);text-transform:uppercase}
+.topbar-word{display:flex;align-items:center;flex-shrink:0}
+.topbar-word img{height:34px;width:auto;object-fit:contain}
 .topbar-nav{
   display:flex;align-items:center;
   overflow-x:auto;-webkit-overflow-scrolling:touch;
@@ -159,6 +164,9 @@ a{color:inherit;text-decoration:none}
   position:relative;z-index:2;
   max-width:760px;margin:0 auto;
   padding:44px 18px 0;text-align:center;
+}
+.hero-brand-logo{
+  width:min(380px,80vw);height:auto;margin:0 auto 18px;
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;padding:8px 16px;
@@ -413,6 +421,24 @@ a{color:inherit;text-decoration:none}
 .cf-title{font-family:var(--display);font-size:16px;color:var(--text);margin-bottom:8px;text-transform:uppercase}
 .cf-text{font-size:12.5px;line-height:1.55;color:var(--text2)}
 
+/* ── GANHADORES ── */
+.winners{padding:50px 0 44px;background:var(--surf)}
+.winners-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+  max-width:1100px;margin:0 auto;padding:0 18px;
+}
+@media(min-width:640px){.winners-grid{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:900px){.winners-grid{grid-template-columns:repeat(5,1fr)}}
+.winner-card{
+  position:relative;border-radius:10px;overflow:hidden;
+  background:#000;border:1px solid var(--border);
+  transition:border-color .22s,transform .22s var(--ease),box-shadow .22s;
+}
+.winner-card:hover{border-color:var(--border-r);transform:translateY(-4px);box-shadow:0 14px 30px rgba(245,197,24,.14)}
+.winner-card video{
+  width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:#000;
+}
+
 /* ── FOOTER ── */
 .site-footer{border-top:1px solid var(--border-r)}
 .footer-cta-band{
@@ -425,9 +451,8 @@ a{color:inherit;text-decoration:none}
   content:'';position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(ellipse at 50% -20%,rgba(232,38,42,0.2) 0%,transparent 55%);
 }
-.footer-word{
-  font-family:var(--display);font-size:22px;color:var(--gold);
-  margin-bottom:8px;letter-spacing:.01em;
+.footer-logo{
+  width:min(280px,70vw);height:auto;margin:0 auto 12px;position:relative;
 }
 .footer-tagline{
   font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
@@ -518,12 +543,16 @@ a{color:inherit;text-decoration:none}
 <!-- ═══ TOPBAR ═══ -->
 <header class="topbar">
   <div class="topbar-word">
-    <b>JONEKA</b><span>LOTERIAS</span>
+    <img src="images/logo.jpg" alt="Joneka Loterias"/>
   </div>
   <nav class="topbar-nav" aria-label="Menu principal">
     <a href="#resultados">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="9" rx="1"/><path d="M2 10h20L12 4z"/></svg>
       RESULTADOS
+    </a>
+    <a href="#ganhadores">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      GANHADORES
     </a>
     <a href="#grupo">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -542,6 +571,7 @@ a{color:inherit;text-decoration:none}
   <div class="hero-orb" id="heroOrb" aria-hidden="true"></div>
 
   <div class="hero-inner">
+    <img src="images/logo.jpg" class="hero-brand-logo reveal" alt="Joneka Loterias"/>
     <span class="hero-badge reveal"><span class="hero-badge-dot" aria-hidden="true"></span>RESULTADO TODOS OS DIAS</span>
 
     <h1 class="hero-headline reveal d1">
@@ -653,10 +683,37 @@ a{color:inherit;text-decoration:none}
 
 <div class="gold-divider" aria-hidden="true"></div>
 
+<!-- ═══ GANHADORES ═══ -->
+<section class="winners" id="ganhadores">
+  <p class="section-eyebrow reveal">Prova real</p>
+  <h2 class="section-title reveal d1">
+    <span class="section-title-line" aria-hidden="true"></span>
+    NOSSOS GANHADORES
+    <span class="section-title-line" aria-hidden="true"></span>
+  </h2>
+  <div class="winners-grid">
+    <div class="winner-card reveal d1"><video controls preload="metadata" playsinline poster="images/ganhador-1-poster.jpg"><source src="videos/ganhador-1.mp4" type="video/mp4"></video></div>
+    <div class="winner-card reveal d2"><video controls preload="metadata" playsinline poster="images/ganhador-2-poster.jpg"><source src="videos/ganhador-2.mp4" type="video/mp4"></video></div>
+    <div class="winner-card reveal d3"><video controls preload="metadata" playsinline poster="images/ganhador-3-poster.jpg"><source src="videos/ganhador-3.mp4" type="video/mp4"></video></div>
+    <div class="winner-card reveal d4"><video controls preload="metadata" playsinline poster="images/ganhador-4-poster.jpg"><source src="videos/ganhador-4.mp4" type="video/mp4"></video></div>
+    <div class="winner-card reveal d1"><video controls preload="metadata" playsinline poster="images/ganhador-5-poster.jpg"><source src="videos/ganhador-5.mp4" type="video/mp4"></video></div>
+    <div class="winner-card reveal d2"><video controls preload="metadata" playsinline poster="images/ganhador-6-poster.jpg"><source src="videos/ganhador-6.mp4" type="video/mp4"></video></div>
+    <div class="winner-card reveal d3"><video controls preload="metadata" playsinline poster="images/ganhador-7-poster.jpg"><source src="videos/ganhador-7.mp4" type="video/mp4"></video></div>
+    <div class="winner-card reveal d4"><video controls preload="metadata" playsinline poster="images/ganhador-8-poster.jpg"><source src="videos/ganhador-8.mp4" type="video/mp4"></video></div>
+    <div class="winner-card reveal d1"><video controls preload="metadata" playsinline poster="images/ganhador-9-poster.jpg"><source src="videos/ganhador-9.mp4" type="video/mp4"></video></div>
+    <div class="winner-card reveal d2"><video controls preload="metadata" playsinline poster="images/ganhador-10-poster.jpg"><source src="videos/ganhador-10.mp4" type="video/mp4"></video></div>
+    <div class="winner-card reveal d3"><video controls preload="metadata" playsinline poster="images/ganhador-11-poster.jpg"><source src="videos/ganhador-11.mp4" type="video/mp4"></video></div>
+    <div class="winner-card reveal d4"><video controls preload="metadata" playsinline poster="images/ganhador-12-poster.jpg"><source src="videos/ganhador-12.mp4" type="video/mp4"></video></div>
+    <div class="winner-card reveal d1"><video controls preload="metadata" playsinline poster="images/ganhador-13-poster.jpg"><source src="videos/ganhador-13.mp4" type="video/mp4"></video></div>
+  </div>
+</section>
+
+<div class="gold-divider" aria-hidden="true"></div>
+
 <!-- ═══ FOOTER ═══ -->
 <footer class="site-footer">
   <div class="footer-cta-band reveal">
-    <p class="footer-word">JONEKA LOTERIAS</p>
+    <img src="images/logo.jpg" class="footer-logo" alt="Joneka Loterias"/>
     <p class="footer-tagline">Só ganha quem joga</p>
     <h2 class="footer-cta-headline">
       PRONTO PRA <em>GARANTIR SEU NÚMERO?</em>
