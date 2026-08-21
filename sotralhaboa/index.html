@@ -404,35 +404,6 @@ a{color:inherit;text-decoration:none}
 .wa-btn:hover{background:var(--cyan-b);transform:translateY(-2px);box-shadow:0 8px 44px rgba(85,214,240,0.55)}
 .wa-btn:active{transform:translateY(0)}
 
-/* ── INSTAGRAM STRIP (secondary CTA) ── */
-.ig-strip{
-  border-bottom:1px solid var(--border);
-  background:var(--bg);
-  padding:22px 18px;
-  display:flex;flex-direction:column;align-items:center;
-  gap:12px;text-align:center;
-}
-@media(min-width:640px){
-  .ig-strip{flex-direction:row;justify-content:center;padding:20px 24px}
-}
-.ig-strip-text{
-  font-size:12px;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;
-  color:var(--text2);
-}
-.ig-strip-text strong{color:var(--text)}
-.ig-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:11px 18px;
-  border:1px solid var(--border-r);border-radius:4px;
-  font-family:var(--display);
-  font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--text);
-  transition:background .18s var(--ease),border-color .18s var(--ease),transform .18s var(--ease);
-}
-.ig-btn svg{color:var(--cyan-b)}
-.ig-btn:hover{background:var(--surf2);border-color:var(--cyan);transform:translateY(-2px)}
-
 /* ── CATEGORIAS / CARROSSEL ── */
 .products{padding:36px 0;background:var(--bg)}
 .section-eyebrow{
@@ -640,16 +611,6 @@ a{color:inherit;text-decoration:none}
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       GRUPO
     </a>
-    <a href="https://www.instagram.com/so_tralhaboa01?igsh=NXptdm5vZ3J4OGRk" target="_blank" rel="noopener noreferrer" id="navIg">
-      <!-- instagram icon -->
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      INSTAGRAM
-    </a>
-    <a href="https://www.mercadolivre.com.br/social/co20260614091002" target="_blank" rel="noopener noreferrer" id="navMl">
-      <!-- shopping bag icon -->
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      MERCADO LIVRE
-    </a>
   </nav>
 </header>
 
@@ -680,21 +641,7 @@ a{color:inherit;text-decoration:none}
            class="hero-cta" id="heroCta"
            target="_blank" rel="noopener noreferrer"
            aria-label="Entrar no grupo Só Tralha Boa no WhatsApp">
-          QUERO RECEBER OS ACHADOS&nbsp;→
-        </a>
-        <a href="https://www.instagram.com/so_tralhaboa01?igsh=NXptdm5vZ3J4OGRk"
-           class="hero-cta-secondary" id="heroCtaIg"
-           target="_blank" rel="noopener noreferrer"
-           aria-label="Ver Só Tralha Boa no Instagram">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          VER NO INSTAGRAM
-        </a>
-        <a href="https://www.mercadolivre.com.br/social/co20260614091002"
-           class="hero-cta-secondary" id="heroCtaMl"
-           target="_blank" rel="noopener noreferrer"
-           aria-label="Ver Só Tralha Boa no Mercado Livre">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          VER NO MERCADO LIVRE
+          ENTRAR NO GRUPO DE AÇÕES&nbsp;→
         </a>
         <a href="https://chat.whatsapp.com/L7EQHAz2malHwRSje6ca7a?s=cl&amp;p=a&amp;ilr=4"
            class="hero-cta-secondary" id="heroCtaWa2"
@@ -772,22 +719,6 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- ═══ INSTAGRAM + MERCADO LIVRE (CTAs SECUNDÁRIOS) ═══ -->
-<div class="ig-strip reveal">
-  <p class="ig-strip-text">Acompanhe os achados no <strong>Instagram</strong> e confira nossa loja no <strong>Mercado Livre</strong></p>
-  <a href="https://www.instagram.com/so_tralhaboa01?igsh=NXptdm5vZ3J4OGRk" class="ig-btn" id="ctaIg" target="_blank" rel="noopener noreferrer" aria-label="Seguir Só Tralha Boa no Instagram">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-    SEGUIR @SO_TRALHABOA01&nbsp;→
-  </a>
-  <a href="https://www.mercadolivre.com.br/social/co20260614091002" class="ig-btn" id="ctaMl" target="_blank" rel="noopener noreferrer" aria-label="Ver Só Tralha Boa no Mercado Livre">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-    VER NO MERCADO LIVRE&nbsp;→
-  </a>
-  <a href="https://chat.whatsapp.com/L7EQHAz2malHwRSje6ca7a?s=cl&amp;p=a&amp;ilr=4" class="ig-btn" id="ctaWa2" target="_blank" rel="noopener noreferrer" aria-label="Entrar no segundo grupo Só Tralha Boa no WhatsApp">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-    ENTRAR NO GRUPO DO WHATSAPP&nbsp;→
-  </a>
-</div>
 
 <div class="cyan-divider" aria-hidden="true"></div>
 
@@ -872,26 +803,6 @@ a{color:inherit;text-decoration:none}
         ENTRAR NO GRUPO AGORA&nbsp;→
       </a>
       <a
-        href="https://www.instagram.com/so_tralhaboa01?igsh=NXptdm5vZ3J4OGRk"
-        class="footer-cta-btn-secondary"
-        id="footerIgBtn"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        SEGUIR @SO_TRALHABOA01&nbsp;→
-      </a>
-      <a
-        href="https://www.mercadolivre.com.br/social/co20260614091002"
-        class="footer-cta-btn-secondary"
-        id="footerMlBtn"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        VER NO MERCADO LIVRE&nbsp;→
-      </a>
-      <a
         href="https://chat.whatsapp.com/L7EQHAz2malHwRSje6ca7a?s=cl&amp;p=a&amp;ilr=4"
         class="footer-cta-btn-secondary"
         id="footerWaBtn2"
@@ -933,16 +844,7 @@ function trackCta(id){
 trackCta('heroCta');
 trackCta('ctaWa');
 trackCta('footerWaBtn');
-trackCta('heroCtaIg');
-trackCta('ctaIg');
-trackCta('footerIgBtn');
-trackCta('navIg');
-trackCta('heroCtaMl');
-trackCta('ctaMl');
-trackCta('footerMlBtn');
-trackCta('navMl');
 trackCta('heroCtaWa2');
-trackCta('ctaWa2');
 trackCta('footerWaBtn2');
 
 /* ── SCROLL REVEAL ── */
