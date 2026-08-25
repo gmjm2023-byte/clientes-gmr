@@ -2,16 +2,30 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1391202829641711');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" alt=""
+    src="https://www.facebook.com/tr?id=1391202829641711&amp;ev=PageView&amp;noscript=1"></noscript>
+  <!-- End Meta Pixel Code -->
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#07110d">
-  <meta name="description" content="Acompanhe a ação ativa e entre no grupo oficial de Diego Souza.">
+  <meta name="description" content="Acompanhe a ação ativa e entre no grupo oficial de Diogo Sousa.">
   <meta name="robots" content="index,follow">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:title" content="Diego Souza | Ações e prêmios">
+  <meta property="og:title" content="Diogo Sousa | Ações e prêmios">
   <meta property="og:description" content="Participe da ação da Saveiro e acompanhe as novidades pelo grupo oficial.">
   <meta property="og:image" content="images/saveiro.jpg">
-  <title>Diego Souza | Ações e prêmios</title>
+  <title>Diogo Sousa | Ações e prêmios</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -31,9 +45,9 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <img class="profile" src="images/perfil.png" alt="Diego Souza" width="1080" height="1350">
+        <img class="profile" src="images/perfil.png" alt="Diogo Sousa" width="1080" height="1350">
         <div class="verified">Perfil oficial</div>
-        <h1>Diego Souza</h1>
+        <h1>Diogo Sousa</h1>
         <p class="intro">Acesse a ação ativa ou entre no grupo para acompanhar as próximas oportunidades e novidades.</p>
         <div class="links">
           <a class="link-card primary" href="https://www.diogopremiacoes.com/acao-da-saveiro" target="_blank" rel="noopener" aria-label="Acessar ação ativa da Saveiro">
@@ -52,16 +66,16 @@
       <div class="heading wrap"><span class="kicker">Entregas realizadas</span><h2>Quem participa, acompanha de perto</h2><p>Confira alguns registros de ganhadores e prêmios entregues.</p></div>
       <div class="carousel-shell">
         <div class="carousel" id="proofCarousel" aria-label="Fotos de ganhadores">
-          <article class="proof"><img src="images/ganhadora-moto.png" alt="Ganhadora com Diego Souza e motocicleta" width="1254" height="1254" loading="lazy"><p>Prêmio entregue</p></article>
-          <article class="proof"><img src="images/ganhadora-celular.png" alt="Ganhadora com Diego Souza e celulares" width="1254" height="1254" loading="lazy"><p>Registro de ganhadora</p></article>
+          <article class="proof"><img src="images/ganhadora-moto.png" alt="Ganhadora com Diogo Sousa e motocicleta" width="1254" height="1254" loading="lazy"><p>Prêmio entregue</p></article>
+          <article class="proof"><img src="images/ganhadora-celular.png" alt="Ganhadora com Diogo Sousa e celulares" width="1254" height="1254" loading="lazy"><p>Registro de ganhadora</p></article>
           <article class="proof"><img src="images/ganhadora-moto-dourada.png" alt="Ganhadora com motocicleta dourada" width="1254" height="1254" loading="lazy"><p>Mais uma entrega registrada</p></article>
-          <article class="proof"><img src="images/ganhador-pix.png" alt="Ganhador com Diego Souza e placa do prêmio" width="1254" height="1254" loading="lazy"><p>Ganhador premiado</p></article>
+          <article class="proof"><img src="images/ganhador-pix.png" alt="Ganhador com Diogo Sousa e placa do prêmio" width="1254" height="1254" loading="lazy"><p>Ganhador premiado</p></article>
         </div>
         <div class="dots" aria-hidden="true"><button class="dot active" tabindex="-1"></button><button class="dot" tabindex="-1"></button><button class="dot" tabindex="-1"></button><button class="dot" tabindex="-1"></button></div>
       </div>
     </section>
   </main>
-  <footer><div class="wrap"><p>Esta página direciona para os canais oficiais de Diego Souza. A participação nas ações é voluntária e está sujeita ao regulamento, condições, disponibilidade e informações divulgadas pelo organizador. Consulte todos os detalhes antes de participar.</p></div></footer>
+  <footer><div class="wrap"><p>Esta página direciona para os canais oficiais de Diogo Sousa. A participação nas ações é voluntária e está sujeita ao regulamento, condições, disponibilidade e informações divulgadas pelo organizador. Consulte todos os detalhes antes de participar.</p></div></footer>
   <script>
     const carousel=document.getElementById('proofCarousel');const dots=[...document.querySelectorAll('.dot')];let timer;
     function activeDot(){const cards=[...carousel.children];const center=carousel.scrollLeft+carousel.clientWidth/2;let best=0,dist=Infinity;cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-center);if(d<dist){dist=d;best=i}});dots.forEach((d,i)=>d.classList.toggle('active',i===best))}
