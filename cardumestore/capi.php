@@ -1,6 +1,6 @@
 <?php
-$PIXEL_ID     = '[PIXEL_ID]';
-$ACCESS_TOKEN = '[ACCESS_TOKEN]';
+$PIXEL_ID     = '28265683963069275';
+$ACCESS_TOKEN = 'EAAPGS39wVNEBSXB5XeZAI1KXS83qhiefETGu1qynnWUh42srs1H2f6RhOagbks8LwOKOscBOPwk2RgxQpuLguY8mBjIxC3ZCRnUfn9YlxprypWnB7sjd83qpMrwcuwIokC3ZCFlZBtQCEaT8uCYrfCRp6pITdKZByRfiA71sN4IBDbMuoXhqA0ZCQjZAvNABT8aIwZDZD';
 
 header('Content-Type: application/json');
 
