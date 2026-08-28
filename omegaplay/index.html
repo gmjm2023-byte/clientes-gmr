@@ -271,6 +271,42 @@ a{color:inherit;text-decoration:none}
 .series-title{font-family:var(--display);font-weight:800;font-size:clamp(20px,4.5vw,26px);color:var(--text);margin-bottom:6px}
 .series-sub{font-size:13.5px;color:var(--text2)}
 
+/* ── PLANOS ── */
+.planos-section{padding:54px 0 46px;background:var(--surf)}
+.planos-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+  max-width:1100px;margin:0 auto;padding:0 18px;
+}
+@media(min-width:640px){.planos-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:980px){.planos-grid{grid-template-columns:repeat(5,1fr)}}
+.plano-card{
+  position:relative;
+  background:var(--bg);border:1px solid var(--border);border-radius:12px;
+  padding:22px 16px;text-align:center;
+  transition:border-color .22s,transform .22s var(--ease),box-shadow .22s;
+}
+.plano-card.featured{border-color:var(--border-r);box-shadow:0 14px 34px rgba(217,31,46,.14)}
+.plano-card:hover{transform:translateY(-4px);border-color:var(--border-r)}
+.plano-tag{
+  display:inline-block;margin-bottom:12px;padding:4px 11px;border-radius:100px;
+  background:var(--surf2);border:1px solid var(--border);
+  font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--purple-b);
+}
+.plano-price{font-family:var(--display);font-size:24px;font-weight:800;color:var(--text)}
+.plano-price span{font-size:11px;font-weight:600;color:var(--text3)}
+.plano-btn{
+  display:block;margin-top:14px;padding:10px 8px;border-radius:7px;
+  background:var(--green);color:#fff;
+  font-family:var(--display);font-size:11px;
+  transition:background .18s,transform .18s;
+}
+.plano-btn:hover{background:var(--green-h);transform:translateY(-2px)}
+.planos-note{
+  text-align:center;max-width:520px;margin:22px auto 0;padding:0 18px;
+  font-size:12px;color:var(--text3);
+}
+.planos-note a{color:var(--cyan-b);font-weight:600}
+
 /* ── REQUISITOS ── */
 .req-section{padding:50px 0 46px;background:var(--surf)}
 .req-grid{
@@ -406,6 +442,10 @@ a{color:inherit;text-decoration:none}
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6"/><path d="M14 4h6v6"/><path d="M10 14L20 4"/></svg>
       SÉRIES
     </a>
+    <a href="#planos">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      PLANOS
+    </a>
     <a href="#requisitos">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></svg>
       REQUISITOS
@@ -462,8 +502,8 @@ a{color:inherit;text-decoration:none}
 
   <div class="trust-bar" role="list">
     <div class="trust-item reveal d1" role="listitem">16.500+<span>Canais</span></div>
-    <div class="trust-item reveal d2" role="listitem">MENSAL<span>Atualização</span></div>
-    <div class="trust-item reveal d3" role="listitem">REAL<span>Atendimento</span></div>
+    <div class="trust-item reveal d2" role="listitem">+6 ANOS<span>De mercado</span></div>
+    <div class="trust-item reveal d3" role="listitem">+5.000<span>Clientes satisfeitos</span></div>
   </div>
 </section>
 
@@ -481,6 +521,7 @@ a{color:inherit;text-decoration:none}
     <div class="cat-card reveal d1"><span class="cat-emoji">✔️</span><span class="cat-label"><b>Canais abertos</b>Globo, Record, Band…</span></div>
     <div class="cat-card reveal d2"><span class="cat-emoji">🎨</span><span class="cat-label"><b>Desenhos</b>24 horas no ar</span></div>
     <div class="cat-card reveal d3"><span class="cat-emoji">🎬</span><span class="cat-label"><b>Fechados</b>HBO, Telecine, Fox, Discovery…</span></div>
+    <div class="cat-card reveal d4"><span class="cat-emoji">📱</span><span class="cat-label"><b>Streaming incluso</b>Netflix, Prime, HBO, Disney+</span></div>
     <div class="cat-card reveal d4"><span class="cat-emoji">🔞</span><span class="cat-label"><b>Adultos</b>Canais para maiores de 18</span></div>
     <div class="cat-card reveal d1"><span class="cat-emoji">🏆</span><span class="cat-label"><b>Esportes</b>ESPN, SporTV, Premiere, TNT Sports, HBO Max…</span></div>
     <div class="cat-card reveal d2"><span class="cat-emoji">🌎</span><span class="cat-label"><b>Internacionais</b>Canais de fora do Brasil</span></div>
@@ -517,6 +558,44 @@ a{color:inherit;text-decoration:none}
     <p class="series-sub">Temporadas atualizadas mensalmente.</p>
   </div>
 </div>
+
+<!-- ═══ PLANOS ═══ -->
+<section class="planos-section" id="planos">
+  <p class="section-eyebrow reveal">Escolha o seu</p>
+  <h2 class="section-title reveal d1">
+    <span class="section-title-line" aria-hidden="true"></span>
+    NOSSOS PLANOS
+    <span class="section-title-line" aria-hidden="true"></span>
+  </h2>
+  <div class="planos-grid">
+    <div class="plano-card reveal d1">
+      <span class="plano-tag">Mensal</span>
+      <p class="plano-price">R$35<span>,00</span></p>
+      <a href="https://linkly.link/25Pb7" class="plano-btn track-plano" target="_blank" rel="noopener noreferrer">ASSINAR</a>
+    </div>
+    <div class="plano-card reveal d2">
+      <span class="plano-tag">Bimestral</span>
+      <p class="plano-price">R$60<span>,00</span></p>
+      <a href="https://linkly.link/25Pb7" class="plano-btn track-plano" target="_blank" rel="noopener noreferrer">ASSINAR</a>
+    </div>
+    <div class="plano-card featured reveal d3">
+      <span class="plano-tag">★ Trimestral</span>
+      <p class="plano-price">R$85<span>,00</span></p>
+      <a href="https://linkly.link/25Pb7" class="plano-btn track-plano" target="_blank" rel="noopener noreferrer">ASSINAR</a>
+    </div>
+    <div class="plano-card reveal d4">
+      <span class="plano-tag">Semestral</span>
+      <p class="plano-price">R$135<span>,00</span></p>
+      <a href="https://linkly.link/25Pb7" class="plano-btn track-plano" target="_blank" rel="noopener noreferrer">ASSINAR</a>
+    </div>
+    <div class="plano-card reveal d1">
+      <span class="plano-tag">Anual</span>
+      <p class="plano-price">R$235<span>,00</span></p>
+      <a href="https://linkly.link/25Pb7" class="plano-btn track-plano" target="_blank" rel="noopener noreferrer">ASSINAR</a>
+    </div>
+  </div>
+  <p class="planos-note reveal d2">Quer testar antes? <a href="https://linkly.link/25Pb7" target="_blank" rel="noopener noreferrer" id="ctaTrial">Peça um teste grátis pelo WhatsApp →</a></p>
+</section>
 
 <!-- ═══ REQUISITOS ═══ -->
 <section class="req-section" id="requisitos">
@@ -648,8 +727,18 @@ function trackCta(id){
   });
 }
 
-['navWa','heroCta','heroCtaSite','ctaWa','ctaSite','footerCta','footerSite']
+['navWa','heroCta','heroCtaSite','ctaWa','ctaSite','footerCta','footerSite','ctaTrial']
   .forEach(trackCta);
+
+document.querySelectorAll('.track-plano').forEach(function(el){
+  var fired=false;
+  el.addEventListener('click',function(){
+    if(fired) return; fired=true;
+    var eId='ld_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
+    try{if(typeof fbq==='function') fbq('track','Lead',{},{eventID:eId});}catch(e){}
+    sendCapi(eId);
+  });
+});
 
 /* ── SCROLL REVEAL ── */
 if('IntersectionObserver' in window){
