@@ -46,20 +46,20 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/><
 
 <style>
 :root{
-  --purple:   #7C3AED;
-  --purple-b: #A78BFA;
-  --purple-d: #4C1D95;
-  --cyan:     #22D3EE;
-  --cyan-b:   #67E8F9;
+  --purple:   #D91F2E;
+  --purple-b: #FF6B74;
+  --purple-d: #7A0E1C;
+  --cyan:     #1E86C8;
+  --cyan-b:   #5DBEF0;
   --bg:       #07070C;
   --bg2:      #050508;
   --surf:     #121220;
-  --surf2:    rgba(124,58,237,0.08);
+  --surf2:    rgba(217,31,46,0.08);
   --text:     #FFFFFF;
   --text2:    rgba(255,255,255,0.80);
   --text3:    rgba(255,255,255,0.42);
-  --border:   rgba(124,58,237,0.20);
-  --border-r: rgba(124,58,237,0.42);
+  --border:   rgba(217,31,46,0.20);
+  --border-r: rgba(217,31,46,0.42);
   --green:    #25D366;
   --green-h:  #1DAA55;
   --display:  'Space Grotesk',sans-serif;
@@ -79,16 +79,6 @@ body{
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 
-/* ── LOGO MARK ── */
-.omega-mark{
-  display:inline-flex;align-items:center;justify-content:center;
-  border-radius:50%;flex-shrink:0;
-  background:conic-gradient(from 200deg,var(--purple-d),var(--purple) 35%,var(--cyan) 65%,var(--purple-d));
-  color:#fff;font-family:var(--display);font-weight:700;
-  box-shadow:0 0 24px rgba(124,58,237,0.4);
-}
-.omega-mark span{display:block}
-
 /* ── TOPBAR ── */
 .topbar{
   position:fixed;top:0;left:0;right:0;z-index:100;
@@ -100,10 +90,7 @@ a{color:inherit;text-decoration:none}
   padding:0 16px;gap:10px;
 }
 .topbar-word{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.topbar-word .omega-mark{width:34px;height:34px;font-size:18px}
-.topbar-word-text{display:flex;flex-direction:column;line-height:1}
-.topbar-word-text b{font-family:var(--display);font-size:14px;letter-spacing:.02em;color:var(--text)}
-.topbar-word-text em{font-style:normal;font-family:var(--display);font-size:10px;letter-spacing:.14em;color:var(--cyan-b)}
+.topbar-word img{height:40px;width:auto;object-fit:contain}
 .topbar-nav{
   display:flex;align-items:center;
   overflow-x:auto;-webkit-overflow-scrolling:touch;
@@ -152,8 +139,8 @@ a{color:inherit;text-decoration:none}
 }
 .hero-orb{
   position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse at 22% 12%,rgba(124,58,237,0.22) 0%,transparent 50%),
-             radial-gradient(ellipse at 85% 8%,rgba(34,211,238,0.14) 0%,transparent 48%);
+  background:radial-gradient(ellipse at 22% 12%,rgba(217,31,46,0.22) 0%,transparent 50%),
+             radial-gradient(ellipse at 85% 8%,rgba(30,134,200,0.14) 0%,transparent 48%);
   transition:transform .08s linear;
 }
 .hero-inner{
@@ -162,7 +149,7 @@ a{color:inherit;text-decoration:none}
   padding:48px 18px 0;text-align:center;
 }
 .hero-mark{margin:0 auto 22px;animation:revealDown .7s var(--ease) both}
-.hero-mark .omega-mark{width:88px;height:88px;font-size:46px}
+.hero-mark img{width:min(300px,68vw);height:auto;margin:0 auto;filter:drop-shadow(0 10px 34px rgba(217,31,46,0.28))}
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;padding:8px 16px;
   border:1px solid var(--border-r);border-radius:100px;background:var(--surf2);
@@ -182,7 +169,7 @@ a{color:inherit;text-decoration:none}
   background:linear-gradient(135deg,var(--purple),var(--purple-b) 45%,var(--cyan));
   background-size:200% auto;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  filter:drop-shadow(0 0 30px rgba(124,58,237,0.4));
+  filter:drop-shadow(0 0 30px rgba(217,31,46,0.4));
   animation:gradShimmer 5s ease-in-out infinite;
 }
 @keyframes gradShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
@@ -238,7 +225,7 @@ a{color:inherit;text-decoration:none}
 @keyframes shine{0%{transform:translateX(-120%)}35%{transform:translateX(120%)}100%{transform:translateX(120%)}}
 
 /* ── DIVIDER ── */
-.grad-divider{height:1px;background:linear-gradient(90deg,transparent 0%,rgba(124,58,237,0.5) 30%,rgba(34,211,238,0.5) 50%,rgba(124,58,237,0.5) 70%,transparent 100%)}
+.grad-divider{height:1px;background:linear-gradient(90deg,transparent 0%,rgba(217,31,46,0.5) 30%,rgba(30,134,200,0.5) 50%,rgba(217,31,46,0.5) 70%,transparent 100%)}
 
 /* ── SECTION HEADERS ── */
 .section-eyebrow{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan-b);text-align:center;margin-bottom:8px;padding:0 18px}
@@ -277,7 +264,7 @@ a{color:inherit;text-decoration:none}
 }
 .series-card{
   border:1px solid var(--border);border-radius:16px;
-  background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(34,211,238,0.08));
+  background:linear-gradient(135deg,rgba(217,31,46,0.12),rgba(30,134,200,0.08));
   padding:32px 28px;text-align:center;
 }
 .series-icon{font-size:34px;margin-bottom:10px}
@@ -360,10 +347,10 @@ a{color:inherit;text-decoration:none}
 .site-footer{border-top:1px solid var(--border-r)}
 .footer-cta-band{
   position:relative;overflow:hidden;text-align:center;padding:54px 24px 56px;
-  background:linear-gradient(160deg,rgba(124,58,237,0.10) 0%,transparent 55%),var(--surf);
+  background:linear-gradient(160deg,rgba(217,31,46,0.10) 0%,transparent 55%),var(--surf);
 }
 .footer-mark{margin:0 auto 18px;display:flex;justify-content:center}
-.footer-mark .omega-mark{width:64px;height:64px;font-size:32px}
+.footer-mark img{width:min(200px,50vw);height:auto}
 .footer-tagline{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan-b);margin-bottom:24px}
 .footer-cta-headline{font-family:var(--display);font-weight:800;font-size:clamp(22px,6vw,36px);color:var(--text);margin-bottom:12px;line-height:1.08}
 .footer-cta-headline em{font-style:normal;color:var(--purple-b)}
@@ -404,8 +391,7 @@ a{color:inherit;text-decoration:none}
 <!-- ═══ TOPBAR ═══ -->
 <header class="topbar">
   <div class="topbar-word">
-    <span class="omega-mark"><span>Ω</span></span>
-    <div class="topbar-word-text"><b>OMEGA</b><em>PLAY</em></div>
+    <img src="images/logo.webp" alt="Omega Play"/>
   </div>
   <nav class="topbar-nav" aria-label="Menu principal">
     <a href="#programacao">
@@ -438,7 +424,7 @@ a{color:inherit;text-decoration:none}
 
   <div class="hero-inner">
     <div class="hero-mark reveal">
-      <span class="omega-mark"><span>Ω</span></span>
+      <img src="images/logo.webp" alt="Omega Play" width="300" height="280" fetchpriority="high"/>
     </div>
 
     <span class="hero-badge reveal d1">
@@ -611,7 +597,7 @@ a{color:inherit;text-decoration:none}
 <!-- ═══ FOOTER ═══ -->
 <footer class="site-footer">
   <div class="footer-cta-band reveal">
-    <div class="footer-mark"><span class="omega-mark"><span>Ω</span></span></div>
+    <div class="footer-mark"><img src="images/logo.webp" alt="Omega Play"/></div>
     <p class="footer-tagline">Qualidade, estabilidade e liderança em atendimento</p>
     <h2 class="footer-cta-headline">
       PRONTO PRA <em>ASSISTIR DE VERDADE?</em>
