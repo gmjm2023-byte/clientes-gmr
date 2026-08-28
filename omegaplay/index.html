@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','SEU_PIXEL_ID_AQUI');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+
+<title>Omega Play | Mais de 16.500 Canais, Filmes e Séries</title>
+<meta name="description" content="Omega Play: mais de 16.500 canais, filmes e séries atualizados mensalmente. Qualidade, estabilidade e liderança em atendimento. Assine agora pelo WhatsApp."/>
+<meta name="keywords" content="omega play, iptv, canais de tv online, filmes online, séries online, assinatura iptv"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#07070C"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:site_name" content="Omega Play"/>
+<meta property="og:title" content="Omega Play | Mais de 16.500 Canais, Filmes e Séries"/>
+<meta property="og:description" content="Qualidade, estabilidade e liderança em atendimento. Mais de 16.500 canais, filmes e séries num só lugar."/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+<style>
+:root{
+  --purple:   #7C3AED;
+  --purple-b: #A78BFA;
+  --purple-d: #4C1D95;
+  --cyan:     #22D3EE;
+  --cyan-b:   #67E8F9;
+  --bg:       #07070C;
+  --bg2:      #050508;
+  --surf:     #121220;
+  --surf2:    rgba(124,58,237,0.08);
+  --text:     #FFFFFF;
+  --text2:    rgba(255,255,255,0.80);
+  --text3:    rgba(255,255,255,0.42);
+  --border:   rgba(124,58,237,0.20);
+  --border-r: rgba(124,58,237,0.42);
+  --green:    #25D366;
+  --green-h:  #1DAA55;
+  --display:  'Space Grotesk',sans-serif;
+  --body:     'Inter',system-ui,sans-serif;
+  --ease:     cubic-bezier(.2,.8,.3,1);
+  --hh:       64px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--body);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ── LOGO MARK ── */
+.omega-mark{
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:50%;flex-shrink:0;
+  background:conic-gradient(from 200deg,var(--purple-d),var(--purple) 35%,var(--cyan) 65%,var(--purple-d));
+  color:#fff;font-family:var(--display);font-weight:700;
+  box-shadow:0 0 24px rgba(124,58,237,0.4);
+}
+.omega-mark span{display:block}
+
+/* ── TOPBAR ── */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:var(--hh);
+  background:rgba(7,7,12,0.92);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;
+  padding:0 16px;gap:10px;
+}
+.topbar-word{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.topbar-word .omega-mark{width:34px;height:34px;font-size:18px}
+.topbar-word-text{display:flex;flex-direction:column;line-height:1}
+.topbar-word-text b{font-family:var(--display);font-size:14px;letter-spacing:.02em;color:var(--text)}
+.topbar-word-text em{font-style:normal;font-family:var(--display);font-size:10px;letter-spacing:.14em;color:var(--cyan-b)}
+.topbar-nav{
+  display:flex;align-items:center;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;flex:1;justify-content:flex-start;
+}
+@media(min-width:680px){.topbar-nav{justify-content:flex-end}}
+.topbar-nav::-webkit-scrollbar{display:none}
+.topbar-nav a{
+  display:flex;align-items:center;gap:6px;
+  padding:0 12px;height:var(--hh);
+  font-family:var(--body);font-size:10.5px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--text3);white-space:nowrap;
+  border-left:1px solid var(--border);
+  transition:color .18s,background .18s;
+}
+.topbar-nav a:hover{color:var(--text);background:var(--surf2)}
+.topbar-nav a svg{flex-shrink:0;color:var(--purple-b)}
+.topbar-cta{
+  display:flex;align-items:center;gap:6px;
+  background:var(--green)!important;color:#fff!important;
+  margin-left:6px;border-radius:6px;height:36px!important;padding:0 14px!important;
+  border-left:none!important;
+}
+.topbar-cta svg{color:#fff!important}
+
+/* ── SCROLL REVEAL ── */
+.reveal,.reveal-l,.reveal-r{
+  transition:opacity .65s var(--ease),transform .65s var(--ease);
+  will-change:opacity,transform;
+}
+.reveal{opacity:0;transform:translateY(28px)}
+.reveal-l{opacity:0;transform:translateX(-28px)}
+.reveal-r{opacity:0;transform:translateX(28px)}
+.reveal.visible,.reveal-l.visible,.reveal-r.visible{opacity:1;transform:none}
+.d1{transition-delay:.08s}
+.d2{transition-delay:.18s}
+.d3{transition-delay:.28s}
+.d4{transition-delay:.38s}
+
+/* ── HERO ── */
+.hero{padding-top:var(--hh);position:relative;overflow:hidden}
+.hero-accent{
+  position:absolute;top:var(--hh);left:0;right:0;height:2px;z-index:2;
+  background:linear-gradient(90deg,transparent 0%,var(--purple) 25%,var(--cyan) 50%,var(--purple) 75%,transparent 100%);
+}
+.hero-orb{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 22% 12%,rgba(124,58,237,0.22) 0%,transparent 50%),
+             radial-gradient(ellipse at 85% 8%,rgba(34,211,238,0.14) 0%,transparent 48%);
+  transition:transform .08s linear;
+}
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:760px;margin:0 auto;
+  padding:48px 18px 0;text-align:center;
+}
+.hero-mark{margin:0 auto 22px;animation:revealDown .7s var(--ease) both}
+.hero-mark .omega-mark{width:88px;height:88px;font-size:46px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;padding:8px 16px;
+  border:1px solid var(--border-r);border-radius:100px;background:var(--surf2);
+  font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--purple-b);
+}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);flex-shrink:0;animation:dotPulse 1.6s ease-in-out infinite}
+@keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.6)}}
+
+.hero-headline{
+  font-family:var(--display);
+  font-size:clamp(48px,13vw,92px);
+  font-weight:900;line-height:.96;letter-spacing:-.01em;
+  color:var(--text);
+}
+.hero-headline em{
+  font-style:normal;display:block;
+  background:linear-gradient(135deg,var(--purple),var(--purple-b) 45%,var(--cyan));
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 30px rgba(124,58,237,0.4));
+  animation:gradShimmer 5s ease-in-out infinite;
+}
+@keyframes gradShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+.hero-desc{
+  font-size:clamp(14.5px,3.6vw,17px);font-weight:400;line-height:1.6;
+  color:var(--text2);margin:18px auto 26px;max-width:500px;
+}
+.hero-desc strong{color:var(--purple-b);font-weight:600}
+
+.hero-ctas{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin-bottom:28px}
+.hero-cta{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:9px;
+  padding:18px 28px;
+  background:var(--green);
+  color:#fff;
+  font-family:var(--display);
+  font-size:clamp(13px,3.6vw,15.5px);
+  letter-spacing:.02em;
+  border-radius:8px;max-width:380px;
+  box-shadow:0 4px 32px rgba(37,211,102,0.35);
+  transition:transform .18s var(--ease),box-shadow .18s var(--ease);
+}
+.hero-cta::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,0.35) 50%,transparent 75%);
+  transform:translateX(-120%);
+  animation:shine 4s ease-in-out 1.2s infinite;
+}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(37,211,102,0.5)}
+.hero-cta:active{transform:translateY(0)}
+
+.hero-cta-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:16px 22px;
+  background:transparent;color:var(--text);
+  border:1px solid var(--border-r);
+  font-family:var(--display);
+  font-size:clamp(12px,3.2vw,14px);
+  border-radius:8px;
+  transition:background .18s var(--ease),border-color .18s var(--ease),transform .18s var(--ease);
+}
+.hero-cta-secondary svg{color:var(--cyan-b)}
+.hero-cta-secondary:hover{background:var(--surf2);border-color:var(--purple);transform:translateY(-2px)}
+
+.trust-bar{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);margin-top:36px}
+.trust-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:18px 6px;font-family:var(--display);font-size:clamp(14px,3.8vw,20px);letter-spacing:-.01em;color:var(--purple-b);text-align:center;background:var(--surf2)}
+.trust-item span{font-family:var(--body);font-weight:600;font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--text3)}
+.trust-item+.trust-item{border-left:1px solid var(--border)}
+
+@keyframes revealDown{0%{opacity:0;transform:translateY(-18px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes shine{0%{transform:translateX(-120%)}35%{transform:translateX(120%)}100%{transform:translateX(120%)}}
+
+/* ── DIVIDER ── */
+.grad-divider{height:1px;background:linear-gradient(90deg,transparent 0%,rgba(124,58,237,0.5) 30%,rgba(34,211,238,0.5) 50%,rgba(124,58,237,0.5) 70%,transparent 100%)}
+
+/* ── SECTION HEADERS ── */
+.section-eyebrow{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan-b);text-align:center;margin-bottom:8px;padding:0 18px}
+.section-title{
+  font-family:var(--display);font-weight:900;letter-spacing:-.01em;
+  font-size:clamp(24px,5.5vw,36px);
+  color:var(--text);text-align:center;
+  margin-bottom:34px;padding:0 18px;
+  display:flex;align-items:center;justify-content:center;gap:16px;
+}
+.section-title-line{flex:1;max-width:56px;height:1px;background:linear-gradient(90deg,transparent,var(--purple))}
+.section-title-line:last-child{background:linear-gradient(90deg,var(--purple),transparent)}
+
+/* ── CATEGORY GRID (programação / filmes) ── */
+.cat-section{padding:54px 0 46px}
+.cat-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+  max-width:1040px;margin:0 auto;padding:0 18px;
+}
+@media(min-width:640px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:960px){.cat-grid{grid-template-columns:repeat(4,1fr)}}
+.cat-card{
+  display:flex;align-items:center;gap:12px;
+  background:var(--surf);border:1px solid var(--border);border-radius:12px;
+  padding:16px;
+  transition:border-color .22s,transform .22s var(--ease),background .22s;
+}
+.cat-card:hover{border-color:var(--border-r);transform:translateY(-3px);background:var(--surf2)}
+.cat-emoji{font-size:22px;flex-shrink:0;line-height:1}
+.cat-label{font-size:12.5px;font-weight:600;color:var(--text2);line-height:1.3}
+.cat-label b{color:var(--text);font-weight:700;display:block;font-size:13px;margin-bottom:1px}
+
+/* ── SÉRIES BANNER ── */
+.series-banner{
+  max-width:1040px;margin:0 auto;padding:0 18px 54px;
+}
+.series-card{
+  border:1px solid var(--border);border-radius:16px;
+  background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(34,211,238,0.08));
+  padding:32px 28px;text-align:center;
+}
+.series-icon{font-size:34px;margin-bottom:10px}
+.series-title{font-family:var(--display);font-weight:800;font-size:clamp(20px,4.5vw,26px);color:var(--text);margin-bottom:6px}
+.series-sub{font-size:13.5px;color:var(--text2)}
+
+/* ── REQUISITOS ── */
+.req-section{padding:50px 0 46px;background:var(--surf)}
+.req-grid{
+  display:grid;grid-template-columns:1fr;gap:14px;
+  max-width:800px;margin:0 auto;padding:0 18px;
+}
+@media(min-width:640px){.req-grid{grid-template-columns:repeat(3,1fr)}}
+.req-card{
+  background:var(--bg);border:1px solid var(--border);border-radius:12px;
+  padding:24px 20px;text-align:center;
+  transition:border-color .22s,transform .22s var(--ease);
+}
+.req-card:hover{transform:translateY(-3px);border-color:var(--border-r)}
+.req-tag{font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--cyan-b);margin-bottom:10px}
+.req-value{font-family:var(--display);font-size:30px;font-weight:800;color:var(--purple-b)}
+.req-value span{font-size:14px;font-weight:600;color:var(--text3);margin-left:4px}
+
+/* ── DIFERENCIAIS STRIP ── */
+.trust-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg)}
+.trust-strip-inner{
+  max-width:1040px;margin:0 auto;padding:30px 18px;
+  display:grid;grid-template-columns:1fr;gap:20px;
+}
+@media(min-width:700px){.trust-strip-inner{grid-template-columns:repeat(3,1fr)}}
+.trust-strip-item{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.trust-strip-icon{
+  width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(135deg,var(--purple-d),var(--purple));
+  display:flex;align-items:center;justify-content:center;color:#fff;
+}
+.trust-strip-item span{font-size:12.5px;font-weight:600;letter-spacing:.02em;color:var(--text2);line-height:1.4}
+.trust-strip-item b{color:var(--text);display:block;font-size:14px;margin-bottom:2px}
+
+/* ── WA SECTION ── */
+.wa-section{border-bottom:1px solid var(--border);background:var(--surf);position:relative;overflow:hidden}
+.wa-section::before{
+  content:'';position:absolute;top:0;left:0;bottom:0;width:3px;
+  background:linear-gradient(to bottom,transparent,var(--purple) 30%,var(--cyan) 50%,var(--purple) 70%,transparent);opacity:.6;
+}
+.wa-inner{display:grid;grid-template-columns:1fr;max-width:1024px;margin:0 auto}
+@media(min-width:700px){.wa-inner{grid-template-columns:1.25fr 1fr 1fr;align-items:stretch}}
+.wa-col{padding:26px 22px}
+.wa-col+.wa-col{border-top:1px solid var(--border)}
+@media(min-width:700px){.wa-col+.wa-col{border-top:none;border-left:1px solid var(--border)}}
+.wa-eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan-b);margin-bottom:10px}
+.wa-headline{font-family:var(--display);font-weight:800;font-size:clamp(19px,5vw,27px);line-height:1.1;color:var(--text)}
+.wa-headline em{font-style:normal;color:var(--purple-b)}
+.wa-subtitle{font-size:clamp(13px,3.2vw,14px);font-weight:400;line-height:1.55;color:var(--text2);margin-top:12px}
+.wa-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.wa-list li{display:flex;align-items:center;gap:9px;font-size:11.5px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--text2)}
+.wa-list-dot{flex-shrink:0;width:7px;height:7px;background:var(--purple);clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%)}
+.wa-btn-wrap{display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center}
+.wa-btn{
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:18px 18px;width:100%;
+  background:var(--green);color:#fff;
+  font-family:var(--display);font-size:clamp(12.5px,3.8vw,15px);text-align:center;
+  border-radius:8px;
+  box-shadow:0 4px 32px rgba(37,211,102,0.35);
+  transition:background .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease);
+}
+.wa-btn::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,0.3) 50%,transparent 75%);
+  transform:translateX(-120%);animation:shine 4s ease-in-out 2.8s infinite;
+}
+.wa-btn:hover{background:var(--green-h);transform:translateY(-2px);box-shadow:0 8px 44px rgba(37,211,102,0.5)}
+.wa-btn.outline{background:transparent;color:var(--text);border:1px solid var(--border-r);box-shadow:none}
+.wa-btn.outline:hover{background:var(--surf2);border-color:var(--purple)}
+.wa-btn.outline::before{display:none}
+
+/* ── FOOTER ── */
+.site-footer{border-top:1px solid var(--border-r)}
+.footer-cta-band{
+  position:relative;overflow:hidden;text-align:center;padding:54px 24px 56px;
+  background:linear-gradient(160deg,rgba(124,58,237,0.10) 0%,transparent 55%),var(--surf);
+}
+.footer-mark{margin:0 auto 18px;display:flex;justify-content:center}
+.footer-mark .omega-mark{width:64px;height:64px;font-size:32px}
+.footer-tagline{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan-b);margin-bottom:24px}
+.footer-cta-headline{font-family:var(--display);font-weight:800;font-size:clamp(22px,6vw,36px);color:var(--text);margin-bottom:12px;line-height:1.08}
+.footer-cta-headline em{font-style:normal;color:var(--purple-b)}
+.footer-cta-sub{font-size:clamp(14px,3.5vw,16px);font-weight:400;line-height:1.55;color:var(--text2);max-width:440px;margin:0 auto 32px}
+.footer-ctas{display:flex;flex-direction:column;align-items:center;gap:14px}
+.footer-cta-btn{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:12px;padding:22px 40px;
+  background:var(--green);color:#fff;
+  font-family:var(--display);font-size:clamp(14px,4vw,18px);
+  border-radius:9px;box-shadow:0 6px 48px rgba(37,211,102,0.4);
+  transition:transform .2s var(--ease),box-shadow .2s;
+}
+.footer-cta-btn::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,0.35) 50%,transparent 75%);
+  transform:translateX(-120%);animation:shine 3.5s ease-in-out 1s infinite;
+}
+.footer-cta-btn:hover{transform:translateY(-3px);box-shadow:0 12px 60px rgba(37,211,102,0.55)}
+.footer-cta-btn-secondary{
+  display:inline-flex;align-items:center;gap:10px;padding:14px 26px;
+  background:transparent;color:var(--text);border:1px solid var(--border-r);
+  font-family:var(--display);font-size:clamp(12px,3.4vw,14px);
+  border-radius:8px;transition:background .18s var(--ease),border-color .18s var(--ease),transform .18s var(--ease);
+}
+.footer-cta-btn-secondary svg{color:var(--cyan-b)}
+.footer-cta-btn-secondary:hover{background:var(--surf2);border-color:var(--purple);transform:translateY(-2px)}
+.footer-disclaimer{max-width:660px;margin:0 auto;padding:18px 18px 4px;font-size:10.5px;line-height:1.65;color:var(--text3);text-align:center}
+.footer-copyright{text-align:center;padding:14px 18px;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);border-top:1px solid var(--border)}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ TOPBAR ═══ -->
+<header class="topbar">
+  <div class="topbar-word">
+    <span class="omega-mark"><span>Ω</span></span>
+    <div class="topbar-word-text"><b>OMEGA</b><em>PLAY</em></div>
+  </div>
+  <nav class="topbar-nav" aria-label="Menu principal">
+    <a href="#programacao">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+      PROGRAMAÇÃO
+    </a>
+    <a href="#filmes">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="7" y1="3" x2="7" y2="21"/><line x1="17" y1="3" x2="17" y2="21"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="2" y1="15" x2="22" y2="15"/></svg>
+      FILMES
+    </a>
+    <a href="#series">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6"/><path d="M14 4h6v6"/><path d="M10 14L20 4"/></svg>
+      SÉRIES
+    </a>
+    <a href="#requisitos">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></svg>
+      REQUISITOS
+    </a>
+    <a href="https://linkly.link/25Pb7" target="_blank" rel="noopener noreferrer" class="topbar-cta" id="navWa">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      ASSINAR
+    </a>
+  </nav>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="hero-accent" aria-hidden="true"></div>
+  <div class="hero-orb" id="heroOrb" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-mark reveal">
+      <span class="omega-mark"><span>Ω</span></span>
+    </div>
+
+    <span class="hero-badge reveal d1">
+      <span class="hero-badge-dot" aria-hidden="true"></span>
+      QUALIDADE · ESTABILIDADE · LIDERANÇA EM ATENDIMENTO
+    </span>
+
+    <h1 class="hero-headline reveal d2">
+      OMEGA
+      <em>PLAY</em>
+    </h1>
+
+    <p class="hero-desc reveal d3">
+      Mais de <strong>16.500 canais</strong>, filmes e séries num só lugar.
+      Programação atualizada mensalmente, direto no seu dispositivo.
+    </p>
+
+    <div class="hero-ctas reveal d3">
+      <a href="https://linkly.link/25Pb7"
+         class="hero-cta" id="heroCta"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Assinar Omega Play agora pelo WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        ASSINAR AGORA
+      </a>
+      <a href="https://playomega.com.br"
+         class="hero-cta-secondary" id="heroCtaSite"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Conhecer o site oficial da Omega Play">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        CONHECER O SITE
+      </a>
+    </div>
+  </div>
+
+  <div class="trust-bar" role="list">
+    <div class="trust-item reveal d1" role="listitem">16.500+<span>Canais</span></div>
+    <div class="trust-item reveal d2" role="listitem">MENSAL<span>Atualização</span></div>
+    <div class="trust-item reveal d3" role="listitem">REAL<span>Atendimento</span></div>
+  </div>
+</section>
+
+<div class="grad-divider" aria-hidden="true"></div>
+
+<!-- ═══ PROGRAMAÇÃO ═══ -->
+<section class="cat-section" id="programacao">
+  <p class="section-eyebrow reveal">+16.500 canais pra você aproveitar</p>
+  <h2 class="section-title reveal d1">
+    <span class="section-title-line" aria-hidden="true"></span>
+    PROGRAMAÇÃO COMPLETA
+    <span class="section-title-line" aria-hidden="true"></span>
+  </h2>
+  <div class="cat-grid">
+    <div class="cat-card reveal d1"><span class="cat-emoji">✔️</span><span class="cat-label"><b>Canais abertos</b>Globo, Record, Band…</span></div>
+    <div class="cat-card reveal d2"><span class="cat-emoji">🎨</span><span class="cat-label"><b>Desenhos</b>24 horas no ar</span></div>
+    <div class="cat-card reveal d3"><span class="cat-emoji">🎬</span><span class="cat-label"><b>Fechados</b>HBO, Telecine, Fox, Discovery…</span></div>
+    <div class="cat-card reveal d4"><span class="cat-emoji">🔞</span><span class="cat-label"><b>Adultos</b>Canais para maiores de 18</span></div>
+    <div class="cat-card reveal d1"><span class="cat-emoji">🏆</span><span class="cat-label"><b>Esportes</b>ESPN, SporTV, Premiere, TNT Sports, HBO Max…</span></div>
+    <div class="cat-card reveal d2"><span class="cat-emoji">🌎</span><span class="cat-label"><b>Internacionais</b>Canais de fora do Brasil</span></div>
+    <div class="cat-card reveal d3"><span class="cat-emoji">⚽</span><span class="cat-label"><b>Futebol nacional</b>Copa do Nordeste, Copa do Brasil, Liga de Futsal e mais</span></div>
+  </div>
+</section>
+
+<!-- ═══ FILMES ═══ -->
+<section class="cat-section" id="filmes">
+  <p class="section-eyebrow reveal">Catálogo sempre atualizado</p>
+  <h2 class="section-title reveal d1">
+    <span class="section-title-line" aria-hidden="true"></span>
+    FILMES PRA TODOS OS GOSTOS
+    <span class="section-title-line" aria-hidden="true"></span>
+  </h2>
+  <div class="cat-grid">
+    <div class="cat-card reveal d1"><span class="cat-emoji">🎥</span><span class="cat-label"><b>Lançamentos</b></span></div>
+    <div class="cat-card reveal d2"><span class="cat-emoji">😂</span><span class="cat-label"><b>Comédia</b></span></div>
+    <div class="cat-card reveal d3"><span class="cat-emoji">❤️</span><span class="cat-label"><b>Romance</b></span></div>
+    <div class="cat-card reveal d4"><span class="cat-emoji">🎭</span><span class="cat-label"><b>Drama</b></span></div>
+    <div class="cat-card reveal d1"><span class="cat-emoji">🙏</span><span class="cat-label"><b>Religiosos</b></span></div>
+    <div class="cat-card reveal d2"><span class="cat-emoji">👻</span><span class="cat-label"><b>Ficção e terror</b></span></div>
+    <div class="cat-card reveal d3"><span class="cat-emoji">🔪</span><span class="cat-label"><b>Suspense</b></span></div>
+    <div class="cat-card reveal d4"><span class="cat-emoji">👶</span><span class="cat-label"><b>Infantis</b></span></div>
+    <div class="cat-card reveal d1"><span class="cat-emoji">🎞️</span><span class="cat-label"><b>Desenhos e animações</b></span></div>
+  </div>
+</section>
+
+<!-- ═══ SÉRIES ═══ -->
+<div class="series-banner">
+  <div class="series-card reveal">
+    <div class="series-icon" id="series" aria-hidden="true">📅</div>
+    <p class="series-title">SÉRIES SEMPRE EM DIA</p>
+    <p class="series-sub">Temporadas atualizadas mensalmente.</p>
+  </div>
+</div>
+
+<!-- ═══ REQUISITOS ═══ -->
+<section class="req-section" id="requisitos">
+  <p class="section-eyebrow reveal">Antes de assinar</p>
+  <h2 class="section-title reveal d1">
+    <span class="section-title-line" aria-hidden="true"></span>
+    VELOCIDADE DE INTERNET NECESSÁRIA
+    <span class="section-title-line" aria-hidden="true"></span>
+  </h2>
+  <div class="req-grid">
+    <div class="req-card reveal d1">
+      <p class="req-tag">SD</p>
+      <p class="req-value">15<span>MB</span></p>
+    </div>
+    <div class="req-card reveal d2">
+      <p class="req-tag">HD</p>
+      <p class="req-value">20<span>MB</span></p>
+    </div>
+    <div class="req-card reveal d3">
+      <p class="req-tag">Full HD</p>
+      <p class="req-value">25<span>MB</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DIFERENCIAIS ═══ -->
+<section class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-strip-item reveal d1">
+      <div class="trust-strip-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
+      <span><b>Qualidade</b>Imagem estável em SD, HD e Full HD</span>
+    </div>
+    <div class="trust-strip-item reveal d2">
+      <div class="trust-strip-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <span><b>Estabilidade</b>Sem travamentos, sem quedas de sinal</span>
+    </div>
+    <div class="trust-strip-item reveal d3">
+      <div class="trust-strip-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <span><b>Liderança em atendimento</b>Suporte real, quando você precisar</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHATSAPP (CTA PRINCIPAL) ═══ -->
+<section class="wa-section" id="grupo">
+  <div class="wa-inner">
+    <div class="wa-col reveal-l">
+      <p class="wa-eyebrow">Assine agora</p>
+      <h2 class="wa-headline">TUDO ISSO NA PALMA <em>DA SUA MÃO.</em></h2>
+      <p class="wa-subtitle">Fale com a Omega Play pelo WhatsApp e comece a assistir hoje mesmo.</p>
+    </div>
+    <div class="wa-col reveal d1">
+      <ul class="wa-list">
+        <li><span class="wa-list-dot" aria-hidden="true"></span>MAIS DE 16.500 CANAIS</li>
+        <li><span class="wa-list-dot" aria-hidden="true"></span>FILMES E SÉRIES ATUALIZADOS</li>
+        <li><span class="wa-list-dot" aria-hidden="true"></span>QUALIDADE E ESTABILIDADE</li>
+        <li><span class="wa-list-dot" aria-hidden="true"></span>ATENDIMENTO DE VERDADE</li>
+      </ul>
+    </div>
+    <div class="wa-col wa-btn-wrap reveal-r">
+      <a href="https://linkly.link/25Pb7"
+         class="wa-btn" id="ctaWa"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Assinar Omega Play pelo WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        ASSINAR AGORA
+      </a>
+      <a href="https://playomega.com.br"
+         class="wa-btn outline" id="ctaSite"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Conhecer o site oficial">
+        CONHECER O SITE
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer">
+  <div class="footer-cta-band reveal">
+    <div class="footer-mark"><span class="omega-mark"><span>Ω</span></span></div>
+    <p class="footer-tagline">Qualidade, estabilidade e liderança em atendimento</p>
+    <h2 class="footer-cta-headline">
+      PRONTO PRA <em>ASSISTIR DE VERDADE?</em>
+    </h2>
+    <p class="footer-cta-sub">
+      Mais de 16.500 canais, filmes e séries. Fale agora com a Omega Play.
+    </p>
+    <div class="footer-ctas">
+      <a href="https://linkly.link/25Pb7"
+         class="footer-cta-btn" id="footerCta"
+         target="_blank" rel="noopener noreferrer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        ASSINAR AGORA&nbsp;→
+      </a>
+      <a href="https://playomega.com.br"
+         class="footer-cta-btn-secondary" id="footerSite"
+         target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        CONHECER O SITE
+      </a>
+    </div>
+  </div>
+  <p class="footer-disclaimer">+18 para o conteúdo adulto. Conteúdo sujeito a disponibilidade e alterações de programação pelas emissoras. A Omega Play não possui vínculo com as emissoras, canais ou marcas citadas. Este site não faz parte do Facebook™ ou da Meta Platforms, Inc., e não é endossado pelo Facebook™ de nenhuma maneira. Facebook™ é uma marca registrada da Meta Platforms, Inc.</p>
+  <p class="footer-copyright">&copy; 2026 Omega Play. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+(function(){
+'use strict';
+
+/* ── CAPI ── */
+function sendCapi(eId){
+  function gc(n){var v=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return v?v.pop():'';}
+  fetch('capi.php',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({event_id:eId,url:location.href,fbc:gc('_fbc'),fbp:gc('_fbp')})
+  }).catch(function(){});
+}
+
+function trackCta(id){
+  var el=document.getElementById(id);
+  if(!el) return;
+  var fired=false;
+  el.addEventListener('click',function(){
+    if(fired) return; fired=true;
+    var eId='ld_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
+    try{if(typeof fbq==='function') fbq('track','Lead',{},{eventID:eId});}catch(e){}
+    sendCapi(eId);
+  });
+}
+
+['navWa','heroCta','heroCtaSite','ctaWa','ctaSite','footerCta','footerSite']
+  .forEach(trackCta);
+
+/* ── SCROLL REVEAL ── */
+if('IntersectionObserver' in window){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -20px 0px'});
+
+  document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(function(el){
+    obs.observe(el);
+  });
+} else {
+  document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(function(el){
+    el.classList.add('visible');
+  });
+}
+
+/* ── PARALLAX ORB ── */
+var orb=document.getElementById('heroOrb');
+if(orb && window.matchMedia('(prefers-reduced-motion: no-preference)').matches){
+  window.addEventListener('scroll',function(){
+    orb.style.transform='translateY('+Math.round(window.scrollY*0.2)+'px)';
+  },{passive:true});
+}
+
+})();
+</script>
+
+</body>
+</html>
