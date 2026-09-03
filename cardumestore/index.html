@@ -170,6 +170,7 @@ a{color:inherit;text-decoration:none}
   font-size:clamp(14px,3.6vw,16px);font-weight:500;line-height:1.65;
   color:rgba(239,234,224,.72);max-width:460px;margin:0 auto 28px;
 }
+.hero-desc strong{color:var(--green-b);font-weight:800}
 .hero-ctas{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px}
 .hero .btn-primary{background:var(--red);box-shadow:0 8px 30px rgba(176,41,41,.35)}
 .hero .btn-primary:hover{background:var(--red-b)}
@@ -268,6 +269,25 @@ a{color:inherit;text-decoration:none}
 .reel-card-label{padding:12px 14px;text-align:center}
 .reel-card-label span{font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--navy)}
 
+/* ── ESTOQUE (GALERIA REAL) ── */
+.stock{padding:0 18px 44px;background:var(--cream-2);position:relative;z-index:2}
+.stock-grid{
+  display:grid;grid-template-columns:1fr;gap:16px;align-items:start;
+  max-width:1080px;margin:0 auto;
+}
+@media(min-width:700px){.stock-grid{grid-template-columns:1.4fr 1fr}}
+.stock-card{
+  border-radius:14px;overflow:hidden;background:var(--cream);
+  border:1px solid var(--border);
+  transition:border-color .2s,transform .2s var(--ease),box-shadow .2s;
+}
+.stock-card:hover{border-color:var(--border-r);transform:translateY(-4px);box-shadow:0 16px 34px rgba(20,39,63,.12)}
+.stock-card img{width:100%;height:auto;display:block;object-fit:cover}
+.stock-card:last-child img{aspect-ratio:1/1;object-position:center 18%}
+@media(max-width:699px){.stock-card:last-child img{aspect-ratio:3/4}}
+.stock-card-label{padding:12px 14px;text-align:center}
+.stock-card-label span{font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--navy)}
+
 /* ── VALUES ── */
 .values{padding:44px 18px;background:var(--navy);position:relative;z-index:2}
 .values .section-eyebrow{color:#D98C8C}
@@ -338,8 +358,8 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <span class="hero-badge-exclusive reveal d1"><span class="hero-badge-exclusive-dot" aria-hidden="true"></span>ACESSO EXCLUSIVO</span>
-    <h1 class="hero-headline reveal d1">Faça parte do <em>grupo VIP</em> Cardume Store.</h1>
-    <p class="hero-desc reveal d2">Lançamentos, ofertas e condições exclusivas em carretilhas, varas e iscas premium — direto no grupo do WhatsApp.</p>
+    <h1 class="hero-headline reveal d1">Faça parte do <em>grupo VIP de ações</em> Cardume Store.</h1>
+    <p class="hero-desc reveal d2"><strong>Apenas 25 números.</strong> As melhores marcas de equipamentos de pesca do mercado — direto no grupo do WhatsApp.</p>
 
     <div class="hero-ctas reveal d3">
       <a href="https://chat.whatsapp.com/CH5EeAh3v9F7WHK2MNmik4?s=cl&amp;p=i&amp;ilr=2" class="btn-whatsapp" id="heroCtaWa" target="_blank" rel="noopener noreferrer" aria-label="Acessar o grupo VIP da Cardume Store no WhatsApp">
@@ -374,6 +394,20 @@ a{color:inherit;text-decoration:none}
     <div class="reel-card reveal d2">
       <img src="images/reel-zillion.jpg" alt="Carretilha Daiwa Zillion SV TW G 100XHL"/>
       <div class="reel-card-label"><span>Daiwa Zillion SV TW G 100XHL</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ESTOQUE REAL ═══ -->
+<section class="stock">
+  <div class="stock-grid">
+    <div class="stock-card reveal-l">
+      <img src="images/estoque-carretilhas.webp" alt="Estoque de carretilhas Shimano e Daiwa da Cardume Store"/>
+      <div class="stock-card-label"><span>Shimano e Daiwa direto do estoque</span></div>
+    </div>
+    <div class="stock-card reveal-r">
+      <img src="images/estoque-varas.webp" alt="Varas Jackall x Shimano Poison Adrena da Cardume Store"/>
+      <div class="stock-card-label"><span>Varas Jackall x Shimano Poison Adrena</span></div>
     </div>
   </div>
 </section>
